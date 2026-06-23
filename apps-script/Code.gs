@@ -1,14 +1,37 @@
 function doPost(e) {
   try {
-    const json = JSON.parse(e.postData.contents);
-    const action = json.action;
-    const data = json.data;
+    let action, data;
+    
+    // Parse the incoming request data robustly
+    if (e.postData && e.postData.contents) {
+      try {
+        // Try parsing as raw JSON first (e.g. from fetch)
+        const json = JSON.parse(e.postData.contents);
+        action = json.action;
+        data = json.data;
+      } catch (err) {
+        // Fallback: Try parsing from form-urlencoded parameters
+        action = e.parameter.action;
+        data = JSON.parse(e.parameter.data);
+      }
+    } else {
+      action = e.parameter.action;
+      data = JSON.parse(e.parameter.data);
+    }
 
-    const ss = SpreadsheetApp.openById('1yfEd26-JjAmvR1GpJQIMH1d9_646J7sNa_Nm7bHv2AQ');
-
+    // Connect to the spreadsheet
+    let ss;
+    try {
+      // Container-bound script (recommended: automatically uses the current sheet)
+      ss = SpreadsheetApp.getActiveSpreadsheet();
+    } catch (err) {
+      // Standalone script fallback
+      ss = SpreadsheetApp.openById('1AbiOUd98VloPlTuT5-Yxmq5Wj33434uwh2Ba6y4JYPs');
+    }
+    
+    const sheet = ss.getSheetByName('Orders') || ss.getSheets()[0];
+    
     if (action === 'createOrder') {
-      const sheet = ss.getSheetByName('Orders') || ss.insertSheet('Orders');
-      
       // Ensure headers exist
       if (sheet.getLastRow() === 0) {
         sheet.appendRow([
@@ -37,10 +60,34 @@ function doPost(e) {
 
       return ContentService.createTextOutput(JSON.stringify({ success: true }))
         .setMimeType(ContentService.MimeType.JSON);
+    } else if (action === 'createBulkOrder') {
+      const bulkSheet = ss.getSheetByName('Bulk Order') || ss.insertSheet('Bulk Order');
+      
+      // Ensure headers exist
+      if (bulkSheet.getLastRow() === 0) {
+        bulkSheet.appendRow([
+          'Request ID', 'Date', 'Full Name', 'Company Name', 'Email', 'Phone',
+          'Quantity', 'Delivery Date', 'Specific Requirements', 'Status'
+        ]);
+      }
+      
+      bulkSheet.appendRow([
+        data.requestId,
+        new Date(),
+        data.name,
+        data.companyName || '',
+        data.email,
+        data.phone,
+        data.quantity,
+        data.deliveryDate,
+        data.notes || '',
+        'Received'
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({ success: true }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
     
-    // Add logic for custom/bulk orders as needed...
-
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ success: false, error: error.toString() }))
       .setMimeType(ContentService.MimeType.JSON);

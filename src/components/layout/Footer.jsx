@@ -36,9 +36,9 @@ const Footer = () => {
           <div>
             <h3 className="font-serif text-lg font-semibold text-white mb-4">Categories</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/categories?flavor=Chocolate" className="hover:text-bakery-gold transition-colors">Chocolate Cakes</Link></li>
-              <li><Link to="/categories?tag=Birthday Cakes" className="hover:text-bakery-gold transition-colors">Birthday Cakes</Link></li>
-              <li><Link to="/categories?tag=Anniversary Cakes" className="hover:text-bakery-gold transition-colors">Anniversary Cakes</Link></li>
+              <li><Link to="/categories?categoryGroup=Chocolate%20Cakes" className="hover:text-bakery-gold transition-colors">Chocolate Cakes</Link></li>
+              <li><Link to="/categories?categoryGroup=Cheesecakes" className="hover:text-bakery-gold transition-colors">Cheesecakes</Link></li>
+              <li><Link to="/categories?categoryGroup=Fusion%20Cakes" className="hover:text-bakery-gold transition-colors">Fusion Cakes</Link></li>
               <li><Link to="/categories?tag=Trending Cakes" className="hover:text-bakery-gold transition-colors">Trending Cakes</Link></li>
             </ul>
           </div>

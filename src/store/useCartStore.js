@@ -61,8 +61,8 @@ const useCartStore = create((set, get) => ({
       // Base price is usually for 0.5 KG
       const multiplier = WEIGHT_MULTIPLIERS[item.weight] || 1;
       const itemPrice = item.basePrice * multiplier;
-      // Add eggless charge if applicable
-      const finalPrice = item.eggless ? itemPrice + 50 : itemPrice;
+      // All cakes are veg/eggless by default, no extra charge
+      const finalPrice = itemPrice;
       return total + (finalPrice * item.quantity);
     }, 0);
   },

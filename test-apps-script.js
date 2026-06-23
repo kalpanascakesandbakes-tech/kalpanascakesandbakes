@@ -1,4 +1,4 @@
-const url = 'https://script.google.com/macros/s/AKfycbwTlNeGBrRSy-yD7yLKAMaIRVZ1_v0zwK41OwlkZsNglwkfzwugjrJXuXgog5amIDU5/exec';
+const url = 'https://script.google.com/macros/s/AKfycbz87fKS482cbW6U8eDBcUy9fan60XY69s0x-4qvXiNPqU6h2u87wSBc5w9CsggzVrV0/exec';
 
 const orderData = {
   orderId: 'ORD-123456',
@@ -13,12 +13,34 @@ const orderData = {
   ]
 };
 
-const formData = new URLSearchParams();
-formData.append('action', 'createOrder');
-formData.append('data', JSON.stringify(orderData));
+async function testJSON() {
+  console.log('Sending JSON test data to Apps Script...');
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: JSON.stringify({
+        action: 'createOrder',
+        data: orderData
+      }),
+      redirect: 'follow'
+    });
+    const text = await response.text();
+    console.log('JSON POST Response Status:', response.status);
+    console.log('JSON POST Response Body:', text);
+  } catch (err) {
+    console.error('JSON POST Error:', err.message);
+  }
+}
 
-async function test() {
-  console.log('Sending test data to Apps Script...');
+async function testForm() {
+  console.log('Sending Form test data to Apps Script...');
+  const formData = new URLSearchParams();
+  formData.append('action', 'createOrder');
+  formData.append('data', JSON.stringify(orderData));
+
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -26,11 +48,17 @@ async function test() {
       redirect: 'follow'
     });
     const text = await response.text();
-    console.log('Response Status:', response.status);
-    console.log('Response Body:', text);
+    console.log('Form POST Response Status:', response.status);
+    console.log('Form POST Response Body:', text);
   } catch (err) {
-    console.error('Error:', err.message);
+    console.error('Form POST Error:', err.message);
   }
 }
 
-test();
+async function runTests() {
+  await testJSON();
+  console.log('------------------');
+  await testForm();
+}
+
+runTests();

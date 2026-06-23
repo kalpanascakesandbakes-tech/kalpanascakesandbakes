@@ -12,6 +12,7 @@ const Checkout = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [orderId, setOrderId] = useState('');
+  const [placedOrderData, setPlacedOrderData] = useState(null);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -57,6 +58,13 @@ const Checkout = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
+    
+    // Validate phone number
+    if (formData.phone.length !== 10) {
+      alert('Please enter a valid 10-digit phone number.');
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -75,6 +83,8 @@ const Checkout = () => {
         cart: cart
       };
 
+      setPlacedOrderData(orderData);
+
       // 2. Submit to Google Sheets
       await submitOrder(orderData);
 
@@ -85,9 +95,9 @@ const Checkout = () => {
       // 4. Clear Cart
       clearCart();
 
-      // 5. Open WhatsApp after a short delay
+      // 5. Open WhatsApp after a short delay (using window.location.href to bypass popup blockers)
       setTimeout(() => {
-        window.open(generateWhatsAppLink(orderData), '_blank');
+        window.location.href = generateWhatsAppLink(orderData);
       }, 2500);
 
     } catch (error) {
@@ -100,22 +110,32 @@ const Checkout = () => {
   if (showSuccess) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center bg-bakery-cream">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="bg-white p-10 rounded-3xl shadow-xl text-center max-w-lg mx-auto border border-bakery-peach"
         >
           <div className="w-24 h-24 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+            <svg className="w-12 h-12 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
           </div>
           <h2 className="text-3xl font-serif font-bold text-bakery-darkBrown mb-2">Order Placed!</h2>
-          <p className="text-xl text-bakery-brown mb-6">Your Order ID is <span className="font-bold">{orderId}</span></p>
+          <p className="text-xl text-bakery-brown mb-4">Your Order ID is <span className="font-bold text-bakery-pink-dark">{orderId}</span></p>
           <p className="text-bakery-brown/80 mb-8">
-            Thank you for your order. We are redirecting you to WhatsApp to confirm the details.
+            Thank you for your order! We are now redirecting you to WhatsApp to send all your order details automatically.
           </p>
-          <Link to="/" className="inline-block px-8 py-3 bg-bakery-brown text-white rounded-full font-bold hover:bg-bakery-darkBrown transition-colors">
-            Back to Home
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {placedOrderData && (
+              <a
+                href={generateWhatsAppLink(placedOrderData)}
+                className="w-full sm:w-auto px-8 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full font-bold text-lg transition-colors shadow-md flex items-center justify-center gap-2"
+              >
+                Send to WhatsApp Now
+              </a>
+            )}
+            <Link to="/" className="w-full sm:w-auto inline-block px-8 py-3 bg-bakery-brown text-white rounded-full font-bold text-lg hover:bg-bakery-darkBrown transition-colors">
+              Back to Home
+            </Link>
+          </div>
         </motion.div>
       </div>
     );
@@ -125,14 +145,14 @@ const Checkout = () => {
     <div className="bg-bakery-cream min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-8">Checkout</h1>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
+
           {/* Left Side - Cart Summary */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-bakery-peach">
               <h2 className="font-serif text-2xl font-bold text-bakery-darkBrown mb-4">Order Summary</h2>
-              
+
               <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
                 {cart.map((item, idx) => (
                   <div key={idx} className="flex gap-4 border-b border-bakery-peach/50 pb-4">
@@ -141,7 +161,7 @@ const Checkout = () => {
                       <h3 className="font-bold text-bakery-darkBrown">{item.name}</h3>
                       <p className="text-bakery-brown/70">{item.flavor} | {item.weight}</p>
                       <p className="text-bakery-brown/70">Qty: {item.quantity}</p>
-                      {item.eggless && <span className="text-xs text-green-600 bg-green-50 px-1 py-0.5 rounded border border-green-200 mt-1 inline-block">Eggless</span>}
+                      <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Pure Veg</span>
                       {item.nameOnCake && <p className="text-bakery-brown/70 mt-1"><span className="font-semibold">Name:</span> {item.nameOnCake}</p>}
                     </div>
                   </div>
@@ -169,42 +189,50 @@ const Checkout = () => {
           <div className="lg:col-span-7">
             <form onSubmit={handlePlaceOrder} className="bg-white p-8 rounded-2xl shadow-sm border border-bakery-peach space-y-6">
               <h2 className="font-serif text-2xl font-bold text-bakery-darkBrown mb-6">Delivery Details</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Full Name *</label>
-                  <input required type="text" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none" 
-                    value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
+                  <input required type="text" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none"
+                    value={formData.fullName} onChange={e => setFormData({ ...formData, fullName: e.target.value })} />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Phone Number *</label>
-                  <input required type="tel" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none" 
-                    value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+                  <input 
+                    required 
+                    type="tel" 
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    placeholder="e.g. 9876543210"
+                    className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none"
+                    value={formData.phone} 
+                    onChange={e => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })} 
+                  />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Email Address *</label>
-                <input required type="email" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none" 
-                  value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Email Address (Optional)</label>
+                <input type="email" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none"
+                  value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
               </div>
 
               <div>
                 <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Full Delivery Address *</label>
-                <textarea required rows="3" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none resize-none" 
-                  value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})}></textarea>
+                <textarea required rows="3" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none resize-none"
+                  value={formData.address} onChange={e => setFormData({ ...formData, address: e.target.value })}></textarea>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-bakery-darkBrown mb-1">Landmark (Optional)</label>
-                  <input type="text" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none" 
-                    value={formData.landmark} onChange={e => setFormData({...formData, landmark: e.target.value})} />
+                  <input type="text" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none"
+                    value={formData.landmark} onChange={e => setFormData({ ...formData, landmark: e.target.value })} />
                 </div>
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isSubmitting}
                 className={`w-full py-4 text-white rounded-xl font-bold text-lg transition-colors shadow-lg ${isSubmitting ? 'bg-bakery-brown/70 cursor-not-allowed' : 'bg-bakery-brown hover:bg-bakery-darkBrown'}`}
               >

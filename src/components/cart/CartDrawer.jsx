@@ -76,7 +76,7 @@ const CartDrawer = () => {
                           </button>
                         </div>
                         <p className="text-sm text-bakery-brown/80">{item.flavor} | {item.weight}</p>
-                        {item.eggless && <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Eggless</span>}
+                        <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Pure Veg</span>
                         
                         <div className="flex items-center justify-between mt-3">
                           <div className="flex items-center border border-bakery-peach rounded-md">
@@ -95,7 +95,7 @@ const CartDrawer = () => {
                               <Plus size={16} />
                             </button>
                           </div>
-                          <span className="font-bold text-bakery-darkBrown">₹{(item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1) + (item.eggless ? 50 : 0)) * item.quantity}</span>
+                          <span className="font-bold text-bakery-darkBrown">₹{(item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1)) * item.quantity}</span>
                         </div>
                       </div>
                     </div>

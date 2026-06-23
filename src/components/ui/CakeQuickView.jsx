@@ -38,7 +38,7 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
       flavor: cake.flavor,
       weight: '1 KG', // default
       quantity: 1,
-      eggless: false,
+      eggless: true,
       image: cake.image
     });
     onClose();

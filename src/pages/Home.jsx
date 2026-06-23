@@ -54,15 +54,7 @@ const Home = () => {
 
   return (
     <div className="bg-bakery-cream overflow-hidden">
-      {/* Promotional Banner */}
-      <div className="bg-gradient-to-r from-bakery-darkBrown via-bakery-brown to-bakery-darkBrown text-white py-3 shadow-md relative z-20">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-center">
-          <span className="bg-bakery-gold text-bakery-darkBrown text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest shrink-0">Limited Time</span>
-          <p className="font-medium text-sm md:text-base">
-            Get <span className="font-bold text-bakery-peach">10% OFF</span> on your first order! Use code: <span className="font-bold tracking-wider font-mono bg-white/20 px-2 py-0.5 rounded">SWEET10</span>
-          </p>
-        </div>
-      </div>
+
 
       {/* Hero Carousel Section */}
       <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden">
@@ -178,7 +170,7 @@ const Home = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {featuredCakes.map(cake => (
               <motion.div key={cake.id} variants={fadeInUp}>
@@ -211,7 +203,7 @@ const Home = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {bestSellers.map(cake => (
               <motion.div key={cake.id} variants={fadeInUp}>
@@ -232,10 +224,10 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Chocolate Cakes', image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600', link: '/categories?flavor=Chocolate' },
-              { name: 'Birthday Cakes', image: 'https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=600', link: '/categories?tag=Birthday Cakes' },
-              { name: 'Anniversary Cakes', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80', link: '/categories?tag=Anniversary Cakes' },
-              { name: 'Trending Cakes', image: 'https://images.unsplash.com/photo-1578985545045-c18f41e1b327?auto=format&fit=crop&w=600&q=80', link: '/categories?tag=Trending Cakes' }
+              { name: 'Chocolate Cakes', image: '/cakes/truffle_whole_1781772121847.png', link: '/categories?categoryGroup=Chocolate%20Cakes' },
+              { name: 'Regular Cakes', image: '/cakes/pineapple_whole_1781772439907.png', link: '/categories?categoryGroup=Regular%20Cakes' },
+              { name: 'Cheesecakes', image: '/cakes/cheesecake.png', link: '/categories?categoryGroup=Cheesecakes' },
+              { name: 'Fusion Cakes', image: '/cakes/fusion.png', link: '/categories?categoryGroup=Fusion%20Cakes' }
             ].map((cat, idx) => (
               <Link to={cat.link} key={idx} className="group relative rounded-2xl overflow-hidden h-64 shadow-md">
                 <img src={cat.image} alt={cat.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

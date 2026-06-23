@@ -14,13 +14,10 @@ export const FLAVORS = [
 
 export const CATEGORIES = [
   "Trending Cakes",
-  "Birthday Cakes",
-  "Anniversary Cakes",
   "Gourmet Cakes",
   "Bento Cakes",
   "Photo Cakes",
-  "Designer Cakes",
-  "Half Birthday Cakes"
+  "Designer Cakes"
 ];
 
 export const mockCakes = [
@@ -1204,7 +1201,131 @@ export const getFeaturedCakes = () => mockCakes.filter(cake => cake.tags.include
 export const getAllTags = () => {
   const tags = new Set();
   mockCakes.forEach(cake => {
-    cake.tags.forEach(tag => tags.add(tag));
+    cake.tags.forEach(tag => {
+      if (!tag.toLowerCase().includes('birthday') && !tag.toLowerCase().includes('anniversary')) {
+        tags.add(tag);
+      }
+    });
   });
   return Array.from(tags).sort();
+};
+
+// Map mockCakes names and categories dynamically to match the exact menu categories
+mockCakes.forEach(cake => {
+  const tag = cake.tags.find(t => t !== '60 Minutes Delivery') || 'Trending Cakes';
+  const tagSuffix = tag.replace(' Cakes', '');
+  const flavor = cake.flavor;
+  
+  let categoryGroup = 'Regular Cakes';
+  let displayName = cake.name;
+  
+  if (flavor === 'Chocolate') {
+    const chocoNames = {
+      'Trending Cakes': 'Dutch Truffle',
+      'Birthday Cakes': 'Chocolate Truffle',
+      'Anniversary Cakes': 'Cafe Mocha',
+      'Gourmet Cakes': 'Dutch Truffle',
+      'Bento Cakes': 'Chocolate Nutella',
+      'Photo Cakes': 'Chocolate Blakcurrent',
+      'Designer Cakes': 'Chocolate Truffle',
+      'Half Birthday Cakes': 'Cafe Mocha'
+    };
+    displayName = `${chocoNames[tag]} ${tagSuffix}`;
+    categoryGroup = 'Chocolate Cakes';
+  } else if (flavor === 'Oreo') {
+    displayName = `Chocolate Oreo ${tagSuffix}`;
+    categoryGroup = 'Chocolate Cakes';
+  } else if (flavor === 'Kit Kat') {
+    const kitkatNames = {
+      'Trending Cakes': 'Chocolate Nutella',
+      'Birthday Cakes': 'Cafe Mocha',
+      'Anniversary Cakes': 'Chocolate Nutella',
+      'Gourmet Cakes': 'Cafe Mocha',
+      'Bento Cakes': 'Chocolate Nutella',
+      'Photo Cakes': 'Cafe Mocha',
+      'Designer Cakes': 'Chocolate Nutella',
+      'Half Birthday Cakes': 'Cafe Mocha'
+    };
+    displayName = `${kitkatNames[tag]} ${tagSuffix}`;
+    categoryGroup = 'Chocolate Cakes';
+  } else if (flavor === 'Blueberry') {
+    const blueberryNames = {
+      'Trending Cakes': { name: 'Chocolate Blueberry', group: 'Chocolate Cakes' },
+      'Birthday Cakes': { name: 'Blueberry Cheesecake', group: 'Cheesecakes' },
+      'Anniversary Cakes': { name: 'Blackcurrent', group: 'Regular Cakes' },
+      'Gourmet Cakes': { name: 'Chocolate Blueberry', group: 'Chocolate Cakes' },
+      'Bento Cakes': { name: 'Blueberry Cheesecake', group: 'Cheesecakes' },
+      'Photo Cakes': { name: 'Blackcurrent', group: 'Regular Cakes' },
+      'Designer Cakes': { name: 'Chocolate Blueberry', group: 'Chocolate Cakes' },
+      'Half Birthday Cakes': { name: 'Blueberry Cheesecake', group: 'Cheesecakes' }
+    };
+    const choice = blueberryNames[tag];
+    displayName = `${choice.name} ${tagSuffix}`;
+    categoryGroup = choice.group;
+  } else if (flavor === 'Mango') {
+    const mangoNames = {
+      'Trending Cakes': { name: 'Chocolate Mango', group: 'Chocolate Cakes' },
+      'Birthday Cakes': { name: 'Mango Cake', group: 'Regular Cakes' },
+      'Anniversary Cakes': { name: 'Rajbhog', group: 'Fusion Cakes' },
+      'Gourmet Cakes': { name: 'Chocolate Mango', group: 'Chocolate Cakes' },
+      'Bento Cakes': { name: 'Mango Cake', group: 'Regular Cakes' },
+      'Photo Cakes': { name: 'Rajbhog', group: 'Fusion Cakes' },
+      'Designer Cakes': { name: 'Chocolate Mango', group: 'Chocolate Cakes' },
+      'Half Birthday Cakes': { name: 'Rajbhog', group: 'Fusion Cakes' }
+    };
+    const choice = mangoNames[tag];
+    displayName = `${choice.name} ${tagSuffix}`;
+    categoryGroup = choice.group;
+  } else if (flavor === 'Fruit') {
+    const fruitNames = {
+      'Trending Cakes': { name: 'Chocolate Strawberry', group: 'Chocolate Cakes' },
+      'Birthday Cakes': { name: 'Strawberry', group: 'Regular Cakes' },
+      'Anniversary Cakes': { name: 'Chocolate Strawberry', group: 'Chocolate Cakes' },
+      'Gourmet Cakes': { name: 'Strawberry', group: 'Regular Cakes' },
+      'Bento Cakes': { name: 'Chocolate Strawberry', group: 'Chocolate Cakes' },
+      'Photo Cakes': { name: 'Strawberry', group: 'Regular Cakes' },
+      'Designer Cakes': { name: 'Chocolate Strawberry', group: 'Chocolate Cakes' },
+      'Half Birthday Cakes': { name: 'Strawberry', group: 'Regular Cakes' }
+    };
+    const choice = fruitNames[tag];
+    displayName = `${choice.name} ${tagSuffix}`;
+    categoryGroup = choice.group;
+  } else if (flavor === 'Vanilla') {
+    const vanillaNames = {
+      'Trending Cakes': { name: 'Plain Vanilla', group: 'Regular Cakes' },
+      'Birthday Cakes': { name: 'Rasmalai', group: 'Fusion Cakes' },
+      'Anniversary Cakes': { name: 'Gulab Jamun', group: 'Fusion Cakes' },
+      'Gourmet Cakes': { name: 'Plain Vanilla', group: 'Regular Cakes' },
+      'Bento Cakes': { name: 'Rasmalai', group: 'Fusion Cakes' },
+      'Photo Cakes': { name: 'Gulab Jamun', group: 'Fusion Cakes' },
+      'Designer Cakes': { name: 'Plain Vanilla', group: 'Regular Cakes' },
+      'Half Birthday Cakes': { name: 'Rasmalai', group: 'Fusion Cakes' }
+    };
+    const choice = vanillaNames[tag];
+    displayName = `${choice.name} ${tagSuffix}`;
+    categoryGroup = choice.group;
+  } else if (flavor === 'Red Velvet') {
+    displayName = `Red Velvet Cheesecake ${tagSuffix}`;
+    categoryGroup = 'Cheesecakes';
+  } else if (flavor === 'Black Forest') {
+    displayName = `Black Forest ${tagSuffix}`;
+    categoryGroup = 'Regular Cakes';
+  } else if (flavor === 'Pineapple') {
+    displayName = `Pineapple ${tagSuffix}`;
+    categoryGroup = 'Regular Cakes';
+  } else if (flavor === 'Butterscotch') {
+    displayName = `Butterscotch ${tagSuffix}`;
+    categoryGroup = 'Regular Cakes';
+  }
+  
+  cake.name = displayName;
+  cake.categoryGroup = categoryGroup;
+});
+
+export const getCategoryGroup = (cake) => {
+  return cake.categoryGroup || 'Regular Cakes';
+};
+
+export const getCakeBaseName = (cake) => {
+  return cake.name.replace(/ (Trending|Birthday|Anniversary|Gourmet|Bento|Photo|Designer|Half Birthday)/, '');
 };

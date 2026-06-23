@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { ShoppingBag, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import useCartStore from '../../store/useCartStore';
 import { useState, useEffect } from 'react';
 
@@ -15,21 +15,46 @@ const Navbar = () => {
   }, [location]);
 
   const categories = {
-    trending: {
-      title: 'Trending Cakes',
-      links: ['Mango Cakes', 'Fresh Drops', 'Football Cakes', 'Fire Cakes', 'Bento Cakes', 'Drip Cakes', 'Gourmet Cakes', 'Ribbon Cakes', 'Anime Cakes', '60 Minutes Delivery']
+    chocolate: {
+      title: 'Chocolate Cakes',
+      links: [
+        { name: 'Chocolate Oreo', path: '/categories?cakeName=Chocolate%20Oreo' },
+        { name: 'Cafe Mocha', path: '/categories?cakeName=Cafe%20Mocha' },
+        { name: 'Dutch Truffle', path: '/categories?cakeName=Dutch%20Truffle' },
+        { name: 'Chocolate Blakcurrent', path: '/categories?cakeName=Chocolate%20Blakcurrent' },
+        { name: 'Chocolate Blueberry', path: '/categories?cakeName=Chocolate%20Blueberry' },
+        { name: 'Chocolate Mango', path: '/categories?cakeName=Chocolate%20Mango' },
+        { name: 'Chocolate Strawberry', path: '/categories?cakeName=Chocolate%20Strawberry' },
+        { name: 'Chocolate Truffle', path: '/categories?cakeName=Chocolate%20Truffle' },
+        { name: 'Chocolate Nutella', path: '/categories?cakeName=Chocolate%20Nutella' }
+      ]
     },
-    flavors: {
-      title: 'By Flavours',
-      links: ['Chocolate', 'Pineapple', 'Mango', 'Fruit', 'Butterscotch', 'Blueberry', 'Black Forest', 'Vanilla', 'Red Velvet', 'Kit Kat', 'Oreo']
+    regular: {
+      title: 'Regular Cakes',
+      links: [
+        { name: 'Plain Vanilla', path: '/categories?cakeName=Plain%20Vanilla' },
+        { name: 'Black Forest', path: '/categories?cakeName=Black%20Forest' },
+        { name: 'Mango Cake', path: '/categories?cakeName=Mango%20Cake' },
+        { name: 'Strawberry', path: '/categories?cakeName=Strawberry' },
+        { name: 'Pineapple', path: '/categories?cakeName=Pineapple' },
+        { name: 'Blackcurrent', path: '/categories?cakeName=Blackcurrent' },
+        { name: 'Butterscotch', path: '/categories?cakeName=Butterscotch' }
+      ]
     },
-    birthday: {
-      title: 'Birthday Cakes',
-      links: ['Birthday Cakes', 'Birthday Photo Cakes', 'Half Birthday Cakes', '1st Birthday Cakes', '2nd Birthday Cakes', '18th Birthday Cakes', '40th Birthday Cakes', '50th Birthday Cakes']
+    cheesecakes: {
+      title: 'Cheesecakes',
+      links: [
+        { name: 'Red Velvet Cheesecake', path: '/categories?cakeName=Red%20Velvet%20Cheesecake' },
+        { name: 'Blueberry Cheesecake', path: '/categories?cakeName=Blueberry%20Cheesecake' }
+      ]
     },
-    anniversary: {
-      title: 'Anniversary Cakes',
-      links: ['All Anniversary Cakes', 'Anniversary Photo Cakes', 'Anniversary Cakes For Parents', '1st Anniversary Cakes', '5th Anniversary Cakes', '10th Anniversary Cakes', '25th Anniversary Cakes', '50th Anniversary Cakes']
+    fusion: {
+      title: 'Fusion Cakes',
+      links: [
+        { name: 'Rajbhog', path: '/categories?cakeName=Rajbhog' },
+        { name: 'Rasmalai', path: '/categories?cakeName=Rasmalai' },
+        { name: 'Gulab Jamun', path: '/categories?cakeName=Gulab%20Jamun' }
+      ]
     }
   };
 
@@ -74,44 +99,60 @@ const Navbar = () => {
                   <div className="grid grid-cols-4 gap-8">
                     {/* Column 1 */}
                     <div>
-                      <h3 className="font-serif font-bold text-lg text-bakery-darkBrown mb-4 pb-2 border-b-2 border-bakery-gold/30">{categories.trending.title}</h3>
+                      <Link to="/categories?categoryGroup=Chocolate%20Cakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.chocolate.title}
+                        </h3>
+                      </Link>
                       <ul className="space-y-3">
-                        {categories.trending.links.map(link => (
-                          <li key={link}>
-                            <Link to={`/categories?tag=${link}`} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link}</Link>
+                        {categories.chocolate.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                     {/* Column 2 */}
                     <div>
-                      <h3 className="font-serif font-bold text-lg text-bakery-darkBrown mb-4 pb-2 border-b-2 border-bakery-gold/30">{categories.flavors.title}</h3>
+                      <Link to="/categories?categoryGroup=Regular%20Cakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.regular.title}
+                        </h3>
+                      </Link>
                       <ul className="space-y-3">
-                        {categories.flavors.links.map(link => (
-                          <li key={link}>
-                            <Link to={`/categories?flavor=${link}`} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link}</Link>
+                        {categories.regular.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                     {/* Column 3 */}
                     <div>
-                      <h3 className="font-serif font-bold text-lg text-bakery-darkBrown mb-4 pb-2 border-b-2 border-bakery-gold/30">{categories.birthday.title}</h3>
+                      <Link to="/categories?categoryGroup=Cheesecakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.cheesecakes.title}
+                        </h3>
+                      </Link>
                       <ul className="space-y-3">
-                        {categories.birthday.links.map(link => (
-                          <li key={link}>
-                            <Link to={`/categories?tag=${link}`} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link}</Link>
+                        {categories.cheesecakes.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                     {/* Column 4 */}
                     <div>
-                      <h3 className="font-serif font-bold text-lg text-bakery-darkBrown mb-4 pb-2 border-b-2 border-bakery-gold/30">{categories.anniversary.title}</h3>
+                      <Link to="/categories?categoryGroup=Fusion%20Cakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.fusion.title}
+                        </h3>
+                      </Link>
                       <ul className="space-y-3">
-                        {categories.anniversary.links.map(link => (
-                          <li key={link}>
-                            <Link to={`/categories?tag=${link}`} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link}</Link>
+                        {categories.fusion.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
                       </ul>
@@ -130,6 +171,13 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
+            <Link 
+              to="/categories" 
+              className="px-6 py-2.5 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white rounded-full font-bold text-sm hover:shadow-md transition-all duration-300 flex items-center gap-2 shrink-0 shadow-sm ml-2"
+            >
+              Order Now <ArrowRight size={16} />
+            </Link>
 
             <button 
               onClick={openCart}
@@ -174,30 +222,44 @@ const Navbar = () => {
             <Link to="/" className="block px-3 py-3 text-base font-bold text-bakery-darkBrown border-b border-bakery-peach">Home</Link>
             
             {/* Mobile Accordions */}
-            {Object.entries(categories).map(([key, category]) => (
-              <div key={key} className="border-b border-bakery-peach">
-                <button 
-                  onClick={() => handleMobileAccordion(key)}
-                  className="flex justify-between items-center w-full px-3 py-3 text-base font-bold text-bakery-darkBrown"
-                >
-                  {category.title}
-                  <ChevronDown size={20} className={`transform transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
-                </button>
-                {activeDropdown === key && (
-                  <div className="bg-bakery-cream px-6 py-2 space-y-3">
-                    {category.links.map(link => (
+            {Object.entries(categories).map(([key, category]) => {
+              const categoryGroupMap = {
+                chocolate: 'Chocolate Cakes',
+                regular: 'Regular Cakes',
+                cheesecakes: 'Cheesecakes',
+                fusion: 'Fusion Cakes'
+              };
+              return (
+                <div key={key} className="border-b border-bakery-peach">
+                  <button 
+                    onClick={() => handleMobileAccordion(key)}
+                    className="flex justify-between items-center w-full px-3 py-3 text-base font-bold text-bakery-darkBrown"
+                  >
+                    {category.title}
+                    <ChevronDown size={20} className={`transform transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
+                  </button>
+                  {activeDropdown === key && (
+                    <div className="bg-bakery-cream px-6 py-2 space-y-3">
                       <Link 
-                        key={link} 
-                        to={`/categories?${key === 'flavors' ? 'flavor' : 'tag'}=${link}`} 
-                        className="block text-sm text-bakery-brown py-1"
+                        to={`/categories?categoryGroup=${encodeURIComponent(categoryGroupMap[key])}`}
+                        className="block text-sm font-bold text-bakery-pink-dark py-1 border-b border-bakery-peach/30"
                       >
-                        {link}
+                        View All {category.title}
                       </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                      {category.links.map(link => (
+                        <Link 
+                          key={link.name} 
+                          to={link.path} 
+                          className="block text-sm text-bakery-brown py-1"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
 
             {navLinks.slice(1).map((link) => (
               <Link
@@ -208,6 +270,15 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
+            <div className="px-3 py-4">
+              <Link 
+                to="/categories" 
+                className="w-full px-6 py-3 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white rounded-full font-bold text-base hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
+              >
+                Order Now <ArrowRight size={18} />
+              </Link>
+            </div>
           </div>
         </div>
       )}

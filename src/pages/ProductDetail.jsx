@@ -13,7 +13,7 @@ const ProductDetail = () => {
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [weight, setWeight] = useState('0.5 KG');
-  const [isEggless, setIsEggless] = useState(false);
+  const [isEggless, setIsEggless] = useState(true);
   const [nameOnCake, setNameOnCake] = useState('');
   const [message, setMessage] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -50,7 +50,7 @@ const ProductDetail = () => {
     ? (customWeightValue * 2) // Assuming base price is 0.5kg, so 1kg = 2x multiplier
     : WEIGHT_MULTIPLIERS[weight];
     
-  const currentPrice = (cake.price * currentMultiplier) + (isEggless ? 50 : 0);
+  const currentPrice = cake.price * currentMultiplier;
 
   const handleAddToCart = () => {
     addToCart({
@@ -133,29 +133,12 @@ const ProductDetail = () => {
             </div>
 
             <div className="space-y-6">
-              {/* Eggless Option */}
-              <div className="flex items-center gap-4 bg-bakery-cream p-4 rounded-xl border border-bakery-peach">
-                <span className="font-bold text-bakery-darkBrown">Type:</span>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input 
-                    type="radio" 
-                    name="type" 
-                    checked={!isEggless} 
-                    onChange={() => setIsEggless(false)}
-                    className="text-bakery-brown focus:ring-bakery-brown"
-                  />
-                  <span>With Egg</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input 
-                    type="radio" 
-                    name="type" 
-                    checked={isEggless} 
-                    onChange={() => setIsEggless(true)}
-                    className="text-green-600 focus:ring-green-600"
-                  />
-                  <span className="text-green-700 font-medium">Eggless (+₹50)</span>
-                </label>
+              {/* Pure Veg Badge */}
+              <div className="flex items-center gap-3 bg-green-50 p-4 rounded-xl border border-green-200 text-green-800">
+                <span className="w-5 h-5 rounded-md border-2 border-green-600 flex items-center justify-center shrink-0">
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-600"></span>
+                </span>
+                <span className="font-bold text-sm">100% Pure Vegetarian / Eggless Cake</span>
               </div>
 
               {/* Weight Selection */}

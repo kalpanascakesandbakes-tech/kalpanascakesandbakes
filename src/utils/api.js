@@ -1,41 +1,43 @@
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTlNeGBrRSy-yD7yLKAMaIRVZ1_v0zwK41OwlkZsNglwkfzwugjrJXuXgog5amIDU5/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-f4F-79kgial6i9r3U1Nfqry-OmMECgIWxo_MZcM8baBBYG54XUrU5JmP58RFZto/exec';
 
 export const submitOrder = async (orderData) => {
-  return new Promise((resolve) => {
-    // 100% Bulletproof method to bypass Google Apps Script CORS issues
-    // by using a hidden HTML form submission.
-    
-    const iframeName = 'hidden_iframe_' + Date.now();
-    const iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+  try {
+    // We send a JSON POST request. 
+    // To avoid CORS preflight issues, we use text/plain content-type and mode: 'no-cors'
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify({
+        action: 'createOrder',
+        data: orderData
+      })
+    });
+    return { success: true, orderId: orderData.orderId };
+  } catch (error) {
+    console.error('Error submitting order to Google Sheets:', error);
+    throw error;
+  }
+};
 
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = APPS_SCRIPT_URL;
-    form.target = iframeName;
-
-    const actionInput = document.createElement('input');
-    actionInput.type = 'hidden';
-    actionInput.name = 'action';
-    actionInput.value = 'createOrder';
-    form.appendChild(actionInput);
-
-    const dataInput = document.createElement('input');
-    dataInput.type = 'hidden';
-    dataInput.name = 'data';
-    dataInput.value = JSON.stringify(orderData);
-    form.appendChild(dataInput);
-
-    document.body.appendChild(form);
-    form.submit();
-
-    // Clean up and resolve after a short delay (assume success since form submits blindly)
-    setTimeout(() => {
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-      resolve({ success: true, orderId: orderData.orderId });
-    }, 2000);
-  });
+export const submitBulkOrder = async (bulkData) => {
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify({
+        action: 'createBulkOrder',
+        data: bulkData
+      })
+    });
+    return { success: true };
+  } catch (error) {
+    console.error('Error submitting bulk order to Google Sheets:', error);
+    return { success: false, error };
+  }
 };
