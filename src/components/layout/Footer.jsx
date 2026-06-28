@@ -49,15 +49,15 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin size={18} className="text-bakery-gold shrink-0 mt-0.5" />
-                <span>123 Bakery Street, Sweet Town, 400001</span>
+                <span>2/A/501, Om Sai CHS Ltd, Jain Upashray Marg, Opposite Ayyappa Temple, Tagore Nagar, Vikhroli - East, Mumbai - 400083, Maharashtra, India.</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={18} className="text-bakery-gold shrink-0" />
-                <span>+91 98765 43210</span>
+                <span> +91-9004762873</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-bakery-gold shrink-0" />
-                <span>hello@kalpanascakes.com</span>
+                <span>Hello@Kalpanascakes.com</span>
               </li>
             </ul>
           </div>
