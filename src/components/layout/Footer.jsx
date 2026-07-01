@@ -17,7 +17,15 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-bakery-gold transition-colors"><FaFacebook size={20} /></a>
-              <a href="#" className="hover:text-bakery-gold transition-colors"><FaInstagram size={20} /></a>
+              <a 
+                href="https://www.instagram.com/kalpanascakesandbakes?utm_source=qr&igsh=dHQzNml4NHg1cHFz" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-bakery-gold transition-colors"
+                title="Instagram"
+              >
+                <FaInstagram size={20} />
+              </a>
               <a href="#" className="hover:text-bakery-gold transition-colors"><FaTwitter size={20} /></a>
             </div>
           </div>
@@ -58,6 +66,17 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-bakery-gold shrink-0" />
                 <span>Hello@Kalpanascakes.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaInstagram size={18} className="text-bakery-gold shrink-0" />
+                <a 
+                  href="https://www.instagram.com/kalpanascakesandbakes?utm_source=qr&igsh=dHQzNml4NHg1cHFz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-bakery-gold transition-colors"
+                >
+                  Kalpanascakesandbakes
+                </a>
               </li>
             </ul>
           </div>
