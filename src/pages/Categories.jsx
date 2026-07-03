@@ -47,6 +47,22 @@ const menuCategories = [
       { name: 'Red Velvet Cheesecake', flavor: 'Red Velvet' },
       { name: 'Blueberry Cheesecake', flavor: 'Blueberry' }
     ]
+  },
+  {
+    title: 'Theme Cakes',
+    items: [
+      { name: 'Princess Pink Doll Cake', flavor: 'Vanilla' },
+      { name: 'Elegant Barbie Doll Blue Gown', flavor: 'Vanilla' },
+      { name: 'Spiderman City Adventure Cake', flavor: 'Chocolate' },
+      { name: 'Jungle Safari Animals Cake', flavor: 'Chocolate' },
+      { name: 'Racing Cars Birthday Cake', flavor: 'Chocolate' }
+    ]
+  },
+  {
+    title: 'Bento Cakes',
+    items: [
+      { name: 'Mini Chocolate Bento Cake', flavor: 'Chocolate' }
+    ]
   }
 ];
 
@@ -269,6 +285,8 @@ const Categories = () => {
                       <option value="Regular Cakes">Regular Cakes</option>
                       <option value="Cheesecakes">Cheesecakes</option>
                       <option value="Fusion Cakes">Fusion Cakes</option>
+                      <option value="Theme Cakes">Theme Cakes</option>
+                      <option value="Bento Cakes">Bento Cakes</option>
                     </select>
 
                     <select

@@ -55,6 +55,21 @@ const Navbar = () => {
         { name: 'Rasmalai', path: '/categories?cakeName=Rasmalai' },
         { name: 'Gulab Jamun', path: '/categories?cakeName=Gulab%20Jamun' }
       ]
+    },
+    theme: {
+      title: 'Theme Cakes',
+      links: [
+        { name: 'Princess Pink Doll Cake', path: '/categories?cakeName=Princess%20Pink%20Doll%20Cake' },
+        { name: 'Elegant Barbie Doll Blue Gown', path: '/categories?cakeName=Elegant%20Barbie%20Doll%20Blue%20Gown' },
+        { name: 'Spiderman City Adventure Cake', path: '/categories?cakeName=Spiderman%20City%20Adventure%20Cake' },
+        { name: 'Jungle Safari Animals Cake', path: '/categories?cakeName=Jungle%20Safari%20Animals%20Cake' }
+      ]
+    },
+    bento: {
+      title: 'Bento Cakes',
+      links: [
+        { name: 'Mini Chocolate Bento Cake', path: '/categories?cakeName=Mini%20Chocolate%20Bento%20Cake' }
+      ]
     }
   };
 
@@ -96,7 +111,7 @@ const Navbar = () => {
               {/* Mega Menu Dropdown */}
               <div className="absolute top-20 left-0 w-full bg-white shadow-xl border-t border-bakery-peach opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <div className="max-w-7xl mx-auto px-8 py-10">
-                  <div className="grid grid-cols-4 gap-8">
+                  <div className="grid grid-cols-3 xl:grid-cols-6 gap-8">
                     {/* Column 1 */}
                     <div>
                       <Link to="/categories?categoryGroup=Chocolate%20Cakes" className="hover:text-bakery-gold block group/header">
@@ -151,6 +166,36 @@ const Navbar = () => {
                       </Link>
                       <ul className="space-y-3">
                         {categories.fusion.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Column 5 */}
+                    <div>
+                      <Link to="/categories?categoryGroup=Theme%20Cakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.theme.title}
+                        </h3>
+                      </Link>
+                      <ul className="space-y-3">
+                        {categories.theme.links.map(link => (
+                          <li key={link.name}>
+                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Column 6 */}
+                    <div>
+                      <Link to="/categories?categoryGroup=Bento%20Cakes" className="hover:text-bakery-gold block group/header">
+                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
+                          {categories.bento.title}
+                        </h3>
+                      </Link>
+                      <ul className="space-y-3">
+                        {categories.bento.links.map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
@@ -227,7 +272,9 @@ const Navbar = () => {
                 chocolate: 'Chocolate Cakes',
                 regular: 'Regular Cakes',
                 cheesecakes: 'Cheesecakes',
-                fusion: 'Fusion Cakes'
+                fusion: 'Fusion Cakes',
+                theme: 'Theme Cakes',
+                bento: 'Bento Cakes'
               };
               return (
                 <div key={key} className="border-b border-bakery-peach">
