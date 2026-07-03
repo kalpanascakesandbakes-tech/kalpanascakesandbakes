@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Award, Clock } from 'lucide-react';
+import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck } from 'lucide-react';
 import { getBestSellers, getFeaturedCakes } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
+import LicenseModal from '../components/layout/LicenseModal';
 
 const heroSlides = [
   {
@@ -28,6 +29,7 @@ const Home = () => {
   const featuredCakes = getFeaturedCakes();
   const bestSellers = getBestSellers();
   const [selectedCake, setSelectedCake] = useState(null);
+  const [isLicenseOpen, setIsLicenseOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -156,6 +158,48 @@ const Home = () => {
         </div>
       </section>
 
+      {/* FSSAI Trust Banner */}
+      <section className="py-12 bg-gradient-to-r from-bakery-peach/10 via-bakery-cream to-bakery-peach/20 border-y border-bakery-peach/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-bakery-peach/20 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div className="w-20 h-20 bg-bakery-peach/30 rounded-2xl flex items-center justify-center shrink-0 border border-bakery-peach/40 shadow-inner">
+                <img 
+                  src="/cakes/fssai-logo.png" 
+                  alt="FSSAI Logo" 
+                  className="h-14 w-auto object-contain"
+                />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2 justify-center md:justify-start">
+                  <span className="bg-bakery-gold/20 text-bakery-brown px-3.5 py-1 rounded-full text-xs font-bold font-sans tracking-wide uppercase flex items-center gap-1.5 justify-center">
+                    <ShieldCheck size={14} className="text-bakery-gold shrink-0" />
+                    FSSAI Registered
+                  </span>
+                  <span className="font-mono text-sm text-bakery-brown/70 font-semibold">
+                    Lic. No. 21526013000741
+                  </span>
+                </div>
+                <h3 className="font-serif font-bold text-2xl text-bakery-darkBrown mb-2">
+                  Baked with Love, Crafted with Care
+                </h3>
+                <p className="text-bakery-brown/85 max-w-2xl leading-relaxed">
+                  We are a fully licensed and registered food business under the Food Safety and Standards Authority of India (FSSAI). Every cake is baked with the highest standards of hygiene, sanitation, and premium quality ingredients to ensure you get nothing but safe, fresh, and delicious bakes.
+                </p>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setIsLicenseOpen(true)}
+              className="px-8 py-4 bg-bakery-brown text-white hover:bg-bakery-darkBrown rounded-full font-bold text-base transition-all duration-300 shadow-md hover:shadow-lg shrink-0 cursor-pointer flex items-center gap-2 hover:scale-105"
+            >
+              <ShieldCheck size={18} />
+              View Certificate
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Cakes */}
       <section className="py-20 bg-bakery-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,6 +324,11 @@ const Home = () => {
         cake={selectedCake} 
         isOpen={!!selectedCake} 
         onClose={() => setSelectedCake(null)} 
+      />
+
+      <LicenseModal 
+        isOpen={isLicenseOpen} 
+        onClose={() => setIsLicenseOpen(false)} 
       />
     </div>
   );

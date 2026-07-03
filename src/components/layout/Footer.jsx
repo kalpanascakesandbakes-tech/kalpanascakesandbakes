@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import LicenseModal from './LicenseModal';
 
 const Footer = () => {
+  const [isLicenseOpen, setIsLicenseOpen] = useState(false);
   return (
     <footer className="bg-bakery-darkBrown text-bakery-peach pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +68,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-bakery-gold shrink-0" />
-                <span>Hello@Kalpanascakes.com</span>
+                <span>kalpanapinky19@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaInstagram size={18} className="text-bakery-gold shrink-0" />
@@ -82,9 +85,29 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-bakery-peach/20 pt-8 text-center text-sm text-bakery-peach/60">
-          <p>&copy; {new Date().getFullYear()} Kalpana's Cakes & Bakes. All rights reserved.</p>
+        <div className="border-t border-bakery-peach/20 pt-8 flex flex-col items-center justify-center gap-4 text-center">
+          {/* FSSAI Badge (Refined) */}
+          <div 
+            onClick={() => setIsLicenseOpen(true)}
+            className="flex items-center gap-3 bg-bakery-darkBrown/40 text-bakery-peach px-4 py-2.5 rounded-xl border border-bakery-peach/15 cursor-pointer hover:border-bakery-gold/40 hover:bg-bakery-darkBrown/60 transition-all duration-300 select-none group"
+            title="Click to view registration certificate"
+          >
+            <img 
+              src="/cakes/fssai-logo.png" 
+              alt="FSSAI Logo" 
+              className="h-7 w-auto object-contain brightness-95 contrast-105 group-hover:brightness-100 transition-all"
+            />
+            <div className="text-left leading-tight">
+              <div className="text-[9px] uppercase tracking-wider text-bakery-peach/60 font-semibold font-sans">Registered Food Business</div>
+              <div className="text-xs font-bold font-mono text-bakery-gold group-hover:text-bakery-pink transition-colors">Lic. No. 21526013000741</div>
+            </div>
+          </div>
+
+          <p className="text-sm text-bakery-peach/50">&copy; {new Date().getFullYear()} Kalpana's Cakes & Bakes. All rights reserved.</p>
         </div>
+
+        {/* License Modal */}
+        <LicenseModal isOpen={isLicenseOpen} onClose={() => setIsLicenseOpen(false)} />
       </div>
     </footer>
   );
