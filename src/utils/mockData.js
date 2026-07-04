@@ -1876,6 +1876,43 @@ mockCakes.forEach(cake => {
   
   cake.name = displayName;
   cake.categoryGroup = categoryGroup;
+
+  // Update prices based on resolved base name
+  const baseName = displayName.replace(new RegExp(' ' + tagSuffix + '$'), '');
+  const priceMapping = {
+    // Chocolate Cakes
+    'Chocolate Oreo': 500,
+    'Cafe Mocha': 500,
+    'Dutch Truffle': 580,
+    'Chocolate Blakcurrent': 580,
+    'Chocolate Blackcurrent': 580,
+    'Chocolate Blueberry': 580,
+    'Chocolate Mango': 580,
+    'Chocolate Strawberry': 580,
+    'Chocolate Truffle': 600,
+    'Chocolate Nutella': 700,
+
+    // Classic Cakes
+    'Plain Vanilla': 450,
+    'Black Forest': 500,
+    'Mango Cake': 500,
+    'Strawberry': 500,
+    'Pineapple': 500,
+    'Blackcurrent': 500,
+    'Butterscotch': 500,
+
+    // Fusion Cakes
+    'Rajbhog': 700,
+    'Rasmalai': 750,
+    'Gulab Jamun': 750,
+
+    // Cheesecakes
+    'Red Velvet Cheesecake': 700,
+    'Blueberry Cheesecake': 700
+  };
+  if (priceMapping[baseName] !== undefined) {
+    cake.price = priceMapping[baseName];
+  }
 });
 
 export const getCategoryGroup = (cake) => {
@@ -1883,5 +1920,6 @@ export const getCategoryGroup = (cake) => {
 };
 
 export const getCakeBaseName = (cake) => {
+  if (cake.custom) return cake.name;
   return cake.name.replace(/ (Trending|Birthday|Anniversary|Gourmet|Bento|Photo|Designer|Half Birthday)/, '');
 };
