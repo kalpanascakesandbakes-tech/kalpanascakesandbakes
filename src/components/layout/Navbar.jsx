@@ -104,9 +104,9 @@ const Navbar = () => {
             
             {/* Mega Menu Trigger */}
             <div className="group h-full flex items-center">
-              <button className="text-bakery-darkBrown group-hover:text-bakery-brown font-medium transition-colors flex items-center gap-1 h-full">
+              <Link to="/categories" className="text-bakery-darkBrown group-hover:text-bakery-brown font-medium transition-colors flex items-center gap-1 h-full">
                 Categories <ChevronDown size={16} />
-              </button>
+              </Link>
               
               {/* Mega Menu Dropdown */}
               <div className="absolute top-20 left-0 w-full bg-white shadow-xl border-t border-bakery-peach opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
