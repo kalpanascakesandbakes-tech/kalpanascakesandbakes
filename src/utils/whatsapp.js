@@ -1,6 +1,6 @@
 export const generateWhatsAppLink = (orderData) => {
   // User's provided phone number for testing
-  const phoneNumber = "919967949880"; 
+  const phoneNumber = "919004762873"; 
 
   let message = `🎂 *New Order: ${orderData.orderId}* 🎂\n\n`;
   
@@ -40,7 +40,7 @@ export const generateWhatsAppLink = (orderData) => {
 };
 
 export const generateBulkOrderWhatsAppLink = (bulkData) => {
-  const phoneNumber = "919967949880"; 
+  const phoneNumber = "919004762873"; 
 
   let message = `🏢 *New Corporate / Bulk Order Quote Request* 🏢\n\n`;
   message += `👤 *Contact Details*\n`;
