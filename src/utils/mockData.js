@@ -167,19 +167,6 @@ export const mockCakes = [
     "image": "https://plus.unsplash.com/premium_photo-1713447395823-2e0b40b75a89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
-    "id": "c10",
-    "name": "Premium Kit Kat Trending",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.9,
-    "tags": [
-      "Trending Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085037153-1e62f0730bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
     "id": "c11",
     "name": "Premium Oreo Trending",
     "category": "Cakes",
@@ -308,19 +295,6 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    "id": "c21",
-    "name": "Premium Kit Kat Birthday",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.5,
-    "tags": [
-      "Birthday Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085036906-8d19f3becd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     "id": "c22",
@@ -453,19 +427,6 @@ export const mockCakes = [
     "image": "https://images.unsplash.com/photo-1602630209855-dceac223adfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
-    "id": "c32",
-    "name": "Premium Kit Kat Anniversary",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.9,
-    "tags": [
-      "Anniversary Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085037153-1e62f0730bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
     "id": "c33",
     "name": "Premium Oreo Anniversary",
     "category": "Cakes",
@@ -594,19 +555,6 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "https://images.unsplash.com/photo-1614707269211-474b2510b3ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    "id": "c43",
-    "name": "Premium Kit Kat Gourmet",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.7,
-    "tags": [
-      "Gourmet Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085036906-8d19f3becd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     "id": "c44",
@@ -739,19 +687,6 @@ export const mockCakes = [
     "image": "https://plus.unsplash.com/premium_photo-1690214491960-d447e38d0bd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
-    "id": "c54",
-    "name": "Premium Kit Kat Bento",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.6,
-    "tags": [
-      "Bento Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085037153-1e62f0730bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
     "id": "c55",
     "name": "Premium Oreo Bento",
     "category": "Cakes",
@@ -882,19 +817,6 @@ export const mockCakes = [
     "image": "https://images.unsplash.com/photo-1714386148315-2f0e3eebcd5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
-    "id": "c65",
-    "name": "Premium Kit Kat Photo",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.8,
-    "tags": [
-      "Photo Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085036906-8d19f3becd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
     "id": "c66",
     "name": "Premium Oreo Photo",
     "category": "Cakes",
@@ -906,19 +828,6 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "https://images.unsplash.com/photo-1571622840901-92ae138bd36e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8T3JlbyUyMGNha2V8ZW58MHx8fHwxNzgxNzczNzU1fDA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    "id": "c67",
-    "name": "Dutch Truffle Designer",
-    "category": "Cakes",
-    "flavor": "Chocolate",
-    "price": 450,
-    "rating": 4.7,
-    "tags": [
-      "Designer Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1623660053975-cf75a8be0908?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8N3x8Q2hvY29sYXRlJTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     "id": "c68",
@@ -1023,19 +932,6 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "https://images.unsplash.com/photo-1714949134591-d6f2c581b20d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8N3x8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    "id": "c76",
-    "name": "Premium Kit Kat Designer",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 5,
-    "tags": [
-      "Designer Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085037153-1e62f0730bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     "id": "c77",
@@ -1166,19 +1062,6 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "https://images.unsplash.com/photo-1685957652870-d56b0e5bea52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8UmVkJTIwVmVsdmV0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    "id": "c87",
-    "name": "Premium Kit Kat Half Birthday",
-    "category": "Cakes",
-    "flavor": "Kit Kat",
-    "price": 630,
-    "rating": 4.9,
-    "tags": [
-      "Half Birthday Cakes",
-      "60 Minutes Delivery"
-    ],
-    "image": "https://images.unsplash.com/photo-1750085036906-8d19f3becd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8S2l0JTIwS2F0JTIwY2FrZXxlbnwwfHx8fDE3ODE3NzM3NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     "id": "c88",
