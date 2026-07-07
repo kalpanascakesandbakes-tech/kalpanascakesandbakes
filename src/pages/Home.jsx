@@ -269,7 +269,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: 'Chocolate Cakes', image: '/cakes/truffle_whole_1781772121847.png', link: '/categories?categoryGroup=Chocolate%20Cakes' },
-              { name: 'Regular Cakes', image: '/cakes/pineapple_whole_1781772439907.png', link: '/categories?categoryGroup=Regular%20Cakes' },
+              { name: 'Theme Cakes', image: '/cakes/Cake/WhatsApp Image 2026-06-28 at 10.21.51 AM.jpeg', link: '/categories?categoryGroup=Theme%20Cakes' },
               { name: 'Cheesecakes', image: '/cakes/cheesecake.png', link: '/categories?categoryGroup=Cheesecakes' },
               { name: 'Fusion Cakes', image: '/cakes/fusion.png', link: '/categories?categoryGroup=Fusion%20Cakes' }
             ].map((cat, idx) => (

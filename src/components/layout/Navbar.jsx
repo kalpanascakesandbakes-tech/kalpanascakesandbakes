@@ -18,51 +18,55 @@ const Navbar = () => {
     chocolate: {
       title: 'Chocolate Cakes',
       links: [
-        { name: 'Chocolate Oreo', path: '/categories?cakeName=Chocolate%20Oreo' },
-        { name: 'Cafe Mocha', path: '/categories?cakeName=Cafe%20Mocha' },
-        { name: 'Dutch Truffle', path: '/categories?cakeName=Dutch%20Truffle' },
-        { name: 'Chocolate Blakcurrent', path: '/categories?cakeName=Chocolate%20Blakcurrent' },
-        { name: 'Chocolate Blueberry', path: '/categories?cakeName=Chocolate%20Blueberry' },
-        { name: 'Chocolate Mango', path: '/categories?cakeName=Chocolate%20Mango' },
-        { name: 'Chocolate Strawberry', path: '/categories?cakeName=Chocolate%20Strawberry' },
-        { name: 'Chocolate Truffle', path: '/categories?cakeName=Chocolate%20Truffle' },
-        { name: 'Chocolate Nutella', path: '/categories?cakeName=Chocolate%20Nutella' }
-      ]
-    },
-    regular: {
-      title: 'Regular Cakes',
-      links: [
-        { name: 'Plain Vanilla', path: '/categories?cakeName=Plain%20Vanilla' },
-        { name: 'Black Forest', path: '/categories?cakeName=Black%20Forest' },
-        { name: 'Mango Cake', path: '/categories?cakeName=Mango%20Cake' },
-        { name: 'Strawberry', path: '/categories?cakeName=Strawberry' },
-        { name: 'Pineapple', path: '/categories?cakeName=Pineapple' },
-        { name: 'Blackcurrent', path: '/categories?cakeName=Blackcurrent' },
-        { name: 'Butterscotch', path: '/categories?cakeName=Butterscotch' }
+        { name: 'Royal Chocolate Drip Cake', path: '/categories?cakeName=Royal%20Chocolate%20Drip%20Cake' },
+        { name: 'Classic Chocolate Truffle', path: '/categories?cakeName=Classic%20Chocolate%20Truffle' },
+        { name: 'Ferrero Rocher Truffle Cake', path: '/categories?cakeName=Ferrero%20Rocher%20Truffle%20Cake' },
+        { name: 'Double Chocolate Shavings Cake', path: '/categories?cakeName=Double%20Chocolate%20Shavings%20Cake' },
+        { name: 'Dark Glaze Chocolate Truffle', path: '/categories?cakeName=Dark%20Glaze%20Chocolate%20Truffle' },
+        { name: 'Luxury Golden Chocolate Shards', path: '/categories?cakeName=Luxury%20Golden%20Chocolate%20Shards' },
+        { name: 'Classic Chocolate Drip Crown Cake', path: '/categories?cakeName=Classic%20Chocolate%20Drip%20Crown%20Cake' },
+        { name: 'Papa Chocolate Rocher Cake', path: '/categories?cakeName=Papa%20Chocolate%20Rocher%20Cake' },
+        { name: 'Choco Crunch Shavings Cake', path: '/categories?cakeName=Choco%20Crunch%20Shavings%20Cake' },
+        { name: 'Imperial Chocolate Crown Cake', path: '/categories?cakeName=Imperial%20Chocolate%20Crown%20Cake' },
+        { name: 'Chocolate Pink Butterfly Delight', path: '/categories?cakeName=Chocolate%20Pink%20Butterfly%20Delight' }
       ]
     },
     cheesecakes: {
       title: 'Cheesecakes',
       links: [
-        { name: 'Red Velvet Cheesecake', path: '/categories?cakeName=Red%20Velvet%20Cheesecake' },
-        { name: 'Blueberry Cheesecake', path: '/categories?cakeName=Blueberry%20Cheesecake' }
+        { name: 'Red Velvet Crumbs Cake', path: '/categories?cakeName=Red%20Velvet%20Crumbs%20Cake' }
       ]
     },
     fusion: {
       title: 'Fusion Cakes',
       links: [
-        { name: 'Rajbhog', path: '/categories?cakeName=Rajbhog' },
-        { name: 'Rasmalai', path: '/categories?cakeName=Rasmalai' },
-        { name: 'Gulab Jamun', path: '/categories?cakeName=Gulab%20Jamun' }
+        { name: 'Royal Gulab Jamun Cake', path: '/categories?cakeName=Royal%20Gulab%20Jamun%20Cake' },
+        { name: 'Classic Rasmalai Cake', path: '/categories?cakeName=Classic%20Rasmalai%20Cake' },
+        { name: 'Traditional Rajbhog Cake', path: '/categories?cakeName=Traditional%20Rajbhog%20Cake' }
       ]
     },
     theme: {
       title: 'Theme Cakes',
       links: [
         { name: 'Princess Pink Doll Cake', path: '/categories?cakeName=Princess%20Pink%20Doll%20Cake' },
-        { name: 'Elegant Barbie Doll Blue Gown', path: '/categories?cakeName=Elegant%20Barbie%20Doll%20Blue%20Gown' },
+        { name: 'Lavender Royale Crown Cake', path: '/categories?cakeName=Lavender%20Royale%20Crown%20Cake' },
+        { name: 'Welcome Baby Pink Cake', path: '/categories?cakeName=Welcome%20Baby%20Pink%20Cake' },
+        { name: 'Frozen Princess Elsa Cake', path: '/categories?cakeName=Frozen%20Princess%20Elsa%20Cake' },
+        { name: 'Grand Rose Anniversary Cake', path: '/categories?cakeName=Grand%20Rose%20Anniversary%20Cake' },
+        { name: 'Racing Cars Birthday Cake', path: '/categories?cakeName=Racing%20Cars%20Birthday%20Cake' },
+        { name: 'Red Rose Heart Anniversary Cake', path: '/categories?cakeName=Red%20Rose%20Heart%20Anniversary%20Cake' },
+        { name: 'Sweet 18 Heart Crown Cake', path: '/categories?cakeName=Sweet%2018%20Heart%20Crown%20Cake' },
+        { name: 'Elegant Holy Cross Cake', path: '/categories?cakeName=Elegant%20Holy%20Cross%20Cake' },
+        { name: 'Golden Butterfly Birthday Cake', path: '/categories?cakeName=Golden%20Butterfly%20Birthday%20Cake' },
+        { name: 'Magical Frozen Snow Cake', path: '/categories?cakeName=Magical%20Frozen%20Snow%20Cake' },
+        { name: 'Jungle Safari Animals Cake', path: '/categories?cakeName=Jungle%20Safari%20Animals%20Cake' },
+        { name: 'Super Dad Chocolate Butterscotch', path: '/categories?cakeName=Super%20Dad%20Chocolate%20Butterscotch' },
+        { name: 'Baby Boy or Girl Shower Cake', path: '/categories?cakeName=Baby%20Boy%20or%20Girl%20Shower%20Cake' },
         { name: 'Spiderman City Adventure Cake', path: '/categories?cakeName=Spiderman%20City%20Adventure%20Cake' },
-        { name: 'Jungle Safari Animals Cake', path: '/categories?cakeName=Jungle%20Safari%20Animals%20Cake' }
+        { name: 'Elegant Barbie Doll Blue Gown', path: '/categories?cakeName=Elegant%20Barbie%20Doll%20Blue%20Gown' },
+        { name: 'Spiderman Hero Web Cake', path: '/categories?cakeName=Spiderman%20Hero%20Web%20Cake' },
+        { name: 'Purple Swirl Cream Cake', path: '/categories?cakeName=Purple%20Swirl%20Cream%20Cake' },
+        { name: 'Pink Drip Princess Castle Cake', path: '/categories?cakeName=Pink%20Drip%20Princess%20Castle%20Cake' }
       ]
     },
     bento: {
@@ -85,7 +89,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-bakery-cream shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -109,9 +113,9 @@ const Navbar = () => {
               </Link>
               
               {/* Mega Menu Dropdown */}
-              <div className="absolute top-20 left-0 w-full bg-white shadow-xl border-t border-bakery-peach opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                <div className="max-w-7xl mx-auto px-8 py-10">
-                  <div className="grid grid-cols-3 xl:grid-cols-6 gap-8">
+              <div className="absolute top-[80px] left-4 right-4 bg-white shadow-2xl rounded-3xl border border-bakery-peach/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="px-8 py-8">
+                  <div className="grid grid-cols-3 xl:grid-cols-5 gap-8">
                     {/* Column 1 */}
                     <div>
                       <Link to="/categories?categoryGroup=Chocolate%20Cakes" className="hover:text-bakery-gold block group/header">
@@ -120,29 +124,19 @@ const Navbar = () => {
                         </h3>
                       </Link>
                       <ul className="space-y-3">
-                        {categories.chocolate.links.map(link => (
+                        {categories.chocolate.links.slice(0, 6).map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
+                        {categories.chocolate.links.length > 6 && (
+                          <li>
+                            <Link to="/categories?categoryGroup=Chocolate%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Chocolate →</Link>
+                          </li>
+                        )}
                       </ul>
                     </div>
                     {/* Column 2 */}
-                    <div>
-                      <Link to="/categories?categoryGroup=Regular%20Cakes" className="hover:text-bakery-gold block group/header">
-                        <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
-                          {categories.regular.title}
-                        </h3>
-                      </Link>
-                      <ul className="space-y-3">
-                        {categories.regular.links.map(link => (
-                          <li key={link.name}>
-                            <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    {/* Column 3 */}
                     <div>
                       <Link to="/categories?categoryGroup=Cheesecakes" className="hover:text-bakery-gold block group/header">
                         <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
@@ -150,14 +144,19 @@ const Navbar = () => {
                         </h3>
                       </Link>
                       <ul className="space-y-3">
-                        {categories.cheesecakes.links.map(link => (
+                        {categories.cheesecakes.links.slice(0, 6).map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
+                        {categories.cheesecakes.links.length > 6 && (
+                          <li>
+                            <Link to="/categories?categoryGroup=Cheesecakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Cheesecakes →</Link>
+                          </li>
+                        )}
                       </ul>
                     </div>
-                    {/* Column 4 */}
+                    {/* Column 3 */}
                     <div>
                       <Link to="/categories?categoryGroup=Fusion%20Cakes" className="hover:text-bakery-gold block group/header">
                         <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
@@ -165,14 +164,19 @@ const Navbar = () => {
                         </h3>
                       </Link>
                       <ul className="space-y-3">
-                        {categories.fusion.links.map(link => (
+                        {categories.fusion.links.slice(0, 6).map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
+                        {categories.fusion.links.length > 6 && (
+                          <li>
+                            <Link to="/categories?categoryGroup=Fusion%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Fusion →</Link>
+                          </li>
+                        )}
                       </ul>
                     </div>
-                    {/* Column 5 */}
+                    {/* Column 4 */}
                     <div>
                       <Link to="/categories?categoryGroup=Theme%20Cakes" className="hover:text-bakery-gold block group/header">
                         <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
@@ -180,14 +184,19 @@ const Navbar = () => {
                         </h3>
                       </Link>
                       <ul className="space-y-3">
-                        {categories.theme.links.map(link => (
+                        {categories.theme.links.slice(0, 6).map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
+                        {categories.theme.links.length > 6 && (
+                          <li>
+                            <Link to="/categories?categoryGroup=Theme%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Theme →</Link>
+                          </li>
+                        )}
                       </ul>
                     </div>
-                    {/* Column 6 */}
+                    {/* Column 5 */}
                     <div>
                       <Link to="/categories?categoryGroup=Bento%20Cakes" className="hover:text-bakery-gold block group/header">
                         <h3 className="font-serif font-bold text-lg text-bakery-darkBrown group-hover/header:text-bakery-gold mb-4 pb-2 border-b-2 border-bakery-gold/30 group-hover/header:border-bakery-gold transition-all duration-300">
@@ -195,11 +204,16 @@ const Navbar = () => {
                         </h3>
                       </Link>
                       <ul className="space-y-3">
-                        {categories.bento.links.map(link => (
+                        {categories.bento.links.slice(0, 6).map(link => (
                           <li key={link.name}>
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
+                        {categories.bento.links.length > 6 && (
+                          <li>
+                            <Link to="/categories?categoryGroup=Bento%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Bento →</Link>
+                          </li>
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -270,7 +284,6 @@ const Navbar = () => {
             {Object.entries(categories).map(([key, category]) => {
               const categoryGroupMap = {
                 chocolate: 'Chocolate Cakes',
-                regular: 'Regular Cakes',
                 cheesecakes: 'Cheesecakes',
                 fusion: 'Fusion Cakes',
                 theme: 'Theme Cakes',

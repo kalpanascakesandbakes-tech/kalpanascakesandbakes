@@ -10,52 +10,55 @@ const menuCategories = [
   {
     title: 'Chocolate Cakes',
     items: [
-      { name: 'Chocolate Oreo', flavor: 'Oreo' },
-      { name: 'Cafe Mocha', flavor: 'Chocolate' },
-      { name: 'Dutch Truffle', flavor: 'Chocolate' },
-      { name: 'Chocolate Blakcurrent', flavor: 'Chocolate' },
-      { name: 'Chocolate Blueberry', flavor: 'Blueberry' },
-      { name: 'Chocolate Mango', flavor: 'Mango' },
-      { name: 'Chocolate Strawberry', flavor: 'Strawberry' },
-      { name: 'Chocolate Truffle', flavor: 'Chocolate', isStarred: true },
-      { name: 'Chocolate Nutella', flavor: 'Chocolate' }
-    ]
-  },
-  {
-    title: 'Regular Cakes',
-    items: [
-      { name: 'Plain Vanilla', flavor: 'Vanilla' },
-      { name: 'Black Forest', flavor: 'Black Forest' },
-      { name: 'Mango Cake', flavor: 'Mango' },
-      { name: 'Strawberry', flavor: 'Strawberry' },
-      { name: 'Pineapple', flavor: 'Pineapple' },
-      { name: 'Blackcurrent', flavor: 'Blueberry' },
-      { name: 'Butterscotch', flavor: 'Butterscotch' }
-    ]
-  },
-  {
-    title: 'Fusion Cakes',
-    items: [
-      { name: 'Rajbhog', flavor: 'Mango' },
-      { name: 'Rasmalai', flavor: 'Vanilla' },
-      { name: 'Gulab Jamun', flavor: 'Vanilla' }
-    ]
-  },
-  {
-    title: 'Cheesecakes',
-    items: [
-      { name: 'Red Velvet Cheesecake', flavor: 'Red Velvet' },
-      { name: 'Blueberry Cheesecake', flavor: 'Blueberry' }
+      { name: 'Royal Chocolate Drip Cake', flavor: 'Chocolate' },
+      { name: 'Classic Chocolate Truffle', flavor: 'Chocolate', isStarred: true },
+      { name: 'Ferrero Rocher Truffle Cake', flavor: 'Chocolate' },
+      { name: 'Double Chocolate Shavings Cake', flavor: 'Chocolate' },
+      { name: 'Dark Glaze Chocolate Truffle', flavor: 'Chocolate' },
+      { name: 'Luxury Golden Chocolate Shards', flavor: 'Chocolate' },
+      { name: 'Classic Chocolate Drip Crown Cake', flavor: 'Chocolate' },
+      { name: 'Papa Chocolate Rocher Cake', flavor: 'Chocolate' },
+      { name: 'Choco Crunch Shavings Cake', flavor: 'Chocolate' },
+      { name: 'Imperial Chocolate Crown Cake', flavor: 'Chocolate' },
+      { name: 'Chocolate Pink Butterfly Delight', flavor: 'Chocolate' }
     ]
   },
   {
     title: 'Theme Cakes',
     items: [
       { name: 'Princess Pink Doll Cake', flavor: 'Vanilla' },
-      { name: 'Elegant Barbie Doll Blue Gown', flavor: 'Vanilla' },
+      { name: 'Lavender Royale Crown Cake', flavor: 'Vanilla' },
+      { name: 'Welcome Baby Pink Cake', flavor: 'Vanilla' },
+      { name: 'Frozen Princess Elsa Cake', flavor: 'Vanilla' },
+      { name: 'Grand Rose Anniversary Cake', flavor: 'Vanilla' },
+      { name: 'Racing Cars Birthday Cake', flavor: 'Chocolate' },
+      { name: 'Red Rose Heart Anniversary Cake', flavor: 'Red Velvet' },
+      { name: 'Sweet 18 Heart Crown Cake', flavor: 'Vanilla' },
+      { name: 'Elegant Holy Cross Cake', flavor: 'Vanilla' },
+      { name: 'Golden Butterfly Birthday Cake', flavor: 'Vanilla' },
+      { name: 'Magical Frozen Snow Cake', flavor: 'Vanilla' },
+      { name: 'Jungle Safari Animals Cake', flavor: 'Chocolate', isStarred: true },
+      { name: 'Super Dad Chocolate Butterscotch', flavor: 'Butterscotch' },
+      { name: 'Baby Boy or Girl Shower Cake', flavor: 'Vanilla' },
       { name: 'Spiderman City Adventure Cake', flavor: 'Chocolate' },
-      { name: 'Jungle Safari Animals Cake', flavor: 'Chocolate' },
-      { name: 'Racing Cars Birthday Cake', flavor: 'Chocolate' }
+      { name: 'Elegant Barbie Doll Blue Gown', flavor: 'Vanilla' },
+      { name: 'Spiderman Hero Web Cake', flavor: 'Vanilla' },
+      { name: 'Purple Swirl Cream Cake', flavor: 'Vanilla' },
+      { name: 'Pink Drip Princess Castle Cake', flavor: 'Vanilla' }
+    ]
+  },
+  {
+    title: 'Fusion Cakes',
+    items: [
+      { name: 'Royal Gulab Jamun Cake', flavor: 'Vanilla' },
+      { name: 'Classic Rasmalai Cake', flavor: 'Vanilla', isStarred: true },
+      { name: 'Traditional Rajbhog Cake', flavor: 'Mango' }
+    ]
+  },
+  {
+    title: 'Cheesecakes',
+    items: [
+      { name: 'Red Velvet Crumbs Cake', flavor: 'Red Velvet' }
     ]
   },
   {
@@ -282,7 +285,6 @@ const Categories = () => {
                     >
                       <option value="">All Categories</option>
                       <option value="Chocolate Cakes">Chocolate Cakes</option>
-                      <option value="Regular Cakes">Regular Cakes</option>
                       <option value="Cheesecakes">Cheesecakes</option>
                       <option value="Fusion Cakes">Fusion Cakes</option>
                       <option value="Theme Cakes">Theme Cakes</option>
