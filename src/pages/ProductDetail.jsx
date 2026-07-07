@@ -203,30 +203,7 @@ const ProductDetail = () => {
                     placeholder="e.g. YASH"
                     className="w-full p-3 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none uppercase font-bold"
                   />
-                </div>
-
-                <div>
-                  <label className="block text-sm text-bakery-brown mb-1">Custom Message on Board</label>
-                  <input 
-                    type="text" 
-                    maxLength={40}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="e.g. Happy Birthday!"
-                    className="w-full p-3 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm text-bakery-brown mb-1">Special Instructions (Optional)</label>
-                  <textarea 
-                    value={instructions}
-                    onChange={(e) => setInstructions(e.target.value)}
-                    placeholder="Any specific requests regarding decoration or delivery..."
-                    rows={3}
-                    className="w-full p-3 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none resize-none"
-                  />
-                </div>
+                 </div>
               </div>
 
               {/* Actions */}
