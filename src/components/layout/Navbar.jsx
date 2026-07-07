@@ -2,12 +2,24 @@ import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import useCartStore from '../../store/useCartStore';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const { getCartCount, openCart } = useCartStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
+
+  const cartCount = getCartCount();
+  const [animateCart, setAnimateCart] = useState(false);
+
+  useEffect(() => {
+    if (cartCount > 0) {
+      setAnimateCart(true);
+      const timer = setTimeout(() => setAnimateCart(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -240,14 +252,30 @@ const Navbar = () => {
 
             <button 
               onClick={openCart}
-              className="relative p-2 text-bakery-brown hover:text-bakery-darkBrown transition-colors ml-4"
+              className="relative p-2 text-bakery-brown hover:text-bakery-darkBrown transition-colors ml-4 focus:outline-none"
             >
-              <ShoppingBag size={24} />
-              {getCartCount() > 0 && (
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-bakery-brown rounded-full">
-                  {getCartCount()}
-                </span>
-              )}
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: [0, -10, 10, -10, 10, 0] }}
+                animate={animateCart ? { scale: [1, 1.25, 0.95, 1.05, 1], rotate: [0, -8, 8, -4, 4, 0] } : {}}
+                transition={{ duration: 0.5 }}
+                className="flex items-center justify-center"
+              >
+                <ShoppingBag size={24} />
+              </motion.div>
+              <AnimatePresence>
+                {cartCount > 0 && (
+                  <motion.span
+                    key={cartCount}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-extrabold text-white bg-bakery-pink-vibrant rounded-full transform translate-x-1/4 -translate-y-1/4 shadow-md select-none border border-white"
+                  >
+                    {cartCount}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
           </div>
 
@@ -255,14 +283,30 @@ const Navbar = () => {
           <div className="flex lg:hidden items-center gap-4">
             <button 
               onClick={openCart}
-              className="relative p-2 text-bakery-brown"
+              className="relative p-2 text-bakery-brown focus:outline-none"
             >
-              <ShoppingBag size={24} />
-              {getCartCount() > 0 && (
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-bakery-brown rounded-full">
-                  {getCartCount()}
-                </span>
-              )}
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: [0, -10, 10, -10, 10, 0] }}
+                animate={animateCart ? { scale: [1, 1.25, 0.95, 1.05, 1], rotate: [0, -8, 8, -4, 4, 0] } : {}}
+                transition={{ duration: 0.5 }}
+                className="flex items-center justify-center"
+              >
+                <ShoppingBag size={24} />
+              </motion.div>
+              <AnimatePresence>
+                {cartCount > 0 && (
+                  <motion.span
+                    key={cartCount}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-extrabold text-white bg-bakery-pink-vibrant rounded-full transform translate-x-1/4 -translate-y-1/4 shadow-md select-none border border-white"
+                  >
+                    {cartCount}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
