@@ -232,17 +232,17 @@ const Categories = () => {
               </div>
 
               {/* Menu Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
                 {menuCategories.map((category, idx) => (
                   <div key={idx} className="flex flex-col items-center sm:items-start">
                     {/* Category pill header (matches image box badge styling) */}
-                    <div className="bg-[#fbcfe8] text-[#be185d] px-6 py-2.5 rounded-full font-serif font-bold text-lg mb-6 shadow-sm w-full text-center sm:text-left inline-flex justify-center sm:justify-start items-center">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-6 py-2.5 rounded-full font-serif font-bold text-lg mb-6 shadow-sm w-full text-center sm:text-left inline-flex justify-center sm:justify-start items-center shrink-0">
                       {category.title}
                     </div>
 
                     {/* Items List */}
                     <ul className="space-y-3.5 w-full">
-                      {category.items.map((item, itemIdx) => (
+                      {category.items.slice(0, 6).map((item, itemIdx) => (
                         <li
                           key={itemIdx}
                           onClick={() => handleCakeClick(item)}
@@ -258,6 +258,22 @@ const Categories = () => {
                           </span>
                         </li>
                       ))}
+                      {category.items.length > 6 && (
+                        <li>
+                          <button
+                            onClick={() => {
+                              const newParams = new URLSearchParams();
+                              newParams.set('categoryGroup', category.title);
+                              setSearchParams(newParams);
+                              setViewMode('catalog');
+                            }}
+                            className="w-full text-center sm:text-left p-2.5 rounded-xl hover:bg-bakery-peach/10 text-bakery-pink-dark hover:text-[#9d174d] font-bold transition-all duration-300 border border-dashed border-bakery-peach/50 hover:border-bakery-pink-dark cursor-pointer flex items-center justify-center sm:justify-start gap-1.5"
+                          >
+                            <span>View All {category.items.length} Cakes</span>
+                            <span className="text-lg">→</span>
+                          </button>
+                        </li>
+                      )}
                     </ul>
                   </div>
                 ))}
