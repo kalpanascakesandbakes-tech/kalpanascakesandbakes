@@ -65,3 +65,35 @@ export const generateBulkOrderWhatsAppLink = (bulkData) => {
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 };
+
+export const generateCustomCakeWhatsAppLink = (customData) => {
+  const phoneNumber = "919004762873"; 
+
+  let message = `🎂 *New Custom Cake Design Inquiry* 🎂\n\n`;
+  
+  message += `👤 *Inquiry Details*\n`;
+  message += `• *Request ID:* ${customData.requestId}\n`;
+  if (customData.theme) {
+    message += `• *Theme/Occasion:* ${customData.theme}\n`;
+  }
+  message += `• *Flavor:* ${customData.flavor}\n`;
+  message += `• *Weight:* ${customData.weight}\n`;
+  message += `• *Quantity:* ${customData.quantity}\n`;
+  
+  if (customData.notes) {
+    message += `\n📝 *Additional Notes*\n`;
+    message += `"${customData.notes}"\n`;
+  }
+  
+  if (customData.hasFile) {
+    message += `\n📸 *Reference Design Attachment*\n`;
+    message += `• _I will attach my custom design image as the next message in this chat._\n`;
+  }
+
+  message += `\n-----------------------------\n`;
+  message += `Please review and provide pricing/details. Thank you!`;
+
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+};
+

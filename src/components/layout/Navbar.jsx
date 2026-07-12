@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
 import useCartStore from '../../store/useCartStore';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -243,12 +243,7 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <Link 
-              to="/categories" 
-              className="px-6 py-2.5 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white rounded-full font-bold text-sm hover:shadow-md transition-all duration-300 flex items-center gap-2 shrink-0 shadow-sm ml-2"
-            >
-              Order Now <ArrowRight size={16} />
-            </Link>
+
 
             <button 
               onClick={openCart}
@@ -375,14 +370,7 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <div className="px-3 py-4">
-              <Link 
-                to="/categories" 
-                className="w-full px-6 py-3 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white rounded-full font-bold text-base hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
-              >
-                Order Now <ArrowRight size={18} />
-              </Link>
-            </div>
+
           </div>
         </div>
       )}
