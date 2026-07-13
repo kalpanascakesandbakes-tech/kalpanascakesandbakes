@@ -20,10 +20,10 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-bakery-gold transition-colors"><FaFacebook size={20} /></a>
-              <a 
-                href="https://www.instagram.com/kalpanascakesandbakes?utm_source=qr&igsh=dHQzNml4NHg1cHFz" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/kalpanascakesandbakes?utm_source=qr&igsh=dHQzNml4NHg1cHFz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-bakery-gold transition-colors"
                 title="Instagram"
               >
@@ -68,11 +68,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-bakery-gold shrink-0" />
-                <span>kalpanapinky19@gmail.com</span>
+                <span>kalpanascakesandbakes@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaInstagram size={18} className="text-bakery-gold shrink-0" />
-                <a 
+                <a
                   href="https://www.instagram.com/kalpanascakesandbakes?utm_source=qr&igsh=dHQzNml4NHg1cHFz"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -87,14 +87,14 @@ const Footer = () => {
 
         <div className="border-t border-bakery-peach/20 pt-8 flex flex-col items-center justify-center gap-4 text-center">
           {/* FSSAI Badge (Refined) */}
-          <div 
+          <div
             onClick={() => setIsLicenseOpen(true)}
             className="flex items-center gap-3 bg-bakery-darkBrown/40 text-bakery-peach px-4 py-2.5 rounded-xl border border-bakery-peach/15 cursor-pointer hover:border-bakery-gold/40 hover:bg-bakery-darkBrown/60 transition-all duration-300 select-none group"
             title="Click to view registration certificate"
           >
-            <img 
-              src="/cakes/fssai-logo.png" 
-              alt="FSSAI Logo" 
+            <img
+              src="/cakes/fssai-logo.png"
+              alt="FSSAI Logo"
               className="h-7 w-auto object-contain brightness-95 contrast-105 group-hover:brightness-100 transition-all"
             />
             <div className="text-left leading-tight">
