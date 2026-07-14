@@ -5,8 +5,14 @@ import useCartStore from '../store/useCartStore';
 import { generateWhatsAppLink } from '../utils/whatsapp';
 import { submitOrder } from '../utils/api';
 import confetti from 'canvas-confetti';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Checkout = () => {
+  useDocumentMetadata(
+    "Secure Checkout | Kalpana's Cakes & Bakes",
+    "Complete your cake order online. Same-day and midnight doorstep cake delivery in Vikhroli East, Mumbai."
+  );
+
   const navigate = useNavigate();
   const { cart, getCartTotal, clearCart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);

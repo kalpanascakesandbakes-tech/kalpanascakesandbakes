@@ -6,6 +6,7 @@ import { getBestSellers, getFeaturedCakes } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
 import LicenseModal from '../components/layout/LicenseModal';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const heroSlides = [
   {
@@ -26,6 +27,11 @@ const heroSlides = [
 ];
 
 const Home = () => {
+  useDocumentMetadata(
+    "Best Cake Shop in Vikhroli, Mumbai | Homemade Cakes & Bakery",
+    "Order delicious, freshly baked homemade cakes in Vikhroli East, Mumbai. Eggless cakes, custom birthday cakes, and cheesecakes delivered fresh to your door."
+  );
+
   const featuredCakes = getFeaturedCakes();
   const bestSellers = getBestSellers();
   const [selectedCake, setSelectedCake] = useState(null);

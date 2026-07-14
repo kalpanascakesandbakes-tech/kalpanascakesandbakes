@@ -5,8 +5,14 @@ import { Link } from 'react-router-dom';
 import { submitBulkOrder } from '../utils/api';
 import { generateBulkOrderWhatsAppLink } from '../utils/whatsapp';
 import confetti from 'canvas-confetti';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const BulkOrder = () => {
+  useDocumentMetadata(
+    "Bulk Cake Orders & Corporate Event Catering | Mumbai",
+    "Affordable bulk custom cake orders, cupcakes, and brownie boxes for corporate catering, weddings, and baby showers. Fresh bakery delivery in Mumbai."
+  );
+
   const [formData, setFormData] = useState({
     name: '',
     companyName: '',

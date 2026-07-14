@@ -4,12 +4,18 @@ import { motion } from 'framer-motion';
 import { ShoppingBag, MessageCircle, Info } from 'lucide-react';
 import { mockCakes } from '../utils/mockData';
 import useCartStore, { WEIGHT_MULTIPLIERS } from '../store/useCartStore';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const cake = mockCakes.find(c => c.id === id);
   const addToCart = useCartStore(state => state.addToCart);
+
+  useDocumentMetadata(
+    cake ? `${cake.name} | Order Online in Mumbai` : "Order Cake Online",
+    cake ? `${cake.name} - Delicious eggless ${cake.flavor} cake from Kalpana's Cakes & Bakes. Order now for fresh delivery in Vikhroli East, Mumbai.` : "Order fresh, premium homemade cakes online."
+  );
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [weight, setWeight] = useState('0.5 KG');

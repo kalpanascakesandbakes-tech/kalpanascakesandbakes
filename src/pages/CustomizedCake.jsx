@@ -4,8 +4,14 @@ import { Upload, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateCustomCakeWhatsAppLink } from '../utils/whatsapp';
 import confetti from 'canvas-confetti';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const CustomizedCake = () => {
+  useDocumentMetadata(
+    "Custom Cakes in Mumbai | Barbie, Doll, Photo & Theme Cakes",
+    "Design personalized cakes in Vikhroli East, Mumbai. Order edible photo print cakes, kids cartoon characters, wedding tiers, and customized theme cakes for birthdays."
+  );
+
   const [formData, setFormData] = useState({
     theme: '',
     flavor: 'Chocolate',

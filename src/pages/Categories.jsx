@@ -6,6 +6,7 @@ import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
 import { Filter, X, Menu as MenuIcon, Grid, Star } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const menuCategories = [
   {
@@ -75,6 +76,11 @@ const categoriesWithIllustrations = [
 ];
 
 const Categories = () => {
+  useDocumentMetadata(
+    "Buy Cakes Online | Chocolate, Cheesecake & Fusion Cakes Menu",
+    "Order eggless chocolate truffle, Rasmalai, and premium cheesecakes online. Select from our menu list or custom design cakes. Same day cake delivery in Mumbai."
+  );
+
   const [searchParams, setSearchParams] = useSearchParams();
   const tagParam = searchParams.get('tag');
   const categoryGroupParam = searchParams.get('categoryGroup');
