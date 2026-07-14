@@ -95,9 +95,9 @@ const Checkout = () => {
       // 4. Clear Cart
       clearCart();
 
-      // 5. Open WhatsApp after a short delay (using window.location.href to bypass popup blockers)
+      // 5. Open WhatsApp after a short delay in a new tab
       setTimeout(() => {
-        window.location.href = generateWhatsAppLink(orderData);
+        window.open(generateWhatsAppLink(orderData), '_blank');
       }, 2500);
 
     } catch (error) {
@@ -127,6 +127,8 @@ const Checkout = () => {
             {placedOrderData && (
               <a
                 href={generateWhatsAppLink(placedOrderData)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full font-bold text-lg transition-colors shadow-md flex items-center justify-center gap-2"
               >
                 Send to WhatsApp Now

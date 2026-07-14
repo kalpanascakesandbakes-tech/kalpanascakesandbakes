@@ -65,7 +65,7 @@ const CustomizedCake = () => {
 
       const whatsappUrl = generateCustomCakeWhatsAppLink(orderData);
       setTimeout(() => {
-        window.location.href = whatsappUrl;
+        window.open(whatsappUrl, '_blank');
       }, 3000);
     }, 1200);
   };
@@ -119,6 +119,8 @@ const CustomizedCake = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-3.5 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full font-bold text-lg transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Open WhatsApp Now

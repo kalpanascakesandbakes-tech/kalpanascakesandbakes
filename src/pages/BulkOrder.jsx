@@ -79,9 +79,9 @@ const BulkOrder = () => {
       setShowSuccess(true);
       triggerConfetti();
 
-      // 4. Redirect to WhatsApp after short delay
+      // 4. Redirect to WhatsApp after short delay in a new tab
       setTimeout(() => {
-        window.location.href = generateBulkOrderWhatsAppLink(requestData);
+        window.open(generateBulkOrderWhatsAppLink(requestData), '_blank');
       }, 2500);
 
     } catch (error) {
@@ -111,6 +111,8 @@ const BulkOrder = () => {
             {placedRequestData && (
               <a
                 href={generateBulkOrderWhatsAppLink(placedRequestData)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full font-bold text-lg transition-colors shadow-md flex items-center justify-center gap-2"
               >
                 Send to WhatsApp Now
