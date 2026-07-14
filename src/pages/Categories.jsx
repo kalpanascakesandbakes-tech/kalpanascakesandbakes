@@ -4,69 +4,74 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { mockCakes, getAllTags, getCategoryGroup, getCakeBaseName } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
-import { Filter, X, Menu as MenuIcon, Grid } from 'lucide-react';
+import { Filter, X, Menu as MenuIcon, Grid, Star } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const menuCategories = [
   {
     title: 'Chocolate Cakes',
     items: [
-      { name: 'Royal Chocolate Drip Cake', flavor: 'Chocolate' },
-      { name: 'Classic Chocolate Truffle', flavor: 'Chocolate', isStarred: true },
-      { name: 'Ferrero Rocher Truffle Cake', flavor: 'Chocolate' },
-      { name: 'Double Chocolate Shavings Cake', flavor: 'Chocolate' },
-      { name: 'Dark Glaze Chocolate Truffle', flavor: 'Chocolate' },
-      { name: 'Luxury Golden Chocolate Shards', flavor: 'Chocolate' },
-      { name: 'Classic Chocolate Drip Crown Cake', flavor: 'Chocolate' },
-      { name: 'Papa Chocolate Rocher Cake', flavor: 'Chocolate' },
-      { name: 'Choco Crunch Shavings Cake', flavor: 'Chocolate' },
-      { name: 'Imperial Chocolate Crown Cake', flavor: 'Chocolate' },
-      { name: 'Chocolate Pink Butterfly Delight', flavor: 'Chocolate' }
+      { name: 'Chocolate Oreo', price: 500 },
+      { name: 'Cafe Mocha', price: 500 },
+      { name: 'Dutch Truffle', price: 580 },
+      { name: 'Chocolate Blakcurrent', price: 580 },
+      { name: 'Chocolate Blueberry', price: 580 },
+      { name: 'Chocolate Mango', price: 580 },
+      { name: 'Chocolate Strawberry', price: 580 },
+      { name: 'Chocolate Truffle ★', price: 600, isStarred: true },
+      { name: 'Chocolate Nutella', price: 700 },
     ]
   },
   {
-    title: 'Theme Cakes',
+    title: 'Classic Cakes',
     items: [
-      { name: 'Princess Pink Doll Cake', flavor: 'Vanilla' },
-      { name: 'Lavender Royale Crown Cake', flavor: 'Vanilla' },
-      { name: 'Welcome Baby Pink Cake', flavor: 'Vanilla' },
-      { name: 'Frozen Princess Elsa Cake', flavor: 'Vanilla' },
-      { name: 'Grand Rose Anniversary Cake', flavor: 'Vanilla' },
-      { name: 'Racing Cars Birthday Cake', flavor: 'Chocolate' },
-      { name: 'Red Rose Heart Anniversary Cake', flavor: 'Red Velvet' },
-      { name: 'Sweet 18 Heart Crown Cake', flavor: 'Vanilla' },
-      { name: 'Elegant Holy Cross Cake', flavor: 'Vanilla' },
-      { name: 'Golden Butterfly Birthday Cake', flavor: 'Vanilla' },
-      { name: 'Magical Frozen Snow Cake', flavor: 'Vanilla' },
-      { name: 'Jungle Safari Animals Cake', flavor: 'Chocolate', isStarred: true },
-      { name: 'Super Dad Chocolate Butterscotch', flavor: 'Butterscotch' },
-      { name: 'Baby Boy or Girl Shower Cake', flavor: 'Vanilla' },
-      { name: 'Spiderman City Adventure Cake', flavor: 'Chocolate' },
-      { name: 'Elegant Barbie Doll Blue Gown', flavor: 'Vanilla' },
-      { name: 'Spiderman Hero Web Cake', flavor: 'Vanilla' },
-      { name: 'Purple Swirl Cream Cake', flavor: 'Vanilla' },
-      { name: 'Pink Drip Princess Castle Cake', flavor: 'Vanilla' }
+      { name: 'Plain Vanilla', price: 450 },
+      { name: 'Black Forest', price: 500 },
+      { name: 'Mango Cake', price: 500 },
+      { name: 'Strawberry', price: 500 },
+      { name: 'Pineapple', price: 500 },
+      { name: 'Blackcurrent', price: 500 },
+      { name: 'Butterscotch', price: 500 },
     ]
   },
   {
     title: 'Fusion Cakes',
     items: [
-      { name: 'Royal Gulab Jamun Cake', flavor: 'Vanilla' },
-      { name: 'Classic Rasmalai Cake', flavor: 'Vanilla', isStarred: true },
-      { name: 'Traditional Rajbhog Cake', flavor: 'Mango' }
+      { name: 'Rajbhog', price: 700 },
+      { name: 'Rasmalai', price: 750 },
+      { name: 'Gulab Jamun', price: 750 },
     ]
   },
   {
     title: 'Cheesecakes',
     items: [
-      { name: 'Red Velvet Crumbs Cake', flavor: 'Red Velvet' }
+      { name: 'Red Velvet Cheesecake', price: 700 },
+      { name: 'Blueberry Cheesecake', price: 700 },
     ]
   },
   {
-    title: 'Bento Cakes',
+    title: 'Custom Cakes',
     items: [
-      { name: 'Mini Chocolate Bento Cake', flavor: 'Chocolate' }
+      { name: 'Doll Cake', desc: 'Beautifully crafted custom doll cakes' },
+      { name: 'Photo Cake', desc: 'Cakes with edible custom printed photos' },
+      { name: 'Theme Cake', desc: 'Tailored for birthdays, anniversaries' },
+      { name: 'Bento Cake', desc: 'Mini cute lunchbox cakes (4 inches)' },
+    ]
+  },
+  {
+    title: 'Brownies',
+    items: [
+      { name: 'Chocochip Brownie', price: '60/Pc' },
+      { name: 'Walnut Brownie', price: '70/Pc' },
+      { name: 'Nutella Brownie', price: '60/Pc' },
     ]
   }
+];
+
+const categoriesWithIllustrations = [
+  { name: 'Pastries', image: '/cakes/fruit_slice_1781772530489.png', desc: 'Fresh slices of signature cakes' },
+  { name: 'Donuts', image: '/cakes/Cake/WhatsApp Image 2026-06-28 at 10.21.56 AM.jpeg', desc: 'Soft and glazed chocolate donuts' },
+  { name: 'Jar Cakes', image: '/cakes/truffle_side_1781772143569.png', desc: 'Layered jar cakes in red velvet & chocolate' }
 ];
 
 const Categories = () => {
@@ -79,7 +84,7 @@ const Categories = () => {
   const [activeCategoryGroup, setActiveCategoryGroup] = useState(categoryGroupParam || '');
   const [activeCakeName, setActiveCakeName] = useState(cakeNameParam || '');
   const [selectedCake, setSelectedCake] = useState(null);
-  const [viewMode, setViewMode] = useState('catalog');
+  const [viewMode, setViewMode] = useState(searchParams.get('viewMode') || 'catalog');
 
   const allTags = useMemo(() => getAllTags(), []);
 
@@ -97,7 +102,11 @@ const Categories = () => {
     setActiveTag(searchParams.get('tag') || '');
     setActiveCategoryGroup(searchParams.get('categoryGroup') || '');
     setActiveCakeName(searchParams.get('cakeName') || '');
-    if (searchParams.get('tag') || searchParams.get('categoryGroup') || searchParams.get('cakeName')) {
+    
+    const viewParam = searchParams.get('viewMode');
+    if (viewParam) {
+      setViewMode(viewParam);
+    } else if (searchParams.get('tag') || searchParams.get('categoryGroup') || searchParams.get('cakeName')) {
       setViewMode('catalog');
     }
   }, [searchParams]);
@@ -131,29 +140,31 @@ const Categories = () => {
   const clearFilters = () => {
     setSearchParams(new URLSearchParams());
   };
-
   const handleCakeClick = (item) => {
-    // Find the category group that contains this item
-    const category = menuCategories.find(cat => cat.items.some(i => i.name === item.name));
-    const categoryTitle = category ? category.title : '';
+    const cleanName = item.name.replace('★', '').trim();
     
-    // Switch to catalog view, filter by category group and cake name
-    const newParams = new URLSearchParams(searchParams);
-    if (categoryTitle) {
-      newParams.set('categoryGroup', categoryTitle);
-    } else {
-      newParams.delete('categoryGroup');
-    }
-    newParams.set('cakeName', item.name);
-    newParams.delete('tag');
+    // Find matching cake in mock data
+    const matchedCake = mockCakes.find(cake => 
+      cake.name.toLowerCase().includes(cleanName.toLowerCase()) ||
+      getCakeBaseName(cake).toLowerCase().includes(cleanName.toLowerCase())
+    );
     
-    setSearchParams(newParams);
-    setViewMode('catalog');
-
-    // Also show in Quick View if a match is found
-    const matchedCake = mockCakes.find(cake => getCakeBaseName(cake) === item.name);
     if (matchedCake) {
       setSelectedCake(matchedCake);
+    } else {
+      // Find the category group
+      const category = menuCategories.find(cat => cat.items.some(i => i.name === item.name));
+      const categoryTitle = category ? category.title : '';
+      
+      const newParams = new URLSearchParams(searchParams);
+      if (categoryTitle) {
+        newParams.set('categoryGroup', categoryTitle);
+      }
+      newParams.delete('tag');
+      newParams.delete('cakeName');
+      newParams.delete('viewMode');
+      setSearchParams(newParams);
+      setViewMode('catalog');
     }
   };
 
@@ -179,7 +190,12 @@ const Categories = () => {
         {/* View Switcher Tabs */}
         <div className="flex justify-center gap-4 mb-10">
           <button
-            onClick={() => setViewMode('menu')}
+            onClick={() => {
+              setViewMode('menu');
+              const newParams = new URLSearchParams(searchParams);
+              newParams.set('viewMode', 'menu');
+              setSearchParams(newParams);
+            }}
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-sm border ${viewMode === 'menu'
                 ? 'bg-bakery-pink-vibrant border-bakery-pink-vibrant text-white'
                 : 'bg-white border-bakery-peach text-bakery-darkBrown hover:bg-bakery-cream'
@@ -189,7 +205,12 @@ const Categories = () => {
             Quick Menu List
           </button>
           <button
-            onClick={() => setViewMode('catalog')}
+            onClick={() => {
+              setViewMode('catalog');
+              const newParams = new URLSearchParams(searchParams);
+              newParams.delete('viewMode');
+              setSearchParams(newParams);
+            }}
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-sm border ${viewMode === 'catalog'
                 ? 'bg-bakery-pink-vibrant border-bakery-pink-vibrant text-white'
                 : 'bg-white border-bakery-peach text-bakery-darkBrown hover:bg-bakery-cream'
@@ -208,75 +229,227 @@ const Categories = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-[#fef2f2] border-2 border-bakery-peach rounded-3xl p-6 md:p-10 shadow-lg relative overflow-hidden"
+              className="bg-[#fdf6f6] border-4 border-bakery-pink/30 rounded-[2.5rem] shadow-2xl overflow-hidden relative"
             >
-              {/* Background decorative blur shapes */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-bakery-peach/25 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-bakery-pink/25 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
-
-              {/* Menu Header with Logo */}
-              <div className="flex flex-col sm:flex-row items-center gap-6 mb-12 pb-8 border-b border-bakery-peach/60 relative z-10">
-                <img
-                  src="/cakeshoplogo.jpeg"
-                  alt="Kalpana's Cakes & Bakes Logo"
-                  className="h-24 w-24 object-contain rounded-full border-2 border-bakery-pink shadow-md"
-                />
-                <div className="text-center sm:text-left">
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-bakery-brown mb-1">
-                    Kalpana's Cakes & Bakes
-                  </h2>
-                  <p className="text-bakery-pink-dark font-cursive text-2xl font-semibold tracking-wide">
-                    Homemade cakes
-                  </p>
+              {/* Decorative Plaid/Gingham Header Banner */}
+              <div 
+                className="h-32 md:h-40 w-full relative flex items-center justify-center"
+                style={{
+                  backgroundColor: '#fff0f2',
+                  backgroundImage: `
+                    linear-gradient(90deg, rgba(244, 194, 194, 0.4) 50%, transparent 50%),
+                    linear-gradient(rgba(244, 194, 194, 0.4) 50%, transparent 50%)
+                  `,
+                  backgroundSize: '40px 40px'
+                }}
+              >
+                <div className="absolute -bottom-16 w-32 h-32 rounded-full border-4 border-[#fdf6f6] overflow-hidden shadow-xl bg-white flex items-center justify-center">
+                  <img 
+                    src="/cakeshoplogo.jpeg" 
+                    alt="Kalpana's Cakes & Bakes Logo" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
+              {/* Menu Header with Logo */}
+              <div className="text-center pt-20 pb-8 px-4 border-b border-bakery-pink/20">
+                <h2 className="text-4xl font-serif font-bold text-[#8b1e3f] mb-1">
+                  Kalpana's Cakes & Bakes
+                </h2>
+                <p className="text-bakery-pink-dark font-cursive text-2xl font-semibold tracking-widest">
+                  Homemade cakes
+                </p>
+                <div className="w-32 h-1 bg-bakery-pink-vibrant mx-auto mt-4 rounded-full"></div>
+              </div>
+
               {/* Menu Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-                {menuCategories.map((category, idx) => (
-                  <div key={idx} className="flex flex-col items-center sm:items-start">
-                    {/* Category pill header (matches image box badge styling) */}
-                    <div className="bg-[#fbcfe8] text-[#be185d] px-6 py-2.5 rounded-full font-serif font-bold text-lg mb-6 shadow-sm w-full text-center sm:text-left inline-flex justify-center sm:justify-start items-center shrink-0">
-                      {category.title}
+              <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+                
+                {/* Column 1: Chocolate Cakes */}
+                <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                  <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                    Chocolate Cakes
+                  </div>
+                  <ul className="space-y-4 flex-1">
+                    {menuCategories[0].items.map((item, idx) => (
+                      <li 
+                        key={idx}
+                        onClick={() => handleCakeClick(item)}
+                        className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                      >
+                        <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors flex items-center gap-1.5 text-base">
+                          {item.name.replace('★', '')}
+                          {item.isStarred && <Star size={16} className="fill-bakery-gold text-bakery-gold shrink-0 animate-pulse" />}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
+                          <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Column 2: Classic Cakes & Cheesecakes */}
+                <div className="space-y-8">
+                  {/* Classic Cakes */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Classic Cakes
                     </div>
-
-                    {/* Items List */}
-                    <ul className="space-y-3.5 w-full">
-                      {category.items.slice(0, 6).map((item, itemIdx) => (
-                        <li
-                          key={itemIdx}
+                    <ul className="space-y-4">
+                      {menuCategories[1].items.map((item, idx) => (
+                        <li 
+                          key={idx}
                           onClick={() => handleCakeClick(item)}
-                          className="group flex items-center justify-between p-2.5 rounded-xl hover:bg-white transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-peach/30 shadow-sm hover:shadow-md"
+                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
                         >
-                          <span className="text-bakery-darkBrown font-medium group-hover:text-bakery-pink-dark transition-colors flex items-center gap-2">
+                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
                             {item.name}
-                            {item.isStarred && <span className="text-bakery-gold text-lg">★</span>}
                           </span>
-
-                          <span className="text-xs text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all duration-300 uppercase tracking-wider shrink-0">
-                            View
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
+                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
+                          </div>
                         </li>
                       ))}
-                      {category.items.length > 6 && (
-                        <li>
-                          <button
-                            onClick={() => {
-                              const newParams = new URLSearchParams();
-                              newParams.set('categoryGroup', category.title);
-                              setSearchParams(newParams);
-                              setViewMode('catalog');
-                            }}
-                            className="w-full text-center sm:text-left p-2.5 rounded-xl hover:bg-bakery-peach/10 text-bakery-pink-dark hover:text-[#9d174d] font-bold transition-all duration-300 border border-dashed border-bakery-peach/50 hover:border-bakery-pink-dark cursor-pointer flex items-center justify-center sm:justify-start gap-1.5"
-                          >
-                            <span>View All {category.items.length} Cakes</span>
-                            <span className="text-lg">→</span>
-                          </button>
-                        </li>
-                      )}
                     </ul>
                   </div>
-                ))}
+
+                  {/* Cheesecakes */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Cheesecakes
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[3].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          onClick={() => handleCakeClick(item)}
+                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                        >
+                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
+                            {item.name}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
+                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Column 3: Fusion, Custom Cakes & Brownies */}
+                <div className="space-y-8">
+                  {/* Fusion Cakes */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Fusion Cakes
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[2].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          onClick={() => handleCakeClick(item)}
+                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                        >
+                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
+                            {item.name}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
+                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Custom Cakes */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Custom Cakes
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[4].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          onClick={() => handleCakeClick(item)}
+                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                        >
+                          <div>
+                            <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base block">
+                              {item.name}
+                            </span>
+                            <span className="text-xs text-bakery-brown/60 block">{item.desc}</span>
+                          </div>
+                          <span className="text-[11px] font-bold text-[#be185d] uppercase bg-[#fbcfe8]/40 px-3 py-1.5 rounded-full shrink-0">Custom</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Brownies */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Brownies
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[5].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
+                        >
+                          <span className="text-bakery-darkBrown font-semibold text-base">
+                            {item.name}
+                          </span>
+                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Also Check Out Illustrations (Pastries, Donuts, Jar Cakes) */}
+              <div className="bg-[#fff0f2]/60 px-6 py-12 md:px-12 border-t border-bakery-pink/20">
+                <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] text-center mb-8 font-serif">Also Check Out</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {categoriesWithIllustrations.map((cat, idx) => (
+                    <div 
+                      key={idx} 
+                      className="bg-white p-5 rounded-2xl shadow-sm border border-bakery-peach/20 flex items-center gap-4 hover:shadow-md transition-shadow duration-300"
+                    >
+                      <img 
+                        src={cat.image} 
+                        alt={cat.name} 
+                        className="w-16 h-16 rounded-full object-cover border-2 border-bakery-pink shadow-sm shrink-0" 
+                      />
+                      <div>
+                        <h4 className="font-bold text-bakery-darkBrown text-lg font-serif">{cat.name}</h4>
+                        <p className="text-xs text-bakery-brown/70 leading-snug">{cat.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Gingham footer bar with WhatsApp Contact Details */}
+              <div className="bg-[#f4c2c2] py-6 px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-bakery-darkBrown border-t border-bakery-pink/30">
+                <span className="font-medium text-sm">Please place custom orders at least 1-2 days in advance.</span>
+                <a 
+                  href="https://wa.me/919004762873?text=Hi%2C%20I'd%20like%20to%20inquire%20about%20your%20cakes!" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 bg-green-500 text-white font-bold px-5 py-2.5 rounded-full hover:bg-green-600 shadow-md hover:shadow-lg transition-all transform hover:scale-105 select-none"
+                >
+                  <FaWhatsapp size={20} />
+                  <span>+91 9004762873</span>
+                </a>
               </div>
             </motion.div>
           ) : (

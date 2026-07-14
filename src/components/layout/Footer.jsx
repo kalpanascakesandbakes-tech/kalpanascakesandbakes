@@ -37,6 +37,7 @@ const Footer = () => {
           <div>
             <h3 className="font-serif text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
+              <li><Link to="/categories?viewMode=menu" className="hover:text-bakery-gold transition-colors font-semibold text-bakery-gold">Our Menu Card</Link></li>
               <li><Link to="/categories" className="hover:text-bakery-gold transition-colors">Our Cakes</Link></li>
               <li><Link to="/custom-cake" className="hover:text-bakery-gold transition-colors">Custom Orders</Link></li>
               <li><Link to="/bulk-order" className="hover:text-bakery-gold transition-colors">Bulk Orders</Link></li>

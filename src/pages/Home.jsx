@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck, BookOpen, Download } from 'lucide-react';
 import { getBestSellers, getFeaturedCakes } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
@@ -196,6 +196,115 @@ const Home = () => {
               <ShieldCheck size={18} />
               View Certificate
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Card Promo Section */}
+      <section className="py-16 bg-gradient-to-br from-white via-bakery-peach/10 to-bakery-pink/10 border-b border-bakery-peach/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Visual Card Mockup (Float Animation) */}
+            <motion.div 
+              {...fadeInUp}
+              className="lg:col-span-5 flex justify-center order-2 lg:order-1"
+            >
+              <Link to="/categories?viewMode=menu" className="group relative block w-full max-w-[340px] aspect-[1/1.5] bg-[#fdf6f6] border-2 border-bakery-pink/30 rounded-[2rem] shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                {/* Gingham Mock Header */}
+                <div 
+                  className="h-16 w-full relative flex items-center justify-center"
+                  style={{
+                    backgroundColor: '#fff0f2',
+                    backgroundImage: `
+                      linear-gradient(90deg, rgba(244, 194, 194, 0.4) 50%, transparent 50%),
+                      linear-gradient(rgba(244, 194, 194, 0.4) 50%, transparent 50%)
+                    `,
+                    backgroundSize: '20px 20px'
+                  }}
+                >
+                  <div className="absolute -bottom-8 w-16 h-16 rounded-full border-2 border-[#fdf6f6] overflow-hidden shadow-md bg-white">
+                    <img src="/cakeshoplogo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                
+                {/* Mock List Content */}
+                <div className="pt-10 px-5 pb-5 space-y-4">
+                  <div className="text-center">
+                    <h4 className="font-serif font-bold text-base text-[#8b1e3f]">Kalpana's Cakes & Bakes</h4>
+                    <span className="text-[10px] text-bakery-pink-dark font-cursive">Homemade cakes</span>
+                  </div>
+                  
+                  {/* Mock Categories & Items */}
+                  <div className="space-y-3">
+                    <div className="bg-[#fbcfe8] text-[#be185d] text-[10px] font-serif font-bold px-2 py-0.5 rounded-full inline-block">Chocolate Cakes</div>
+                    <div className="space-y-1 text-[11px] text-bakery-darkBrown font-medium">
+                      <div className="flex justify-between"><span>Chocolate Oreo</span><span>₹500</span></div>
+                      <div className="flex justify-between"><span>Dutch Truffle</span><span>₹580</span></div>
+                      <div className="flex justify-between font-bold text-bakery-pink-dark"><span>Chocolate Truffle ★</span><span>₹600</span></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="bg-[#fbcfe8] text-[#be185d] text-[10px] font-serif font-bold px-2 py-0.5 rounded-full inline-block">Classic Cakes</div>
+                    <div className="space-y-1 text-[11px] text-bakery-darkBrown font-medium">
+                      <div className="flex justify-between"><span>Plain Vanilla</span><span>₹450</span></div>
+                      <div className="flex justify-between"><span>Butterscotch</span><span>₹500</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Overlap Hover Banner */}
+                <div className="absolute inset-0 bg-[#be185d]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                  <span className="bg-white/95 text-[#be185d] font-bold px-5 py-2.5 rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <BookOpen size={16} /> Open Menu Card
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Promo Text Section */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left order-1 lg:order-2">
+              <span className="bg-bakery-pink-vibrant/10 text-bakery-pink-dark px-4 py-1.5 rounded-full text-sm font-bold tracking-wide uppercase">
+                Digital & Print Menu
+              </span>
+              
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-bakery-darkBrown leading-tight">
+                Our Exquisite Menu Card is Here!
+              </h2>
+              
+              <p className="text-lg text-bakery-brown/90 leading-relaxed max-w-2xl">
+                Browse our complete selection of homemade bakes. From rich Dutch Truffle cakes to custom theme doll cakes, brownies, and pastries, we have something to sweeten every occasion. Check out exact pricing and order directly!
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
+                <div className="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-bakery-peach/30 shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-bakery-peach flex items-center justify-center text-bakery-brown font-bold shrink-0">₹</div>
+                  <span className="font-semibold text-sm text-bakery-darkBrown text-left">Exact & Transparent Pricing</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-bakery-peach/30 shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-bakery-peach flex items-center justify-center text-bakery-brown shrink-0"><Star size={18} className="fill-current" /></div>
+                  <span className="font-semibold text-sm text-bakery-darkBrown text-left">Best Seller Highlights</span>
+                </div>
+              </div>
+
+              <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link 
+                  to="/categories?viewMode=menu" 
+                  className="px-8 py-4 bg-bakery-pink-vibrant text-white hover:bg-bakery-pink-dark rounded-full font-bold text-lg hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2"
+                >
+                  <BookOpen size={20} /> View Menu Card
+                </Link>
+                <a 
+                  href="/cakes/menu-card.jpeg" 
+                  download="Kalpanas_Cakes_Bakes_Menu.jpeg"
+                  className="px-8 py-4 bg-transparent text-bakery-brown border-2 border-bakery-brown/40 hover:border-bakery-brown rounded-full font-bold text-lg hover:bg-bakery-cream transition-colors flex items-center justify-center gap-2"
+                >
+                  <Download size={20} /> Download PDF Card
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

@@ -121,7 +121,7 @@ export const mockCakes = [
   },
   {
     "id": "c95",
-    "name": "Royal Gulab Jamun Cake",
+    "name": "Classic Rasmalai Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 580,
@@ -137,7 +137,7 @@ export const mockCakes = [
   },
   {
     "id": "c96",
-    "name": "Classic Rasmalai Cake",
+    "name": "Royal Gulab Jamun Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 600,
@@ -586,7 +586,7 @@ export const getFeaturedCakes = () => mockCakes.filter(cake => cake.tags.include
 export const getAllTags = () => {
   const tags = new Set();
   mockCakes.forEach(cake => {
-  if (cake.custom) return;
+    if (cake.custom) return;
     cake.tags.forEach(tag => {
       if (!tag.toLowerCase().includes('birthday') && !tag.toLowerCase().includes('anniversary')) {
         tags.add(tag);
@@ -602,10 +602,10 @@ mockCakes.forEach(cake => {
   const tag = cake.tags.find(t => t !== '60 Minutes Delivery') || 'Trending Cakes';
   const tagSuffix = tag.replace(' Cakes', '');
   const flavor = cake.flavor;
-  
+
   let categoryGroup = 'Regular Cakes';
   let displayName = cake.name;
-  
+
   if (flavor === 'Chocolate') {
     const chocoNames = {
       'Trending Cakes': 'Dutch Truffle',
@@ -704,7 +704,7 @@ mockCakes.forEach(cake => {
     displayName = `Butterscotch ${tagSuffix}`;
     categoryGroup = 'Regular Cakes';
   }
-  
+
   cake.name = displayName;
   cake.categoryGroup = categoryGroup;
 
