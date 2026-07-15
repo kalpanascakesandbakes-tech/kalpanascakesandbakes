@@ -577,6 +577,232 @@ export const mockCakes = [
     "image": "/cakes/Cake/WhatsApp Image 2026-06-28 at 10.22.00 AM.jpeg",
     "categoryGroup": "Bento Cakes",
     "custom": true
+  },
+  {
+    "id": "c124",
+    "name": "Zebra Grid Chocolate Rosette Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 550,
+    "rating": 4.8,
+    "tags": [
+      "Trending Cakes",
+      "Gourmet Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.12 PM (1).jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true
+  },
+  {
+    "id": "c125",
+    "name": "Choco Glaze Dream Birthday Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 580,
+    "rating": 4.9,
+    "tags": [
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.12 PM.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true
+  },
+  {
+    "id": "c126",
+    "name": "Elegant White & Gold Half-Moon Arch Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 5.0,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.13 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c127",
+    "name": "Elegant White & Gold 50th Birthday Tier Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 1400,
+    "rating": 4.9,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.13 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c128",
+    "name": "Blue Sleeping Baby Shower Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.8,
+    "tags": [
+      "Designer Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.13 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c129",
+    "name": "18th Birthday Double Tier Chocolate Overload Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1500,
+    "rating": 5.0,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.13 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true,
+    "isBestSeller": true
+  },
+  {
+    "id": "c130",
+    "name": "Mickey Mouse Chocolate Drip Birthday Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 600,
+    "rating": 4.7,
+    "tags": [
+      "Birthday Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.34 PM (1).jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true
+  },
+  {
+    "id": "c131",
+    "name": "Dhiral's Premium Chocolate Fudge Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 550,
+    "rating": 4.8,
+    "tags": [
+      "Birthday Cakes",
+      "Gourmet Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.34 PM (2).jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true
+  },
+  {
+    "id": "c132",
+    "name": "Elegant Happy Retirement Golden Spheres Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 850,
+    "rating": 4.9,
+    "tags": [
+      "Designer Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.34 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c133",
+    "name": "Ivona's School Teacher Theme Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 800,
+    "rating": 4.8,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.35 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c134",
+    "name": "Blue Vintage Heart Piping Birthday Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 680,
+    "rating": 4.7,
+    "tags": [
+      "Bento Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.35 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c135",
+    "name": "Jaanvi's 3-Tier Disney Princess Theme Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 2200,
+    "rating": 5.0,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.35 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true,
+    "isBestSeller": true
+  },
+  {
+    "id": "c136",
+    "name": "Saritha & Vincent's 25th Anniversary 2-Tier Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 1600,
+    "rating": 4.9,
+    "tags": [
+      "Designer Cakes",
+      "Anniversary Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.36 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+  },
+  {
+    "id": "c137",
+    "name": "Cecilia's MAC Makeup Theme Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 850,
+    "rating": 4.9,
+    "tags": [
+      "Designer Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.36 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
   }
 ];
 
