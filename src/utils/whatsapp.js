@@ -32,6 +32,7 @@ export const generateWhatsAppLink = (orderData) => {
   }
 
   message += `\n💵 *Grand Total:* ₹${orderData.totalAmount}\n`;
+  message += `💳 *Payment (GPay):* Please pay to *+91 90047 62873* and share the screenshot here.\n`;
   message += `-----------------------------\n`;
   message += `Thank you for ordering from *Kalpana's Cakes & Bakes*! ❤️`;
 

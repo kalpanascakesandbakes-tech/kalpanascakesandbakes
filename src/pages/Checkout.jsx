@@ -126,9 +126,31 @@ const Checkout = () => {
           </div>
           <h2 className="text-3xl font-serif font-bold text-bakery-darkBrown mb-2">Order Placed!</h2>
           <p className="text-xl text-bakery-brown mb-4">Your Order ID is <span className="font-bold text-bakery-pink-dark">{orderId}</span></p>
-          <p className="text-bakery-brown/80 mb-8">
+          <p className="text-bakery-brown/80 mb-4">
             Thank you for your order! We are now redirecting you to WhatsApp to send all your order details automatically.
           </p>
+
+          <div className="my-6 p-5 bg-[#fff0f2] rounded-2xl border border-bakery-pink/20 text-left">
+            <h3 className="font-serif font-bold text-[#8b1e3f] mb-2 flex items-center gap-2 text-lg">
+              💳 Payment Information
+            </h3>
+            <p className="text-sm text-bakery-darkBrown mb-3">
+              Please complete your payment of <span className="font-bold text-[#be185d] text-base">₹{placedOrderData?.totalAmount}</span> using GPay:
+            </p>
+            <div className="bg-white p-4 rounded-xl border border-bakery-peach/30 flex justify-between items-center shadow-sm">
+              <div>
+                <p className="text-[10px] text-bakery-brown/60 uppercase font-bold tracking-wider">GPay Number</p>
+                <p className="font-mono font-bold text-bakery-darkBrown text-lg">+91 90047 62873</p>
+              </div>
+              <span className="bg-[#ffe4e6] text-[#be185d] text-xs font-bold px-3 py-1.5 rounded-full border border-bakery-pink/10">
+                UPI / GPay
+              </span>
+            </div>
+            <p className="text-xs text-bakery-brown/80 mt-3 text-center font-medium italic">
+              * Please share the payment screenshot in the WhatsApp chat.
+            </p>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {placedOrderData && (
               <a
@@ -237,6 +259,15 @@ const Checkout = () => {
                   <input type="text" className="w-full p-3 rounded-lg border border-bakery-peach focus:ring-2 focus:ring-bakery-brown outline-none"
                     value={formData.landmark} onChange={e => setFormData({ ...formData, landmark: e.target.value })} />
                 </div>
+              </div>
+
+              <div className="p-4 bg-[#fdf6f6] rounded-xl border border-bakery-pink/20 space-y-2">
+                <h4 className="font-serif font-bold text-[#8b1e3f] text-sm flex items-center gap-1.5">
+                  💳 Payment Method: UPI / Google Pay (GPay)
+                </h4>
+                <p className="text-xs text-bakery-brown/80 leading-relaxed">
+                  After placing the order, you will be redirected to WhatsApp to send your order details. Please complete the payment to our GPay number: <strong className="text-[#be185d] font-mono font-bold">+91 90047 62873</strong> and share the screenshot in the chat.
+                </p>
               </div>
 
               <button

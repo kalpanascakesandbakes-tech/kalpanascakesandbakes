@@ -661,7 +661,7 @@ export const mockCakes = [
   },
   {
     "id": "c129",
-    "name": "18th Birthday Double Tier Chocolate Overload Cake",
+    "name": "18th Birthday 2-Tier Chocolate Cake",
     "category": "Cakes",
     "flavor": "Chocolate",
     "price": 1500,
@@ -678,7 +678,7 @@ export const mockCakes = [
   },
   {
     "id": "c130",
-    "name": "Mickey Mouse Chocolate Drip Birthday Cake",
+    "name": "Chocolate Drip Birthday Cake",
     "category": "Cakes",
     "flavor": "Chocolate",
     "price": 600,
@@ -694,7 +694,7 @@ export const mockCakes = [
   },
   {
     "id": "c131",
-    "name": "Dhiral's Premium Chocolate Fudge Cake",
+    "name": "Premium Chocolate Fudge Cake",
     "category": "Cakes",
     "flavor": "Chocolate",
     "price": 550,
@@ -710,7 +710,7 @@ export const mockCakes = [
   },
   {
     "id": "c132",
-    "name": "Elegant Happy Retirement Golden Spheres Cake",
+    "name": "Happy Retirement Golden Spheres Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 850,
@@ -725,7 +725,7 @@ export const mockCakes = [
   },
   {
     "id": "c133",
-    "name": "Ivona's School Teacher Theme Cake",
+    "name": "School Teacher Theme Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 800,
@@ -757,7 +757,7 @@ export const mockCakes = [
   },
   {
     "id": "c135",
-    "name": "Jaanvi's 3-Tier Disney Princess Theme Cake",
+    "name": "3-Tier Disney Princess Theme Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 2200,
@@ -774,7 +774,7 @@ export const mockCakes = [
   },
   {
     "id": "c136",
-    "name": "Saritha & Vincent's 25th Anniversary 2-Tier Cake",
+    "name": "25th Anniversary 2-Tier Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 1600,
@@ -790,7 +790,7 @@ export const mockCakes = [
   },
   {
     "id": "c137",
-    "name": "Cecilia's MAC Makeup Theme Cake",
+    "name": "MAC Makeup Theme Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
     "price": 850,
