@@ -86,7 +86,10 @@ export const generateCustomCakeWhatsAppLink = (customData) => {
     message += `"${customData.notes}"\n`;
   }
   
-  if (customData.hasFile) {
+  if (customData.imageUrl) {
+    message += `\n📸 *Reference Design Image Link*\n`;
+    message += `• ${customData.imageUrl}\n`;
+  } else if (customData.hasFile) {
     message += `\n📸 *Reference Design Attachment*\n`;
     message += `• _I will attach my custom design image as the next message in this chat._\n`;
   }

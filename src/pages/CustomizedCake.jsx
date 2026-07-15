@@ -21,6 +21,8 @@ const CustomizedCake = () => {
   });
   const [file, setFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState('Saving Request...');
+  const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
   const [requestId, setRequestId] = useState('');
 
@@ -51,29 +53,51 @@ const CustomizedCake = () => {
     frame();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setUploadStatus('Saving Request...');
 
     const newRequestId = `CUST-${Date.now().toString().slice(-6)}`;
     setRequestId(newRequestId);
 
+    let imageUrl = '';
+    if (file) {
+      setUploadStatus('Uploading design image...');
+      try {
+        const uploadForm = new FormData();
+        uploadForm.append('file', file);
+
+        const response = await fetch('https://tmpfiles.org/api/v1/upload', {
+          method: 'POST',
+          body: uploadForm
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+          imageUrl = result.data.url;
+        }
+      } catch (err) {
+        console.error('Error uploading reference image:', err);
+      }
+    }
+
+    setUploadedImageUrl(imageUrl);
+
     const orderData = {
       requestId: newRequestId,
       ...formData,
-      hasFile: !!file
+      hasFile: !!file,
+      imageUrl: imageUrl
     };
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setShowSuccess(true);
-      triggerConfetti();
+    setIsSubmitting(false);
+    setShowSuccess(true);
+    triggerConfetti();
 
-      const whatsappUrl = generateCustomCakeWhatsAppLink(orderData);
-      setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-      }, 3000);
-    }, 1200);
+    const whatsappUrl = generateCustomCakeWhatsAppLink(orderData);
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 3000);
   };
 
   const flavors = ['Chocolate', 'Vanilla', 'Red Velvet', 'Pineapple', 'Butterscotch', 'Black Forest', 'Strawberry', 'Mango', 'Custom Flavor'];
@@ -83,7 +107,8 @@ const CustomizedCake = () => {
     const whatsappUrl = generateCustomCakeWhatsAppLink({
       requestId,
       ...formData,
-      hasFile: !!file
+      hasFile: !!file,
+      imageUrl: uploadedImageUrl
     });
 
     return (
@@ -112,13 +137,13 @@ const CustomizedCake = () => {
 
           <div className="bg-bakery-cream/70 rounded-2xl p-6 mb-8 text-left border border-bakery-peach/40">
             <h3 className="font-bold text-bakery-darkBrown text-base mb-2 flex items-center gap-2">
-              <span>⚠️</span> IMPORTANT NEXT STEP
+              <span>🎉</span> Design Linked Successfully
             </h3>
             <p className="text-sm text-bakery-brown/90 leading-relaxed mb-3">
-              We are redirecting you to WhatsApp to connect directly with our bakers.
+              We have automatically uploaded your design and attached the link to the WhatsApp message.
             </p>
             <p className="text-sm font-bold text-bakery-pink-dark leading-relaxed">
-              👉 Please attach your uploaded reference design image in the WhatsApp chat window once it opens!
+              👉 Simply click send once WhatsApp opens—no need to attach the image manually!
             </p>
           </div>
 
@@ -262,7 +287,7 @@ const CustomizedCake = () => {
               {isSubmitting ? (
                 <div className="flex items-center gap-2">
                   <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  Saving Design Request...
+                  {uploadStatus}
                 </div>
               ) : (
                 <>
