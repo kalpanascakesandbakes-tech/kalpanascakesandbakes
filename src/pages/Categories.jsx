@@ -146,33 +146,6 @@ const Categories = () => {
   const clearFilters = () => {
     setSearchParams(new URLSearchParams());
   };
-  const handleCakeClick = (item) => {
-    const cleanName = item.name.replace('★', '').trim();
-    
-    // Find matching cake in mock data
-    const matchedCake = mockCakes.find(cake => 
-      cake.name.toLowerCase().includes(cleanName.toLowerCase()) ||
-      getCakeBaseName(cake).toLowerCase().includes(cleanName.toLowerCase())
-    );
-    
-    if (matchedCake) {
-      setSelectedCake(matchedCake);
-    } else {
-      // Find the category group
-      const category = menuCategories.find(cat => cat.items.some(i => i.name === item.name));
-      const categoryTitle = category ? category.title : '';
-      
-      const newParams = new URLSearchParams(searchParams);
-      if (categoryTitle) {
-        newParams.set('categoryGroup', categoryTitle);
-      }
-      newParams.delete('tag');
-      newParams.delete('cakeName');
-      newParams.delete('viewMode');
-      setSearchParams(newParams);
-      setViewMode('catalog');
-    }
-  };
 
   return (
     <div className="bg-bakery-cream min-h-screen py-12">
@@ -281,17 +254,13 @@ const Categories = () => {
                     {menuCategories[0].items.map((item, idx) => (
                       <li 
                         key={idx}
-                        onClick={() => handleCakeClick(item)}
-                        className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                        className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
                       >
-                        <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors flex items-center gap-1.5 text-base">
+                        <span className="text-bakery-darkBrown font-semibold flex items-center gap-1.5 text-base">
                           {item.name.replace('★', '')}
                           {item.isStarred && <Star size={16} className="fill-bakery-gold text-bakery-gold shrink-0 animate-pulse" />}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
-                          <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
-                        </div>
+                        <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                       </li>
                     ))}
                   </ul>
@@ -308,16 +277,12 @@ const Categories = () => {
                       {menuCategories[1].items.map((item, idx) => (
                         <li 
                           key={idx}
-                          onClick={() => handleCakeClick(item)}
-                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
                         >
-                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
+                          <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
-                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
-                          </div>
+                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -332,16 +297,12 @@ const Categories = () => {
                       {menuCategories[3].items.map((item, idx) => (
                         <li 
                           key={idx}
-                          onClick={() => handleCakeClick(item)}
-                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
                         >
-                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
+                          <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
-                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
-                          </div>
+                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -359,16 +320,12 @@ const Categories = () => {
                       {menuCategories[2].items.map((item, idx) => (
                         <li 
                           key={idx}
-                          onClick={() => handleCakeClick(item)}
-                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
                         >
-                          <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base">
+                          <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
-                            <span className="text-[10px] text-bakery-pink-dark opacity-0 group-hover:opacity-100 font-bold transition-all uppercase tracking-wider bg-[#ffe4e6] px-2 py-1 rounded-md">View</span>
-                          </div>
+                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -383,11 +340,10 @@ const Categories = () => {
                       {menuCategories[4].items.map((item, idx) => (
                         <li 
                           key={idx}
-                          onClick={() => handleCakeClick(item)}
-                          className="group flex justify-between items-center py-2 px-3 rounded-2xl hover:bg-[#fff0f2] transition-all duration-300 cursor-pointer border border-transparent hover:border-bakery-pink/20"
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
                         >
                           <div>
-                            <span className="text-bakery-darkBrown font-semibold group-hover:text-bakery-pink-dark transition-colors text-base block">
+                            <span className="text-bakery-darkBrown font-semibold text-base block">
                               {item.name}
                             </span>
                             <span className="text-xs text-bakery-brown/60 block">{item.desc}</span>
