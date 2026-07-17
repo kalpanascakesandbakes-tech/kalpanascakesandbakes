@@ -458,34 +458,29 @@ const Categories = () => {
 
               </div>
 
-              {/* Bento Menu Card Images Section */}
-              <div className="p-6 md:p-10 border-t border-bakery-pink/20 bg-[#fff5f6]/40">
-                <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] text-center mb-6">
-                  Official Bento Cake Menu Cards
+              {/* Bento Menu Card Image Section */}
+              <div className="p-6 md:p-10 border-t border-bakery-pink/20 bg-[#fff5f6]/40 text-center">
+                <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] mb-6">
+                  Official Bento Cake Menu Card
                 </h3>
-                <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-sm hover:scale-[1.02] transition-transform duration-300">
+                <div className="flex justify-center items-center">
+                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-md hover:scale-[1.02] transition-transform duration-300">
                     <a href="/cakes/bento-menu-card.jpeg" target="_blank" rel="noopener noreferrer">
                       <img 
                         src="/cakes/bento-menu-card.jpeg" 
                         alt="Bento Cake Menu Card" 
-                        className="rounded-2xl border border-bakery-peach/20 max-h-[400px] object-contain shadow-inner"
+                        className="rounded-2xl border border-bakery-peach/20 max-h-[500px] object-contain shadow-inner"
                       />
                     </a>
-                    <div className="text-center mt-3">
+                    <div className="text-center mt-3 flex justify-center gap-4">
                       <span className="text-xs text-bakery-brown/70 font-semibold">Click to view/enlarge</span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-sm hover:scale-[1.02] transition-transform duration-300">
-                    <a href="/cakes/bento-menu-prices.jpeg" target="_blank" rel="noopener noreferrer">
-                      <img 
-                        src="/cakes/bento-menu-prices.jpeg" 
-                        alt="Bento Cake Price Card" 
-                        className="rounded-2xl border border-bakery-peach/20 max-h-[400px] object-contain shadow-inner"
-                      />
-                    </a>
-                    <div className="text-center mt-3">
-                      <span className="text-xs text-bakery-brown/70 font-semibold">Click to view/enlarge</span>
+                      <a 
+                        href="/cakes/bento-menu-card.jpeg" 
+                        download="Kalpanas_Cakes_Bakes_Bento_Menu.jpeg"
+                        className="text-xs text-bakery-pink-dark hover:underline font-bold"
+                      >
+                        Download Image
+                      </a>
                     </div>
                   </div>
                 </div>
