@@ -66,6 +66,30 @@ const menuCategories = [
       { name: 'Walnut Brownie', price: '70/Pc' },
       { name: 'Nutella Brownie', price: '60/Pc' },
     ]
+  },
+  {
+    title: 'Bento Cakes (Basic)',
+    items: [
+      { name: 'Vanilla', price: 300 },
+      { name: 'Blueberry', price: 300 },
+      { name: 'Black Forest', price: 300 },
+      { name: 'White Forest', price: 300 },
+      { name: 'Pineapple', price: 300 },
+      { name: 'Butterscotch', price: 300 },
+      { name: 'Strawberry', price: 300 }
+    ]
+  },
+  {
+    title: 'Bento Cakes (Premium)',
+    items: [
+      { name: 'Rasmalai', price: 380 },
+      { name: 'Chocolate Truffle', price: 350 },
+      { name: 'Red Velvet', price: 380 },
+      { name: 'Oreo', price: 300 },
+      { name: 'KitKat', price: 380 },
+      { name: 'Nutella', price: 350 },
+      { name: 'Biscoff', price: 380 }
+    ]
   }
 ];
 
@@ -243,7 +267,7 @@ const Categories = () => {
               </div>
 
               {/* Menu Grid */}
-              <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+              <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 
                 {/* Column 1: Chocolate Cakes */}
                 <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
@@ -315,7 +339,54 @@ const Categories = () => {
                   </div>
                 </div>
 
-                {/* Column 3: Fusion, Custom Cakes & Brownies */}
+                {/* Column 3: Bento Cakes (Basic & Premium) */}
+                <div className="space-y-8">
+                  {/* Bento Cakes (Basic) */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Bento Cakes (Basic)
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[6].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
+                        >
+                          <span className="text-bakery-darkBrown font-semibold text-base">
+                            {item.name}
+                          </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Bento Cakes (Premium) */}
+                  <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
+                    <div className="bg-[#fbcfe8] text-[#be185d] px-5 py-2 rounded-full font-serif font-bold text-lg mb-6 shadow-sm text-center">
+                      Bento Cakes (Premium)
+                    </div>
+                    <ul className="space-y-4">
+                      {menuCategories[7].items.map((item, idx) => (
+                        <li 
+                          key={idx}
+                          className="flex justify-between items-center py-2 px-3 rounded-2xl border border-transparent"
+                        >
+                          <span className="text-bakery-darkBrown font-semibold text-base">
+                            {item.name}
+                          </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Column 4: Fusion, Custom Cakes & Brownies */}
                 <div className="space-y-8">
                   {/* Fusion Cakes */}
                   <div className="bg-white p-6 rounded-3xl border border-bakery-peach/30 shadow-md flex flex-col">
@@ -385,6 +456,39 @@ const Categories = () => {
                   </div>
                 </div>
 
+              </div>
+
+              {/* Bento Menu Card Images Section */}
+              <div className="p-6 md:p-10 border-t border-bakery-pink/20 bg-[#fff5f6]/40">
+                <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] text-center mb-6">
+                  Official Bento Cake Menu Cards
+                </h3>
+                <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-sm hover:scale-[1.02] transition-transform duration-300">
+                    <a href="/cakes/bento-menu-card.jpeg" target="_blank" rel="noopener noreferrer">
+                      <img 
+                        src="/cakes/bento-menu-card.jpeg" 
+                        alt="Bento Cake Menu Card" 
+                        className="rounded-2xl border border-bakery-peach/20 max-h-[400px] object-contain shadow-inner"
+                      />
+                    </a>
+                    <div className="text-center mt-3">
+                      <span className="text-xs text-bakery-brown/70 font-semibold">Click to view/enlarge</span>
+                    </div>
+                  </div>
+                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-sm hover:scale-[1.02] transition-transform duration-300">
+                    <a href="/cakes/bento-menu-prices.jpeg" target="_blank" rel="noopener noreferrer">
+                      <img 
+                        src="/cakes/bento-menu-prices.jpeg" 
+                        alt="Bento Cake Price Card" 
+                        className="rounded-2xl border border-bakery-peach/20 max-h-[400px] object-contain shadow-inner"
+                      />
+                    </a>
+                    <div className="text-center mt-3">
+                      <span className="text-xs text-bakery-brown/70 font-semibold">Click to view/enlarge</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Also Check Out Illustrations (Pastries, Donuts, Jar Cakes) */}
