@@ -243,10 +243,65 @@ const Navbar = () => {
               </Link>
             ))}
 
+            {/* Cart Button */}
+            <motion.button
+              onClick={openCart}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={animateCart ? {
+                scale: [1, 1.25, 0.9, 1.15, 0.95, 1.02, 1],
+                rotate: [0, -8, 8, -4, 4, 0],
+                backgroundColor: ['#ffffff', '#fff0f2', '#ffffff'],
+                borderColor: ['#f4c2c2', '#ff007f', '#f4c2c2']
+              } : {}}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative p-2.5 bg-white text-bakery-darkBrown rounded-full hover:bg-bakery-peach/30 transition-shadow duration-300 flex items-center justify-center border border-bakery-peach/30 group cursor-pointer shadow-sm hover:shadow-md"
+            >
+              <ShoppingBag size={22} className="group-hover:scale-110 transition-transform duration-300 text-bakery-darkBrown" />
+              {cartCount > 0 && (
+                <motion.span 
+                  key={cartCount}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  className="absolute -top-1.5 -right-1.5 bg-bakery-pink-vibrant text-white text-[11px] font-bold w-5.5 h-5.5 rounded-full flex items-center justify-center border-2 border-white shadow-sm"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </motion.button>
+
           </div>
 
           {/* Mobile Menu Button & Cart */}
           <div className="flex lg:hidden items-center gap-4">
+            {/* Mobile Cart Button */}
+            <motion.button
+              onClick={openCart}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={animateCart ? {
+                scale: [1, 1.25, 0.9, 1.15, 0.95, 1.02, 1],
+                rotate: [0, -8, 8, -4, 4, 0],
+                backgroundColor: ['#ffffff', '#fff0f2', '#ffffff'],
+                borderColor: ['#f4c2c2', '#ff007f', '#f4c2c2']
+              } : {}}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative p-2 bg-white text-bakery-darkBrown rounded-full flex items-center justify-center border border-bakery-peach/30 shadow-sm"
+            >
+              <ShoppingBag size={20} className="text-bakery-darkBrown" />
+              {cartCount > 0 && (
+                <motion.span 
+                  key={cartCount}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  className="absolute -top-1.5 -right-1.5 bg-bakery-pink-vibrant text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-white border shadow-sm"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </motion.button>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

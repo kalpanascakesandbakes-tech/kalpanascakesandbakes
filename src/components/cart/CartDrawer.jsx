@@ -58,47 +58,60 @@ const CartDrawer = () => {
                 </div>
               ) : (
                 <div className="space-y-6">
-                  {cart.map((item, index) => (
-                    <div key={`${item.id}-${index}`} className="flex gap-4 border-b border-bakery-peach/50 pb-6">
-                      <img 
-                        src={item.image} 
-                        alt={item.name} 
-                        className="w-24 h-24 object-cover rounded-lg"
-                      />
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start">
-                          <h3 className="font-serif font-bold text-bakery-darkBrown">{item.name}</h3>
-                          <button 
-                            onClick={() => removeFromCart(index)}
-                            className="text-red-400 hover:text-red-600 transition-colors"
-                          >
-                            <Trash2 size={18} />
-                          </button>
-                        </div>
-                        <p className="text-sm text-bakery-brown/80">{item.flavor} | {item.weight}</p>
-                        <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Pure Veg</span>
-                        
-                        <div className="flex items-center mt-3">
-                          <div className="flex items-center border border-bakery-peach rounded-md">
+                  {cart.map((item, index) => {
+                    const itemUnitPrice = item.price !== undefined && item.price !== null
+                      ? item.price
+                      : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1);
+                    const itemSubtotal = itemUnitPrice * item.quantity;
+                    
+                    return (
+                      <div key={`${item.id}-${index}`} className="flex gap-4 border-b border-bakery-peach/50 pb-6">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-24 h-24 object-cover rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-serif font-bold text-bakery-darkBrown">{item.name}</h3>
                             <button 
-                              onClick={() => updateQuantity(index, -1)}
-                              className="p-1 hover:bg-bakery-peach text-bakery-brown"
-                              disabled={item.quantity <= 1}
+                              onClick={() => removeFromCart(index)}
+                              className="text-red-400 hover:text-red-600 transition-colors"
                             >
-                              <Minus size={16} />
+                              <Trash2 size={18} />
                             </button>
-                            <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
-                            <button 
-                              onClick={() => updateQuantity(index, 1)}
-                              className="p-1 hover:bg-bakery-peach text-bakery-brown"
-                            >
-                              <Plus size={16} />
-                            </button>
+                          </div>
+                          <p className="text-sm text-bakery-brown/80">{item.flavor} | {item.weight}</p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 inline-block">Pure Veg</span>
+                            <span className="text-xs text-bakery-brown/60">₹{itemUnitPrice}/each</span>
+                          </div>
+                          
+                          <div className="flex items-center justify-between mt-3">
+                            <div className="flex items-center border border-bakery-peach rounded-md">
+                              <button 
+                                onClick={() => updateQuantity(index, -1)}
+                                className="p-1 hover:bg-bakery-peach text-bakery-brown"
+                                disabled={item.quantity <= 1}
+                              >
+                                <Minus size={16} />
+                              </button>
+                              <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
+                              <button 
+                                onClick={() => updateQuantity(index, 1)}
+                                className="p-1 hover:bg-bakery-peach text-bakery-brown"
+                              >
+                                <Plus size={16} />
+                              </button>
+                            </div>
+                            <span className="text-base font-sans font-bold text-bakery-pink-dark">
+                              ₹{itemSubtotal}
+                            </span>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -106,6 +119,10 @@ const CartDrawer = () => {
             {/* Footer */}
             {cart.length > 0 && (
               <div className="border-t border-bakery-peach p-6 bg-bakery-cream">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="font-serif text-lg font-bold text-bakery-darkBrown">Total Amount:</span>
+                  <span className="font-sans text-xl font-bold text-bakery-pink-dark">₹{getCartTotal()}</span>
+                </div>
                 <button 
                   onClick={handleCheckout}
                   className="w-full py-4 bg-bakery-brown text-white rounded-full font-bold text-lg hover:bg-bakery-darkBrown transition-colors shadow-lg shadow-bakery-brown/30"

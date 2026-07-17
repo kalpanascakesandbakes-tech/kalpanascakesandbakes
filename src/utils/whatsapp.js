@@ -14,10 +14,25 @@ export const generateWhatsAppLink = (orderData) => {
 
   message += `🍰 *Order Items*\n`;
   orderData.cart.forEach((item, index) => {
+    const multipliers = {
+      '0.5 KG': 1,
+      '1 KG': 2,
+      '1.5 KG': 3,
+      '2 KG': 4,
+      '3 KG': 6,
+      '4 KG': 8,
+      '5 KG': 10,
+    };
+    const unitPrice = item.price !== undefined && item.price !== null
+      ? item.price
+      : item.basePrice * (multipliers[item.weight] || 1);
+    const subtotal = unitPrice * item.quantity;
+
     message += `*${index + 1}. ${item.name}*\n`;
     message += `   • Flavor: ${item.flavor}\n`;
     message += `   • Weight: ${item.weight}\n`;
-    message += `   • Quantity: ${item.quantity}\n`;
+    message += `   • Price: ₹${unitPrice} each\n`;
+    message += `   • Qty: ${item.quantity} (Subtotal: ₹${subtotal})\n`;
     if (item.nameOnCake) {
       message += `   • Name on Cake: "${item.nameOnCake}"\n`;
     }
@@ -26,9 +41,11 @@ export const generateWhatsAppLink = (orderData) => {
     }
   });
 
+  message += `\n💰 *Total Order Value:* ₹${orderData.totalAmount}\n\n`;
+
   if (orderData.notes) {
-    message += `\n📝 *Order Notes / Special Instructions*\n`;
-    message += `${orderData.notes}\n`;
+    message += `📝 *Order Notes / Special Instructions*\n`;
+    message += `${orderData.notes}\n\n`;
   }
 
   message += `💳 *Payment (GPay):* Please pay to *+91 90047 62873* and share the screenshot here.\n`;

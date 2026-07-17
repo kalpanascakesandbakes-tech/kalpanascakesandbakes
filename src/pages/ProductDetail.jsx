@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingBag, MessageCircle, Info } from 'lucide-react';
@@ -18,7 +18,6 @@ const ProductDetail = () => {
   );
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [weight, setWeight] = useState('0.5 KG');
   const [isEggless, setIsEggless] = useState(true);
   const [nameOnCake, setNameOnCake] = useState('');
   const [message, setMessage] = useState('');
@@ -27,6 +26,46 @@ const ProductDetail = () => {
   // Custom weight state
   const [isCustomWeight, setIsCustomWeight] = useState(false);
   const [customWeightValue, setCustomWeightValue] = useState(6);
+
+  // Determine available weights dynamically based on prices database
+  const availableWeights = (() => {
+    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
+    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
+    
+    const list = [];
+    if (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined) list.push('0.5 KG');
+    if (cake.prices['1 KG'] !== null && cake.prices['1 KG'] !== undefined) list.push('1 KG');
+    if (cake.prices['1.5 KG'] !== null && cake.prices['1.5 KG'] !== undefined) list.push('1.5 KG');
+    
+    const hasBaseWeight = (cake.prices['1 KG'] !== null && cake.prices['1 KG'] !== undefined) || 
+                          (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined);
+    if (hasBaseWeight || cake.id === 'c135') {
+      list.push('2 KG', '3 KG', '4 KG', '5 KG');
+    }
+    return list;
+  })();
+
+  const [weight, setWeight] = useState('1 KG');
+
+  // Reset states when ID or cake changes
+  useEffect(() => {
+    if (cake) {
+      setNameOnCake('');
+      setMessage('');
+      setInstructions('');
+      setIsCustomWeight(false);
+      setSelectedImage(0);
+      
+      if (cake.id === 'c135') {
+        setWeight('2 KG');
+      } else if (cake.prices) {
+        const valid = ['0.5 KG', '1 KG', '1.5 KG'].filter(w => cake.prices[w] !== null && cake.prices[w] !== undefined);
+        setWeight(valid.length > 0 ? valid[0] : '1 KG');
+      } else {
+        setWeight('0.5 KG');
+      }
+    }
+  }, [id, cake]);
 
   if (!cake) {
     return (
@@ -50,23 +89,44 @@ const ProductDetail = () => {
     { classes: 'object-top scale-150 origin-top' }
   ];
 
-  const standardWeights = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
-  
-  const currentMultiplier = isCustomWeight 
-    ? (customWeightValue * 2) // Assuming base price is 0.5kg, so 1kg = 2x multiplier
-    : WEIGHT_MULTIPLIERS[weight];
+  // Calculate current price dynamically
+  const currentPrice = (() => {
+    if (isCustomWeight) {
+      if (cake.prices) {
+        const baseKgPrice = cake.prices['1 KG'] || (cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] * 2 : cake.price * 2);
+        return customWeightValue * baseKgPrice;
+      }
+      return cake.price * (customWeightValue * 2);
+    }
     
-  const currentPrice = cake.price * currentMultiplier;
+    if (cake.prices) {
+      if (cake.prices[weight] !== undefined && cake.prices[weight] !== null) {
+        return cake.prices[weight];
+      }
+      // Proportional pricing for weights above 1.5 KG
+      const numericWeight = parseFloat(weight);
+      if (cake.prices['1 KG']) {
+        return numericWeight * cake.prices['1 KG'];
+      }
+      if (cake.prices['0.5 KG']) {
+        return (numericWeight / 0.5) * cake.prices['0.5 KG'];
+      }
+    }
+    
+    // Fallback using legacy multipliers
+    const currentMultiplier = WEIGHT_MULTIPLIERS[weight] || 1;
+    return cake.price * currentMultiplier;
+  })();
 
   const handleAddToCart = () => {
     addToCart({
       id: cake.id,
       name: cake.name,
       basePrice: cake.price,
+      price: currentPrice, // Dynamic unit price based on weight/size
       image: cake.image,
-      flavor: cake.category,
+      flavor: cake.flavor || cake.category,
       weight: isCustomWeight ? `${customWeightValue} KG` : weight,
-      weightMultiplier: currentMultiplier,
       eggless: isEggless,
       quantity: 1,
       nameOnCake,
@@ -78,7 +138,6 @@ const ProductDetail = () => {
   const handleOrderWhatsApp = () => {
     handleAddToCart();
     navigate('/checkout');
-    // Actual WhatsApp logic is on checkout completion, or we can build a direct link here.
   };
 
   return (
@@ -127,7 +186,14 @@ const ProductDetail = () => {
           <div className="space-y-8">
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
-              <p className="text-xl text-bakery-brown/80 mb-4">{cake.category}</p>
+              <p className="text-xl text-bakery-brown/80 mb-3">{cake.flavor || cake.category}</p>
+              
+              <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
+                <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
+                {!isCustomWeight && (
+                  <span className="text-sm text-bakery-brown/60">for {weight}</span>
+                )}
+              </div>
 
               <p className="text-bakery-brown/80 leading-relaxed">
                 Indulge in our exquisite {cake.name}. Handcrafted with premium ingredients, 
@@ -148,7 +214,7 @@ const ProductDetail = () => {
               <div>
                 <label className="block font-bold text-bakery-darkBrown mb-3">Select Weight</label>
                 <div className="flex flex-wrap gap-3">
-                  {!isCustomWeight && standardWeights.map(w => (
+                  {!isCustomWeight && availableWeights.map(w => (
                     <button
                       key={w}
                       onClick={() => setWeight(w)}

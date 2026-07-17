@@ -563,7 +563,7 @@ const Categories = () => {
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <CakeCard cake={cake} onQuickView={setSelectedCake} showPrice={false} />
+                      <CakeCard cake={cake} onQuickView={setSelectedCake} showPrice={true} />
                     </motion.div>
                   ))}
                 </AnimatePresence>
