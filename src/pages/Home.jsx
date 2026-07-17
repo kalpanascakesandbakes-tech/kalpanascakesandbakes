@@ -28,19 +28,28 @@ const heroSlides = [
 
 const reviews = [
   { 
+    name: 'Dipti Sawant',
     review: 'Thank you from the bottom if my heart you nade our morning very sweet and happy on this special day.the cake tastes very yummy 😋 and quantity is too good 👍 next birthday cake 🎂 order coming December with you only😊😇😘 cake decorations #@ ⭐⭐⭐⭐⭐.👍🏻✌🏻',
     rating: 5
   },
   { 
+    name: 'Dipti Sawant',
     review: 'Thanks dear they all liked the cake it was soft and tasty 😀😊👍🏻👍🏻😇😇',
     rating: 5
   },
   { 
+    name: 'Dipti Sawant',
     review: 'Too much Lovely 😍 dear OSM my friend and her hubby and everyone enjoyed it very tasty and delicious and superb looking cake👍🏻👍🏻👍🏻👍🏻👍🏻',
     rating: 5
   },
   { 
+    name: 'Dipti Sawant',
     review: 'Both cakes very very nice and yummy all of us enjoyed its suoer delicious and truly amazing 10/10 for both these cakes 👆🏻👌🏻👌🏻❤️🌹🌹🌹🌹🌹 special thank you for the cat cake😇😊😄💓💓',
+    rating: 5
+  },
+  {
+    name: 'Bindu Tiwari',
+    review: 'Cake bahut tasty tha Sabko bahut pasand🎂🎂 aaya 👌👌👌😋😋😍😍',
     rating: 5
   }
 ];
@@ -439,7 +448,7 @@ const Home = () => {
               Customer Love
             </span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-bakery-darkBrown mt-3 mb-4">
-              Sweet Words from Dipti Sawant
+              Sweet Words from Our Customers
             </h2>
             <div className="w-24 h-1 bg-bakery-gold mx-auto rounded-full"></div>
           </motion.div>
@@ -498,12 +507,12 @@ const Home = () => {
                   <div className="flex flex-col md:flex-row items-center gap-4 border-t border-bakery-peach/20 pt-6">
                     {/* Avatar Circle */}
                     <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-bakery-pink-vibrant to-bakery-gold text-white font-bold text-lg flex items-center justify-center shadow-md select-none">
-                      DS
+                      {reviews[currentReview].name.split(' ').map(n => n[0]).join('').toUpperCase()}
                     </div>
                     {/* User Info */}
                     <div className="text-center md:text-left">
                       <h4 className="font-bold text-bakery-darkBrown text-base md:text-lg flex items-center gap-1.5 justify-center md:justify-start">
-                        Dipti Sawant
+                        {reviews[currentReview].name}
                         {/* Gold checkmark verified badge */}
                         <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-600 shadow-sm" title="Verified Customer">
                           <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
