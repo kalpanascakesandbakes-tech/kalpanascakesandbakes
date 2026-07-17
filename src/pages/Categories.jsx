@@ -458,34 +458,6 @@ const Categories = () => {
 
               </div>
 
-              {/* Bento Menu Card Image Section */}
-              <div className="p-6 md:p-10 border-t border-bakery-pink/20 bg-[#fff5f6]/40 text-center">
-                <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] mb-6">
-                  Official Bento Cake Menu Card
-                </h3>
-                <div className="flex justify-center items-center">
-                  <div className="bg-white p-4 rounded-3xl shadow-md border border-bakery-peach/30 max-w-md hover:scale-[1.02] transition-transform duration-300">
-                    <a href="/cakes/bento-menu-card.jpeg" target="_blank" rel="noopener noreferrer">
-                      <img 
-                        src="/cakes/bento-menu-card.jpeg" 
-                        alt="Bento Cake Menu Card" 
-                        className="rounded-2xl border border-bakery-peach/20 max-h-[500px] object-contain shadow-inner"
-                      />
-                    </a>
-                    <div className="text-center mt-3 flex justify-center gap-4">
-                      <span className="text-xs text-bakery-brown/70 font-semibold">Click to view/enlarge</span>
-                      <a 
-                        href="/cakes/bento-menu-card.jpeg" 
-                        download="Kalpanas_Cakes_Bakes_Bento_Menu.jpeg"
-                        className="text-xs text-bakery-pink-dark hover:underline font-bold"
-                      >
-                        Download Image
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Also Check Out Illustrations (Pastries, Donuts, Jar Cakes) */}
               <div className="bg-[#fff0f2]/60 px-6 py-12 md:px-12 border-t border-bakery-pink/20">
                 <h3 className="text-2xl font-serif font-bold text-[#8b1e3f] text-center mb-8 font-serif">Also Check Out</h3>
