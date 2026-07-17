@@ -128,10 +128,7 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
               <p className="text-xl text-bakery-brown/80 mb-4">{cake.category}</p>
-              <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-4xl font-bold text-bakery-darkBrown">₹{currentPrice}</span>
-                <span className="text-sm text-bakery-brown/60">(Inclusive of all taxes)</span>
-              </div>
+
               <p className="text-bakery-brown/80 leading-relaxed">
                 Indulge in our exquisite {cake.name}. Handcrafted with premium ingredients, 
                 this beautiful creation is perfect for making your special moments even sweeter.
@@ -213,17 +210,10 @@ const ProductDetail = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <button 
-                  onClick={handleAddToCart}
-                  className="flex-1 py-4 bg-bakery-brown text-white rounded-full font-bold text-lg hover:bg-bakery-darkBrown transition-colors shadow-lg shadow-bakery-brown/30 flex items-center justify-center gap-2"
-                >
-                  <ShoppingBag size={20} />
-                  Add to Cart
-                </button>
+              <div className="pt-6">
                 <button 
                   onClick={handleOrderWhatsApp}
-                  className="flex-1 py-4 bg-[#25D366] text-white rounded-full font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/30 flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#25D366] text-white rounded-full font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/30 flex items-center justify-center gap-2"
                 >
                   <MessageCircle size={20} />
                   Order on WhatsApp

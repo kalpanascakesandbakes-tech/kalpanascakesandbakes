@@ -78,7 +78,7 @@ const CartDrawer = () => {
                         <p className="text-sm text-bakery-brown/80">{item.flavor} | {item.weight}</p>
                         <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Pure Veg</span>
                         
-                        <div className="flex items-center justify-between mt-3">
+                        <div className="flex items-center mt-3">
                           <div className="flex items-center border border-bakery-peach rounded-md">
                             <button 
                               onClick={() => updateQuantity(index, -1)}
@@ -95,7 +95,6 @@ const CartDrawer = () => {
                               <Plus size={16} />
                             </button>
                           </div>
-                          <span className="font-bold text-bakery-darkBrown">₹{(item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1)) * item.quantity}</span>
                         </div>
                       </div>
                     </div>
@@ -107,10 +106,6 @@ const CartDrawer = () => {
             {/* Footer */}
             {cart.length > 0 && (
               <div className="border-t border-bakery-peach p-6 bg-bakery-cream">
-                <div className="flex justify-between items-center mb-6">
-                  <span className="font-serif text-lg text-bakery-brown">Grand Total</span>
-                  <span className="font-serif text-2xl font-bold text-bakery-darkBrown">₹{getCartTotal()}</span>
-                </div>
                 <button 
                   onClick={handleCheckout}
                   className="w-full py-4 bg-bakery-brown text-white rounded-full font-bold text-lg hover:bg-bakery-darkBrown transition-colors shadow-lg shadow-bakery-brown/30"

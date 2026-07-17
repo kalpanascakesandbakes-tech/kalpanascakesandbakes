@@ -260,7 +260,6 @@ const Categories = () => {
                           {item.name.replace('★', '')}
                           {item.isStarred && <Star size={16} className="fill-bakery-gold text-bakery-gold shrink-0 animate-pulse" />}
                         </span>
-                        <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                       </li>
                     ))}
                   </ul>
@@ -282,7 +281,6 @@ const Categories = () => {
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -302,7 +300,6 @@ const Categories = () => {
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -325,7 +322,6 @@ const Categories = () => {
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>
@@ -368,7 +364,6 @@ const Categories = () => {
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
-                          <span className="font-bold text-[#be185d] text-base font-mono">₹{item.price}</span>
                         </li>
                       ))}
                     </ul>

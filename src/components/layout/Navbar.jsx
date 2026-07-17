@@ -243,66 +243,11 @@ const Navbar = () => {
               </Link>
             ))}
 
-
-
-            <button 
-              onClick={openCart}
-              className="relative p-2 text-bakery-brown hover:text-bakery-darkBrown transition-colors ml-4 focus:outline-none"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: [0, -10, 10, -10, 10, 0] }}
-                animate={animateCart ? { scale: [1, 1.25, 0.95, 1.05, 1], rotate: [0, -8, 8, -4, 4, 0] } : {}}
-                transition={{ duration: 0.5 }}
-                className="flex items-center justify-center"
-              >
-                <ShoppingBag size={24} />
-              </motion.div>
-              <AnimatePresence>
-                {cartCount > 0 && (
-                  <motion.span
-                    key={cartCount}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
-                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-extrabold text-white bg-bakery-pink-vibrant rounded-full transform translate-x-1/4 -translate-y-1/4 shadow-md select-none border border-white"
-                  >
-                    {cartCount}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
           </div>
 
           {/* Mobile Menu Button & Cart */}
           <div className="flex lg:hidden items-center gap-4">
-            <button 
-              onClick={openCart}
-              className="relative p-2 text-bakery-brown focus:outline-none"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: [0, -10, 10, -10, 10, 0] }}
-                animate={animateCart ? { scale: [1, 1.25, 0.95, 1.05, 1], rotate: [0, -8, 8, -4, 4, 0] } : {}}
-                transition={{ duration: 0.5 }}
-                className="flex items-center justify-center"
-              >
-                <ShoppingBag size={24} />
-              </motion.div>
-              <AnimatePresence>
-                {cartCount > 0 && (
-                  <motion.span
-                    key={cartCount}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
-                    className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-extrabold text-white bg-bakery-pink-vibrant rounded-full transform translate-x-1/4 -translate-y-1/4 shadow-md select-none border border-white"
-                  >
-                    {cartCount}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-bakery-brown"

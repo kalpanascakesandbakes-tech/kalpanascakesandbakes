@@ -804,6 +804,892 @@ export const mockCakes = [
     "categoryGroup": "Theme Cakes",
     "custom": true
   }
+,
+  {
+    "id": "c138",
+    "name": "Golden Butterfly Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.16 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c139",
+    "name": "Royal Rose Floral Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.16 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c140",
+    "name": "Sparkling Sprinkles Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.17 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c141",
+    "name": "Pastel Rose Wedding Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.17 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c142",
+    "name": "Unicorn Princess Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.17 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c143",
+    "name": "Vintage Piping Heart Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.18 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c144",
+    "name": "Chocolate Truffle Drip Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.18 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c145",
+    "name": "Teddy Bear Baby Shower Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.18 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c146",
+    "name": "Abstract Art Palette Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.19 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c147",
+    "name": "Gold Foil Anniversary Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.19 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c148",
+    "name": "Velvet Rose Crown Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.19 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c149",
+    "name": "Chocolate Oreo Cream Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.20 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c150",
+    "name": "Classic Rasmalai Delight Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.20 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c151",
+    "name": "Gulab Jamun Fusion Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.20 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c152",
+    "name": "Red Velvet Cheesecake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.21 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c153",
+    "name": "Blueberry Glaze Cheesecake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.21 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c154",
+    "name": "Premium Black Forest Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.21 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c155",
+    "name": "Fresh Pineapple Slice Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.21 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c156",
+    "name": "Butterscotch Crunch Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.22 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c157",
+    "name": "Fresh Mango Cream Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.22 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c158",
+    "name": "Chocolate Nutella Swirl Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.22 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c159",
+    "name": "Double Chocolate Shavings Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.23 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c160",
+    "name": "Dark Truffle Glaze Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.23 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c161",
+    "name": "Golden Chocolate Shards Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.23 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c162",
+    "name": "Pink Butterfly Dream Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.23 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c163",
+    "name": "Lavender Royale Crown Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.24 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c164",
+    "name": "Welcome Baby Pink Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.24 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c165",
+    "name": "Frozen Princess Elsa Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.24 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c166",
+    "name": "Rose Anniversary Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.25 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c167",
+    "name": "Racing Cars Theme Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.25 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c168",
+    "name": "Red Rose Heart Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.25 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c169",
+    "name": "Sweet 18 Crown Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.25 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c170",
+    "name": "Elegant Holy Cross Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.26 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c171",
+    "name": "Golden Butterfly Crown Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.26 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c172",
+    "name": "Magical Snowy Elsa Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.26 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c173",
+    "name": "Jungle Safari Animals Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.27 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c174",
+    "name": "Super Dad Butterscotch Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.27 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c175",
+    "name": "Baby Shower Pink Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.27 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c176",
+    "name": "Spiderman Web Adventure Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.27 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c177",
+    "name": "Barbie Doll Blue Gown Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.28 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c178",
+    "name": "Purple Swirl Cream Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.28 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c179",
+    "name": "Pink Drip Princess Castle Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.28 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c180",
+    "name": "Chocolate Oreo Mousse Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.29 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c181",
+    "name": "Caramel Walnut Fudge Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.29 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c182",
+    "name": "White Forest Cherry Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.29 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c183",
+    "name": "Mixed Fruit Basket Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.29 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c184",
+    "name": "Pistachio Rose Cardamom Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.30 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c185",
+    "name": "Tiramisu Coffee Cream Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.30 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c186",
+    "name": "Lemon Zest Vanilla Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.30 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c187",
+    "name": "Chocolate Hazelnut Praline Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.31 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c188",
+    "name": "Mango Coconut Fusion Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.31 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c189",
+    "name": "Blueberry Almond Crumble Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.31 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c190",
+    "name": "Strawberry Vanilla Drip Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.31 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c191",
+    "name": "Kit Kat Chocolate Overload Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.32 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c192",
+    "name": "Rainbow Vanilla Layer Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.32 PM (2).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c193",
+    "name": "Cookies & Cream Chocolate Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 1050,
+    "rating": 5,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.32 PM (3).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c194",
+    "name": "Lotus Biscoff Speculoos Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 750,
+    "rating": 4.7,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.32 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c195",
+    "name": "Royal Rajbhog Saffron Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate",
+    "price": 850,
+    "rating": 4.8,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.33 PM (1).jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+},
+  {
+    "id": "c196",
+    "name": "Salted Caramel Popcorn Cake",
+    "category": "Cakes",
+    "flavor": "Vanilla",
+    "price": 950,
+    "rating": 4.9,
+    "tags": [
+        "Designer Cakes",
+        "60 Minutes Delivery"
+    ],
+    "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.33 PM.jpeg",
+    "categoryGroup": "Theme Cakes",
+    "custom": true
+}
 ];
 
 export const getBestSellers = () => mockCakes.filter(cake => cake.isBestSeller);

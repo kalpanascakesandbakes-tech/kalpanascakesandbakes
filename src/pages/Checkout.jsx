@@ -135,7 +135,7 @@ const Checkout = () => {
               💳 Payment Information
             </h3>
             <p className="text-sm text-bakery-darkBrown mb-3">
-              Please complete your payment of <span className="font-bold text-[#be185d] text-base">₹{placedOrderData?.totalAmount}</span> using GPay:
+              Please complete your payment using GPay:
             </p>
             <div className="bg-white p-4 rounded-xl border border-bakery-peach/30 flex justify-between items-center shadow-sm">
               <div>
@@ -198,20 +198,7 @@ const Checkout = () => {
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t-2 border-bakery-peach">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-bakery-brown">Subtotal</span>
-                  <span className="font-bold">₹{getCartTotal()}</span>
-                </div>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-bakery-brown">Delivery</span>
-                  <span className="text-green-600 font-bold">Free</span>
-                </div>
-                <div className="flex justify-between items-center text-xl">
-                  <span className="font-serif font-bold text-bakery-darkBrown">Grand Total</span>
-                  <span className="font-bold text-bakery-darkBrown">₹{getCartTotal()}</span>
-                </div>
-              </div>
+
             </div>
           </div>
 
@@ -275,7 +262,7 @@ const Checkout = () => {
                 disabled={isSubmitting}
                 className={`w-full py-4 text-white rounded-xl font-bold text-lg transition-colors shadow-lg ${isSubmitting ? 'bg-bakery-brown/70 cursor-not-allowed' : 'bg-bakery-brown hover:bg-bakery-darkBrown'}`}
               >
-                {isSubmitting ? 'Processing...' : `Place Order (₹${getCartTotal()})`}
+                {isSubmitting ? 'Processing...' : 'Place Order'}
               </button>
             </form>
           </div>

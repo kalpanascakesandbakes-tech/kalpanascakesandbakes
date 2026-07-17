@@ -106,29 +106,20 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
               {cake.name}
             </h2>
 
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-2xl font-bold text-bakery-darkBrown">₹{cake.price}</span>
-              {cake.rating && (
+            {cake.rating && (
+              <div className="flex items-center gap-4 mb-6">
                 <div className="flex items-center gap-1 bg-bakery-gold/20 text-bakery-darkBrown px-3 py-1 rounded-full text-sm font-bold">
                   <span>★</span>
                   <span>{cake.rating}</span>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
 
             <p className="text-bakery-brown/80 mb-8 leading-relaxed">
               Experience the rich taste of our premium {cake.name}. Freshly baked with love and the finest ingredients. Perfect for your special moments.
             </p>
 
             <div className="space-y-4">
-              <button 
-                onClick={handleAddToCart}
-                className="w-full py-4 bg-bakery-brown text-white rounded-xl font-bold text-lg hover:bg-bakery-darkBrown transition-colors shadow-lg flex items-center justify-center gap-2"
-              >
-                <ShoppingBag size={20} />
-                Add to Cart
-              </button>
-              
               <a 
                 href={`/cake/${cake.id}`}
                 className="w-full py-4 bg-bakery-cream text-bakery-darkBrown border-2 border-bakery-peach rounded-xl font-bold text-lg hover:bg-bakery-peach/50 transition-colors flex items-center justify-center"

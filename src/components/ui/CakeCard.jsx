@@ -3,7 +3,7 @@ import { ShoppingCart, Eye, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import useCartStore from '../../store/useCartStore';
 
-const CakeCard = ({ cake, onQuickView }) => {
+const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   const addToCart = useCartStore(state => state.addToCart);
 
   const handleAddToCart = (e) => {
@@ -40,17 +40,10 @@ const CakeCard = ({ cake, onQuickView }) => {
         </Link>
         
         {/* Quick actions on hover (outside the Link to prevent event capturing) */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 pointer-events-none group-hover:pointer-events-auto">
-          <button 
-            onClick={handleAddToCart}
-            className="p-3 bg-white text-bakery-brown rounded-full hover:bg-bakery-gold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 pointer-events-auto cursor-pointer"
-            title="Quick Add to Cart"
-          >
-            <ShoppingCart size={20} />
-          </button>
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
           <Link 
             to={`/cake/${cake.id}`}
-            className="p-3 bg-white text-bakery-brown rounded-full hover:bg-bakery-gold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 flex items-center justify-center pointer-events-auto cursor-pointer"
+            className="p-3 bg-white text-bakery-brown rounded-full hover:bg-bakery-gold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 flex items-center justify-center pointer-events-auto cursor-pointer"
             title="View Details"
           >
             <Eye size={20} />
@@ -74,17 +67,12 @@ const CakeCard = ({ cake, onQuickView }) => {
         <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">{cake.category}</p>
         
         <div className="flex items-center justify-between gap-1">
-          <p className="font-sans font-bold text-xs sm:text-sm md:text-base text-bakery-darkBrown whitespace-nowrap">
-            <span className="text-[10px] sm:text-xs text-bakery-brown/60 font-normal">Starting </span>
-            ₹{cake.price}
-          </p>
-          <button 
-            onClick={(e) => { e.preventDefault(); handleAddToCart(e); }}
-            className="text-xs sm:text-sm font-bold text-bakery-brown hover:text-bakery-gold transition-colors whitespace-nowrap cursor-pointer"
-          >
-            <span className="hidden sm:inline">Add to Cart +</span>
-            <span className="sm:hidden">Add +</span>
-          </button>
+          {showPrice && (
+            <p className="font-sans font-bold text-xs sm:text-sm md:text-base text-bakery-darkBrown whitespace-nowrap">
+              <span className="text-[10px] sm:text-xs text-bakery-brown/60 font-normal">Starting </span>
+              ₹{cake.price}
+            </p>
+          )}
         </div>
       </div>
     </motion.div>
