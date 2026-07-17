@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck, BookOpen, Download } from 'lucide-react';
+import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck, BookOpen, Download, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { getBestSellers, getFeaturedCakes } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
@@ -26,6 +26,25 @@ const heroSlides = [
   }
 ];
 
+const reviews = [
+  { 
+    review: 'Thank you from the bottom if my heart you nade our morning very sweet and happy on this special day.the cake tastes very yummy 😋 and quantity is too good 👍 next birthday cake 🎂 order coming December with you only😊😇😘 cake decorations #@ ⭐⭐⭐⭐⭐.👍🏻✌🏻',
+    rating: 5
+  },
+  { 
+    review: 'Thanks dear they all liked the cake it was soft and tasty 😀😊👍🏻👍🏻😇😇',
+    rating: 5
+  },
+  { 
+    review: 'Too much Lovely 😍 dear OSM my friend and her hubby and everyone enjoyed it very tasty and delicious and superb looking cake👍🏻👍🏻👍🏻👍🏻👍🏻',
+    rating: 5
+  },
+  { 
+    review: 'Both cakes very very nice and yummy all of us enjoyed its suoer delicious and truly amazing 10/10 for both these cakes 👆🏻👌🏻👌🏻❤️🌹🌹🌹🌹🌹 special thank you for the cat cake😇😊😄💓💓',
+    rating: 5
+  }
+];
+
 const Home = () => {
   useDocumentMetadata(
     "Best Cake Shop in Vikhroli, Mumbai | Homemade Cakes & Bakery",
@@ -37,11 +56,19 @@ const Home = () => {
   const [selectedCake, setSelectedCake] = useState(null);
   const [isLicenseOpen, setIsLicenseOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentReview, setCurrentReview] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentReview((prev) => (prev + 1) % reviews.length);
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
@@ -401,54 +428,108 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-bakery-cream relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-24 bg-gradient-to-b from-bakery-cream to-white relative overflow-hidden">
+        {/* Decorative background shapes */}
+        <div className="absolute top-10 left-10 w-72 h-72 bg-bakery-peach/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-bakery-pink/20 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-4">Happy Customers</h2>
+            <span className="bg-bakery-pink-vibrant/10 text-bakery-pink-dark px-4 py-1.5 rounded-full text-sm font-bold tracking-wide uppercase">
+              Customer Love
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-bakery-darkBrown mt-3 mb-4">
+              Sweet Words from Dipti Sawant
+            </h2>
             <div className="w-24 h-1 bg-bakery-gold mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { 
-                name: 'Dipti Sawant', 
-                review: 'Thank you from the bottom if my heart you nade our morning very sweet and happy on this special day.the cake tastes very yummy 😋 and quantity is too good 👍 next birthday cake 🎂 order coming December with you only😊😇😘 cake decorations #@ ⭐⭐⭐⭐⭐.👍🏻✌🏻', 
-                rating: 5 
-              },
-              { 
-                name: 'Dipti Sawant', 
-                review: 'Thanks dear they all liked the cake it was soft and tasty 😀😊👍🏻👍🏻😇😇', 
-                rating: 5 
-              },
-              { 
-                name: 'Dipti Sawant', 
-                review: 'Too much Lovely 😍 dear OSM my friend and her hubby and everyone enjoyed it very tasty and delicious and superb looking cake👍🏻👍🏻👍🏻👍🏻👍🏻', 
-                rating: 5 
-              },
-              { 
-                name: 'Dipti Sawant', 
-                review: 'Both cakes very very nice and yummy all of us enjoyed its suoer delicious and truly amazing 10/10 for both these cakes 👆🏻👌🏻👌🏻❤️🌹🌹🌹🌹🌹 special thank you for the cat cake😇😊😄💓💓', 
-                rating: 5 
-              }
-            ].map((test, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="bg-white p-8 rounded-3xl shadow-sm border border-bakery-peach/30 relative flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-bakery-gold mb-4 flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={18} className={i < test.rating ? 'fill-current' : 'text-gray-300'} />
-                    ))}
+          <div className="relative px-2">
+            {/* Left Nav Arrow */}
+            <button 
+              onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-12 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-bakery-peach/30 text-bakery-brown hover:text-bakery-pink-dark flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-pointer"
+              aria-label="Previous Review"
+            >
+              <ChevronLeft size={20} className="md:w-6 md:h-6" />
+            </button>
+
+            {/* Right Nav Arrow */}
+            <button 
+              onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-12 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg border border-bakery-peach/30 text-bakery-brown hover:text-bakery-pink-dark flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-pointer"
+              aria-label="Next Review"
+            >
+              <ChevronRight size={20} className="md:w-6 md:h-6" />
+            </button>
+
+            {/* Review Box Wrapper */}
+            <div className="bg-white rounded-[2.5rem] shadow-xl hover:shadow-2xl border border-bakery-peach/30 p-8 md:p-12 relative overflow-hidden min-h-[360px] md:min-h-[290px] flex flex-col justify-between">
+              
+              {/* Gold Quote Icon in background */}
+              <div className="absolute right-8 top-8 text-bakery-gold/15 pointer-events-none">
+                <Quote size={80} className="transform rotate-180" />
+              </div>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentReview}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="flex-1 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Stars */}
+                    <div className="text-bakery-gold mb-6 flex gap-1 justify-center md:justify-start">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={20} className="fill-current" />
+                      ))}
+                    </div>
+
+                    {/* Review text */}
+                    <p className="text-bakery-darkBrown font-serif text-base md:text-xl italic leading-relaxed text-center md:text-left mb-8 px-2 md:px-0">
+                      "{reviews[currentReview].review}"
+                    </p>
                   </div>
-                  <p className="text-bakery-brown/85 mb-6 italic leading-relaxed text-sm sm:text-base">"{test.review}"</p>
-                </div>
-                <h4 className="font-bold text-bakery-darkBrown text-sm sm:text-base">- {test.name}</h4>
-              </motion.div>
+
+                  {/* Profile & Name */}
+                  <div className="flex flex-col md:flex-row items-center gap-4 border-t border-bakery-peach/20 pt-6">
+                    {/* Avatar Circle */}
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-bakery-pink-vibrant to-bakery-gold text-white font-bold text-lg flex items-center justify-center shadow-md select-none">
+                      DS
+                    </div>
+                    {/* User Info */}
+                    <div className="text-center md:text-left">
+                      <h4 className="font-bold text-bakery-darkBrown text-base md:text-lg flex items-center gap-1.5 justify-center md:justify-start">
+                        Dipti Sawant
+                        {/* Gold checkmark verified badge */}
+                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-600 shadow-sm" title="Verified Customer">
+                          <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+                            <path d="M7.629 14.571L3.125 10.068l1.417-1.416 3.087 3.087L15.458 4l1.417 1.416z" />
+                          </svg>
+                        </span>
+                      </h4>
+                      <p className="text-[10px] md:text-xs text-bakery-brown/60 font-semibold uppercase tracking-wider">Verified Buyer • Homemade Cake Fan</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Dots Indicators */}
+          <div className="flex justify-center gap-3 mt-8">
+            {reviews.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentReview(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentReview === index ? 'bg-bakery-pink-vibrant w-8 scale-110' : 'bg-bakery-peach hover:bg-bakery-pink-vibrant/50'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
           </div>
         </div>
