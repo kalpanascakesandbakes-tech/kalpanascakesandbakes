@@ -260,6 +260,9 @@ const Categories = () => {
                           {item.name.replace('★', '')}
                           {item.isStarred && <Star size={16} className="fill-bakery-gold text-bakery-gold shrink-0 animate-pulse" />}
                         </span>
+                        <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                          ₹{item.price}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -281,6 +284,9 @@ const Categories = () => {
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
                           </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -299,6 +305,9 @@ const Categories = () => {
                         >
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
+                          </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
                           </span>
                         </li>
                       ))}
@@ -321,6 +330,9 @@ const Categories = () => {
                         >
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
+                          </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
                           </span>
                         </li>
                       ))}
@@ -363,6 +375,9 @@ const Categories = () => {
                         >
                           <span className="text-bakery-darkBrown font-semibold text-base">
                             {item.name}
+                          </span>
+                          <span className="text-bakery-pink-dark font-bold text-base shrink-0">
+                            ₹{item.price}
                           </span>
                         </li>
                       ))}
