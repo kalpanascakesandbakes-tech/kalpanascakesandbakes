@@ -408,27 +408,46 @@ const Home = () => {
             <div className="w-24 h-1 bg-bakery-gold mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'Priya M.', review: 'The Rasmalai cake was an absolute hit at our anniversary party! So soft and flavorful.', rating: 5 },
-              { name: 'Rahul S.', review: 'Best Chocolate Truffle cake I have ever had. The packaging was also very premium.', rating: 5 },
-              { name: 'Anita K.', review: 'Ordered a custom Barbie cake for my daughter. It looked beautiful and tasted even better.', rating: 4 }
+              { 
+                name: 'Dipti Sawant', 
+                review: 'Thank you from the bottom if my heart you nade our morning very sweet and happy on this special day.the cake tastes very yummy 😋 and quantity is too good 👍 next birthday cake 🎂 order coming December with you only😊😇😘 cake decorations #@ ⭐⭐⭐⭐⭐.👍🏻✌🏻', 
+                rating: 5 
+              },
+              { 
+                name: 'Dipti Sawant', 
+                review: 'Thanks dear they all liked the cake it was soft and tasty 😀😊👍🏻👍🏻😇😇', 
+                rating: 5 
+              },
+              { 
+                name: 'Dipti Sawant', 
+                review: 'Too much Lovely 😍 dear OSM my friend and her hubby and everyone enjoyed it very tasty and delicious and superb looking cake👍🏻👍🏻👍🏻👍🏻👍🏻', 
+                rating: 5 
+              },
+              { 
+                name: 'Dipti Sawant', 
+                review: 'Both cakes very very nice and yummy all of us enjoyed its suoer delicious and truly amazing 10/10 for both these cakes 👆🏻👌🏻👌🏻❤️🌹🌹🌹🌹🌹 special thank you for the cat cake😇😊😄💓💓', 
+                rating: 5 
+              }
             ].map((test, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                className="bg-white p-8 rounded-3xl shadow-sm border border-bakery-peach/30 relative"
+                transition={{ delay: idx * 0.15 }}
+                className="bg-white p-8 rounded-3xl shadow-sm border border-bakery-peach/30 relative flex flex-col justify-between"
               >
-                <div className="text-bakery-gold mb-4 flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={20} className={i < test.rating ? 'fill-current' : 'text-gray-300'} />
-                  ))}
+                <div>
+                  <div className="text-bakery-gold mb-4 flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={18} className={i < test.rating ? 'fill-current' : 'text-gray-300'} />
+                    ))}
+                  </div>
+                  <p className="text-bakery-brown/85 mb-6 italic leading-relaxed text-sm sm:text-base">"{test.review}"</p>
                 </div>
-                <p className="text-bakery-brown/80 mb-6 italic">"{test.review}"</p>
-                <h4 className="font-bold text-bakery-darkBrown">- {test.name}</h4>
+                <h4 className="font-bold text-bakery-darkBrown text-sm sm:text-base">- {test.name}</h4>
               </motion.div>
             ))}
           </div>
