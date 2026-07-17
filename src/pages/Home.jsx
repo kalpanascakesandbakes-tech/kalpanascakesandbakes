@@ -369,7 +369,7 @@ const Home = () => {
           >
             {featuredCakes.map(cake => (
               <motion.div key={cake.id} variants={fadeInUp}>
-                <CakeCard cake={cake} onQuickView={setSelectedCake} />
+                <CakeCard cake={cake} onQuickView={setSelectedCake} showPrice={false} />
               </motion.div>
             ))}
           </motion.div>
@@ -402,7 +402,7 @@ const Home = () => {
           >
             {bestSellers.map(cake => (
               <motion.div key={cake.id} variants={fadeInUp}>
-                <CakeCard cake={cake} onQuickView={setSelectedCake} />
+                <CakeCard cake={cake} onQuickView={setSelectedCake} showPrice={false} />
               </motion.div>
             ))}
           </motion.div>
