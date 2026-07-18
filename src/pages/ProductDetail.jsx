@@ -186,7 +186,6 @@ const ProductDetail = () => {
           <div className="space-y-8">
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
-              <p className="text-xl text-bakery-brown/80 mb-3">{cake.flavor || cake.category}</p>
               
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
                 <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
