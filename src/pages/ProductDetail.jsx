@@ -426,8 +426,12 @@ const ProductDetail = () => {
 
               {!priceDependsOnFlavor && cake.id !== 'c90' && (
                 <div className="text-bakery-pink-vibrant font-bold mb-3.5 flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
-                  <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
-                  <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">{cake.flavor || selectedFlavor}</span>
+                  {cake.id !== 'c91' && (
+                    <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
+                  )}
+                  <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">
+                    {cake.id === 'c91' ? 'Ferrero Rocher' : (cake.flavor || selectedFlavor)}
+                  </span>
                 </div>
               )}
 
