@@ -1226,9 +1226,9 @@ export const mockCakes = [
   },
   {
     "id": "c144",
-    "name": "Chocolate Truffle Cake",
+    "name": "Red Velvet Cheesecake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Red Velvet",
     "price": 700,
     "rating": 4.9,
     "tags": [
@@ -1242,7 +1242,7 @@ export const mockCakes = [
     "prices": {
       "0.5 KG": 700,
       "1 KG": 1400,
-      "1.5 KG": 2000
+      "1.5 KG": 2100
     }
   },
   {

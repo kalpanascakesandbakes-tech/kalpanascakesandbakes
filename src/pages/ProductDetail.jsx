@@ -53,8 +53,60 @@ const ProductDetail = () => {
   const isBento = cake && (cake.categoryGroup === 'Bento Cakes' || (cake.tags && cake.tags.includes('Bento Cakes')));
   const flavorPrices = isBento ? BENTO_FLAVOR_BASE_PRICES : FLAVOR_BASE_PRICES;
 
-  // Always enable flavor selection
-  const priceDependsOnFlavor = true;
+  // Disable flavor selection for specific cakes as requested
+  const priceDependsOnFlavor = (() => {
+    if (!cake) return true;
+
+    const NO_FLAVOR_SELECT_CAKES = new Set([
+      "chocolate truffle cake",
+      "dutch truffle",
+      "chocolate truffle cake",
+      "chocolate chocochips cake",
+      "classic rasmalai cake",
+      "royal gulab jamun cake",
+      "dark glaze chocolate truffle",
+      "golden jubilee truffle cake",
+      "classic chocolate drip crown cake",
+      "traditional rajbhog cake",
+      "chocolate rocher cake",
+      "spiderman city adventure cake",
+      "chocolate nutella hazelnut cake",
+      "ferrero rocher cake",
+      "red velvet crumbs cake",
+      "butterscotch cake",
+      "mini chocolate bento cake",
+      "choco glaze truffle cake",
+      "18th birthday 2-tier chocolate overload cake",
+      "chocolate drip birthday cake",
+      "chocolate glaze mousse",
+      "chocolate strawberry cake",
+      "black forest cake",
+      "white forest cake",
+      "oreo cake",
+      "chocolate hazelnut cake",
+      "chocolate truffle heart cake",
+      "red velvet heart cake",
+      "black forest rectangle cake",
+      "classic truffle cake",
+      "golden drip truffle cake",
+      "chocolate truffle rectangle cake",
+      "truffle overload cake",
+      "classic pineapple cake",
+      "kitkat chocolate overload cake",
+      "truffle tub cake",
+      "blueberry cake",
+      "chocolate glaze cake",
+      "classic dutch cake"
+    ]);
+
+    // Extract base name to match both custom and regular cakes (stripping categories suffix if present)
+    const baseName = cake.custom
+      ? cake.name
+      : cake.name.replace(/ (Trending|Birthday|Anniversary|Gourmet|Bento|Photo|Designer|Half Birthday) Cakes?$/, '');
+
+    const normalizedName = baseName.toLowerCase().trim().replace(/\s+/g, ' ');
+    return !NO_FLAVOR_SELECT_CAKES.has(normalizedName);
+  })();
 
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
