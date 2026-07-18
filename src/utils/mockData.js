@@ -946,10 +946,10 @@ export const mockCakes = [
   },
   {
     "id": "c131",
-    "name": "Red Velvet Cheesecake",
+    "name": "Chocolate Truffle Cake",
     "category": "Cakes",
-    "flavor": "Red Velvet",
-    "price": 700,
+    "flavor": "Chocolate",
+    "price": 600,
     "rating": 4.8,
     "tags": [
       "Birthday Cakes",
@@ -957,13 +957,13 @@ export const mockCakes = [
       "60 Minutes Delivery"
     ],
     "image": "/cakes/Cake/WhatsApp Image 2026-07-14 at 9.58.34 PM (2).jpeg",
-    "categoryGroup": "Cheesecakes",
+    "categoryGroup": "Chocolate Cakes",
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 700,
-      "1 KG": 1400,
-      "1.5 KG": 2100
+      "0.5 KG": 600,
+      "1 KG": 1200,
+      "1.5 KG": 1800
     }
   },
   {
@@ -1373,10 +1373,10 @@ export const mockCakes = [
   },
   {
     "id": "c151",
-    "name": "Chocolate Truffle Cake",
+    "name": "Red Velvet Cheesecake",
     "category": "Cakes",
-    "flavor": "Chocolate",
-    "price": 600,
+    "flavor": "Red Velvet",
+    "price": 700,
     "rating": 4.8,
     "tags": [
       "Designer Cakes",
@@ -1387,9 +1387,9 @@ export const mockCakes = [
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 600,
-      "1 KG": 1200,
-      "1.5 KG": 1800
+      "0.5 KG": 700,
+      "1 KG": 1400,
+      "1.5 KG": 2100
     }
   },
   {
