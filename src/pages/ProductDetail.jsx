@@ -58,45 +58,44 @@ const ProductDetail = () => {
     if (!cake) return true;
 
     const NO_FLAVOR_SELECT_CAKES = new Set([
-      "chocolate truffle cake",
+      "chocolate truffle",
       "dutch truffle",
-      "chocolate truffle cake",
-      "chocolate chocochips cake",
-      "classic rasmalai cake",
-      "royal gulab jamun cake",
+      "chocolate chocochips",
+      "classic rasmalai",
+      "royal gulab jamun",
       "dark glaze chocolate truffle",
-      "golden jubilee truffle cake",
-      "classic chocolate drip crown cake",
-      "traditional rajbhog cake",
-      "chocolate rocher cake",
-      "spiderman city adventure cake",
-      "chocolate nutella hazelnut cake",
-      "ferrero rocher cake",
-      "red velvet crumbs cake",
-      "butterscotch cake",
-      "mini chocolate bento cake",
-      "choco glaze truffle cake",
-      "18th birthday 2-tier chocolate overload cake",
-      "chocolate drip birthday cake",
+      "golden jubilee truffle",
+      "classic chocolate drip crown",
+      "traditional rajbhog",
+      "chocolate rocher",
+      "spiderman city adventure",
+      "chocolate nutella hazelnut",
+      "ferrero rocher",
+      "red velvet crumbs",
+      "butterscotch",
+      "mini chocolate bento",
+      "choco glaze truffle",
+      "18th birthday 2-tier chocolate overload",
+      "chocolate drip birthday",
       "chocolate glaze mousse",
-      "chocolate strawberry cake",
-      "black forest cake",
-      "white forest cake",
-      "oreo cake",
-      "chocolate hazelnut cake",
-      "chocolate truffle heart cake",
-      "red velvet heart cake",
-      "black forest rectangle cake",
-      "classic truffle cake",
-      "golden drip truffle cake",
-      "chocolate truffle rectangle cake",
-      "truffle overload cake",
-      "classic pineapple cake",
-      "kitkat chocolate overload cake",
-      "truffle tub cake",
-      "blueberry cake",
-      "chocolate glaze cake",
-      "classic dutch cake"
+      "chocolate strawberry",
+      "black forest",
+      "white forest",
+      "oreo",
+      "chocolate hazelnut",
+      "chocolate truffle heart",
+      "red velvet heart",
+      "black forest rectangle",
+      "classic truffle",
+      "golden drip truffle",
+      "chocolate truffle rectangle",
+      "truffle overload",
+      "classic pineapple",
+      "kitkat chocolate overload",
+      "truffle tub",
+      "blueberry",
+      "chocolate glaze",
+      "classic dutch"
     ]);
 
     // Extract base name to match both custom and regular cakes (stripping categories suffix if present)
@@ -104,7 +103,13 @@ const ProductDetail = () => {
       ? cake.name
       : cake.name.replace(/ (Trending|Birthday|Anniversary|Gourmet|Bento|Photo|Designer|Half Birthday) Cakes?$/, '');
 
-    const normalizedName = baseName.toLowerCase().trim().replace(/\s+/g, ' ');
+    const normalizedName = baseName
+      .toLowerCase()
+      .trim()
+      .replace(/ cakes?$/, '') // Remove trailing "cake" or "cakes" for robust match
+      .replace(/\s+/g, ' ')
+      .trim();
+
     return !NO_FLAVOR_SELECT_CAKES.has(normalizedName);
   })();
 
@@ -382,8 +387,8 @@ const ProductDetail = () => {
                       key={w}
                       onClick={() => setWeight(w)}
                       className={`px-4 py-2 rounded-lg border-2 transition-colors ${weight === w
-                          ? 'border-bakery-brown bg-bakery-brown text-white'
-                          : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
+                        ? 'border-bakery-brown bg-bakery-brown text-white'
+                        : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
                         }`}
                     >
                       {w}
