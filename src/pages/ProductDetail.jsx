@@ -7,25 +7,54 @@ import useCartStore, { WEIGHT_MULTIPLIERS } from '../store/useCartStore';
 import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const FLAVOR_BASE_PRICES = {
-  'Pineapple': 500,
+  // Chocolate Cakes
+  'Chocolate Oreo': 500,
+  'Cafe Mocha': 500,
+  'Dutch Truffle': 580,
+  'Chocolate Blakcurrent': 580,
+  'Chocolate Blackcurrent': 580,
+  'Chocolate Blueberry': 580,
+  'Chocolate Mango': 580,
+  'Chocolate Strawberry': 580,
   'Chocolate Truffle': 600,
-  'Vanilla': 450,
+  'Chocolate Nutella': 700,
+
+  // Classic Cakes
+  'Plain Vanilla': 450,
   'Black Forest': 500,
-  'Butter Scotch': 500,
+  'Mango Cake': 500,
   'Strawberry': 500,
-  'Blueberry': 580,
-  'Red Velvet': 700
+  'Pineapple': 500,
+  'Blackcurrent': 500,
+  'Butterscotch': 500,
+
+  // Fusion Cakes
+  'Rajbhog': 700,
+  'Rasmalai': 750,
+  'Gulab Jamun': 750,
+
+  // Cheesecakes
+  'Red Velvet Cheesecake': 700,
+  'Blueberry Cheesecake': 700
 };
 
 const BENTO_FLAVOR_BASE_PRICES = {
-  'Pineapple': 300,
-  'Chocolate Truffle': 350,
+  // Bento Cakes (Basic)
   'Vanilla': 300,
-  'Black Forest': 300,
-  'Butter Scotch': 300,
-  'Strawberry': 300,
   'Blueberry': 300,
-  'Red Velvet': 380
+  'Black Forest': 300,
+  'White Forest': 300,
+  'Pineapple': 300,
+  'Butterscotch': 300,
+  'Strawberry': 300,
+  // Bento Cakes (Premium)
+  'Rasmalai': 380,
+  'Chocolate Truffle': 350,
+  'Red Velvet': 380,
+  'Oreo': 300,
+  'KitKat': 380,
+  'Nutella': 350,
+  'Biscoff': 380
 };
 
 const ProductDetail = () => {
@@ -116,31 +145,69 @@ const ProductDetail = () => {
 
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
-    if (!cake) return 'Chocolate Truffle';
+    if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
 
-    if (cake.flavor) {
-      const f = cake.flavor.toLowerCase();
-      if (f.includes('butterscotch') || f.includes('butter scotch')) return 'Butter Scotch';
-      if (f.includes('vanilla')) return 'Vanilla';
-      if (f.includes('pineapple')) return 'Pineapple';
-      if (f.includes('strawberry')) return 'Strawberry';
-      if (f.includes('black forest')) return 'Black Forest';
-      if (f.includes('blueberry')) return 'Blueberry';
-      if (f.includes('red velvet')) return 'Red Velvet';
-      if (f.includes('chocolate')) return 'Chocolate Truffle';
+    const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
+
+    // Sort keys by length descending to match more specific flavors first (e.g., "Chocolate Oreo" before "Oreo")
+    const sortedFlavors = Object.keys(flavorPrices).sort((a, b) => b.length - a.length);
+
+    for (const f of sortedFlavors) {
+      // Normalize string comparisons: remove spaces and non-alphanumeric chars
+      const normalizedF = f.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const normalizedTarget = searchTarget.replace(/[^a-z0-9]/g, '');
+
+      if (normalizedTarget.includes(normalizedF)) {
+        return f;
+      }
     }
 
-    if (cake.description) {
-      const desc = cake.description.toLowerCase();
-      if (desc.includes('butterscotch')) return 'Butter Scotch';
-      if (desc.includes('vanilla')) return 'Vanilla';
-      if (desc.includes('pineapple')) return 'Pineapple';
-      if (desc.includes('strawberry')) return 'Strawberry';
-      if (desc.includes('black forest')) return 'Black Forest';
-      if (desc.includes('blueberry')) return 'Blueberry';
-      if (desc.includes('red velvet')) return 'Red Velvet';
+    // Keyword mapping fallback for generic flavor descriptions
+    const FLAVOR_KEYWORD_MAP = {
+      'butterscotch': 'Butterscotch',
+      'butter scotch': 'Butterscotch',
+      'vanilla': 'Plain Vanilla',
+      'pineapple': 'Pineapple',
+      'strawberry': 'Strawberry',
+      'black forest': 'Black Forest',
+      'blueberry': 'Blueberry Cheesecake',
+      'red velvet': 'Red Velvet Cheesecake',
+      'chocolate': 'Chocolate Truffle',
+      'mango': 'Mango Cake',
+      'oreo': 'Chocolate Oreo',
+      'mocha': 'Cafe Mocha',
+      'nutella': 'Chocolate Nutella',
+      'rajbhog': 'Rajbhog',
+      'rasmalai': 'Rasmalai',
+      'gulab jamun': 'Gulab Jamun'
+    };
+
+    const BENTO_FLAVOR_KEYWORD_MAP = {
+      'butterscotch': 'Butterscotch',
+      'butter scotch': 'Butterscotch',
+      'vanilla': 'Vanilla',
+      'pineapple': 'Pineapple',
+      'strawberry': 'Strawberry',
+      'black forest': 'Black Forest',
+      'blueberry': 'Blueberry',
+      'red velvet': 'Red Velvet',
+      'chocolate': 'Chocolate Truffle',
+      'oreo': 'Oreo',
+      'kitkat': 'KitKat',
+      'kit kat': 'KitKat',
+      'nutella': 'Nutella',
+      'biscoff': 'Biscoff',
+      'rasmalai': 'Rasmalai'
+    };
+
+    const keywordMap = isBento ? BENTO_FLAVOR_KEYWORD_MAP : FLAVOR_KEYWORD_MAP;
+    for (const [kw, fName] of Object.entries(keywordMap)) {
+      if (searchTarget.includes(kw)) {
+        return fName;
+      }
     }
-    return 'Chocolate Truffle';
+
+    return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
   };
 
   // Calculate the design premium fee for any cake based on default flavor base price
@@ -153,7 +220,7 @@ const ProductDetail = () => {
     return Math.max(0, halfKgPrice - refBasePrice);
   })();
 
-  const [selectedFlavor, setSelectedFlavor] = useState('Chocolate Truffle');
+  const [selectedFlavor, setSelectedFlavor] = useState(() => getDefaultFlavor());
 
   // Parse minimum weight limit from description if present (e.g. "Minimum 2 Kg")
   const getMinWeightLimit = () => {
