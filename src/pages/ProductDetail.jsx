@@ -1,10 +1,32 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ShoppingBag, MessageCircle, Info } from 'lucide-react';
+import { ShoppingBag, MessageCircle, Info, X } from 'lucide-react';
 import { mockCakes } from '../utils/mockData';
 import useCartStore, { WEIGHT_MULTIPLIERS } from '../store/useCartStore';
 import useDocumentMetadata from '../hooks/useDocumentMetadata';
+
+const FLAVOR_BASE_PRICES = {
+  'Pineapple': 500,
+  'Chocolate Truffle': 600,
+  'Vanilla': 450,
+  'Black Forest': 500,
+  'Butter Scotch': 500,
+  'Strawberry': 500,
+  'Blueberry': 580,
+  'Red Velvet': 700
+};
+
+const BENTO_FLAVOR_BASE_PRICES = {
+  'Pineapple': 300,
+  'Chocolate Truffle': 350,
+  'Vanilla': 300,
+  'Black Forest': 300,
+  'Butter Scotch': 300,
+  'Strawberry': 300,
+  'Blueberry': 300,
+  'Red Velvet': 380
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -27,10 +49,70 @@ const ProductDetail = () => {
   const [isCustomWeight, setIsCustomWeight] = useState(false);
   const [customWeightValue, setCustomWeightValue] = useState(4);
 
-  // Determine available weights dynamically based on prices database
+  // Check if Bento Cake
+  const isBento = cake && (cake.categoryGroup === 'Bento Cakes' || (cake.tags && cake.tags.includes('Bento Cakes')));
+  const flavorPrices = isBento ? BENTO_FLAVOR_BASE_PRICES : FLAVOR_BASE_PRICES;
+
+  // Always enable flavor selection
+  const priceDependsOnFlavor = true;
+
+  // Retrieve the default flavor choice matching reference descriptions
+  const getDefaultFlavor = () => {
+    if (!cake) return 'Chocolate Truffle';
+    
+    if (cake.flavor) {
+      const f = cake.flavor.toLowerCase();
+      if (f.includes('butterscotch') || f.includes('butter scotch')) return 'Butter Scotch';
+      if (f.includes('vanilla')) return 'Vanilla';
+      if (f.includes('pineapple')) return 'Pineapple';
+      if (f.includes('strawberry')) return 'Strawberry';
+      if (f.includes('black forest')) return 'Black Forest';
+      if (f.includes('blueberry')) return 'Blueberry';
+      if (f.includes('red velvet')) return 'Red Velvet';
+      if (f.includes('chocolate')) return 'Chocolate Truffle';
+    }
+
+    if (cake.description) {
+      const desc = cake.description.toLowerCase();
+      if (desc.includes('butterscotch')) return 'Butter Scotch';
+      if (desc.includes('vanilla')) return 'Vanilla';
+      if (desc.includes('pineapple')) return 'Pineapple';
+      if (desc.includes('strawberry')) return 'Strawberry';
+      if (desc.includes('black forest')) return 'Black Forest';
+      if (desc.includes('blueberry')) return 'Blueberry';
+      if (desc.includes('red velvet')) return 'Red Velvet';
+    }
+    return 'Chocolate Truffle';
+  };
+
+  // Calculate the design premium fee for any cake based on default flavor base price
+  const designPremium = (() => {
+    if (!cake) return 0;
+    const defaultFlavorName = getDefaultFlavor();
+    const refBasePrice = flavorPrices[defaultFlavorName] || 600;
+
+    const halfKgPrice = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
+    return Math.max(0, halfKgPrice - refBasePrice);
+  })();
+
+  const [selectedFlavor, setSelectedFlavor] = useState('Chocolate Truffle');
+
+  // Parse minimum weight limit from description if present (e.g. "Minimum 2 Kg")
+  const getMinWeightLimit = () => {
+    if (!cake || !cake.description) return 0.5;
+    const desc = cake.description.toLowerCase();
+    const match = desc.match(/minimum\s+(\d+(?:\.\d+)?)\s*kg/i);
+    if (match) {
+      return parseFloat(match[1]);
+    }
+    return 0.5;
+  };
+
+  // Determine available weights dynamically based on prices database and minimum limits
   const availableWeights = (() => {
-    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'];
-    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'];
+    const minLimit = getMinWeightLimit();
+    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => parseFloat(w) >= minLimit);
+    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => parseFloat(w) >= minLimit);
     
     const list = [];
     if (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined) list.push('0.5 KG');
@@ -42,10 +124,35 @@ const ProductDetail = () => {
     if (hasBaseWeight || cake.id === 'c135') {
       list.push('2 KG', '3 KG');
     }
-    return list;
+    return list.filter(w => parseFloat(w) >= minLimit);
   })();
 
   const [weight, setWeight] = useState('1 KG');
+
+  // Check if cake is a Photo Cake or Semi-Fondant
+  const isSemiFondant = (() => {
+    if (!cake || !cake.description) return false;
+    const desc = cake.description.toLowerCase();
+    return desc.includes('semi fondant') || desc.includes('semi-fondant');
+  })();
+
+  const isPhotoCake = (() => {
+    if (!cake) return false;
+    if (cake.categoryGroup === 'Photo Cakes' || (cake.tags && cake.tags.includes('Photo Cakes'))) return true;
+    if (cake.description && cake.description.toLowerCase().includes('photo cake')) return true;
+    return false;
+  })();
+
+  const [uploadedPhoto, setUploadedPhoto] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUploadedPhoto(file);
+      setPhotoPreview(URL.createObjectURL(file));
+    }
+  };
 
   // Reset states when ID or cake changes
   useEffect(() => {
@@ -55,15 +162,24 @@ const ProductDetail = () => {
       setInstructions('');
       setIsCustomWeight(false);
       setSelectedImage(0);
+      setUploadedPhoto(null);
+      setPhotoPreview(null);
+      setSelectedFlavor(getDefaultFlavor());
       
+      const minLimit = getMinWeightLimit();
+      let defaultWeight = '1 KG';
+
       if (cake.id === 'c135') {
-        setWeight('2 KG');
+        defaultWeight = '2 KG';
       } else if (cake.prices) {
-        const valid = ['0.5 KG', '1 KG', '1.5 KG'].filter(w => cake.prices[w] !== null && cake.prices[w] !== undefined);
-        setWeight(valid.length > 0 ? valid[0] : '1 KG');
+        const valid = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => {
+          return cake.prices[w] !== null && cake.prices[w] !== undefined && parseFloat(w) >= minLimit;
+        });
+        defaultWeight = valid.length > 0 ? valid[0] : `${minLimit} KG`;
       } else {
-        setWeight('0.5 KG');
+        defaultWeight = minLimit >= 1 ? `${minLimit} KG` : '0.5 KG';
       }
+      setWeight(defaultWeight);
     }
   }, [id, cake]);
 
@@ -92,30 +208,24 @@ const ProductDetail = () => {
   // Calculate current price dynamically
   const currentPrice = (() => {
     if (isCustomWeight) {
-      if (cake.prices) {
-        const baseKgPrice = cake.prices['1 KG'] || (cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] * 2 : cake.price * 2);
-        return customWeightValue * baseKgPrice;
-      }
-      return cake.price * (customWeightValue * 2);
+      let baseKgPrice;
+      const flavorHalfKgPrice = flavorPrices[selectedFlavor] || 600;
+      baseKgPrice = (flavorHalfKgPrice + designPremium) * 2;
+      return customWeightValue * baseKgPrice;
     }
     
-    if (cake.prices) {
-      if (cake.prices[weight] !== undefined && cake.prices[weight] !== null) {
-        return cake.prices[weight];
-      }
-      // Proportional pricing for weights above 1.5 KG
-      const numericWeight = parseFloat(weight);
-      if (cake.prices['1 KG']) {
-        return numericWeight * cake.prices['1 KG'];
-      }
-      if (cake.prices['0.5 KG']) {
-        return (numericWeight / 0.5) * cake.prices['0.5 KG'];
-      }
+    let discountFactor = 1;
+    const halfKgBasePrice = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
+    if (cake.prices && cake.prices[weight]) {
+      discountFactor = cake.prices[weight] / halfKgBasePrice;
+    } else {
+      const currentMultiplier = WEIGHT_MULTIPLIERS[weight] || 1;
+      const halfKgMultiplier = WEIGHT_MULTIPLIERS['0.5 KG'] || 1;
+      discountFactor = currentMultiplier / halfKgMultiplier;
     }
-    
-    // Fallback using legacy multipliers
-    const currentMultiplier = WEIGHT_MULTIPLIERS[weight] || 1;
-    return cake.price * currentMultiplier;
+    const flavorHalfKgPrice = flavorPrices[selectedFlavor] || 600;
+    const calculatedPrice = (flavorHalfKgPrice + designPremium) * discountFactor;
+    return Math.round(calculatedPrice / 10) * 10;
   })();
 
   const handleAddToCart = () => {
@@ -123,15 +233,17 @@ const ProductDetail = () => {
       id: cake.id,
       name: cake.name,
       basePrice: cake.price,
-      price: currentPrice, // Dynamic unit price based on weight/size
+      price: currentPrice,
       image: cake.image,
-      flavor: cake.flavor || cake.category,
+      flavor: selectedFlavor,
       weight: isCustomWeight ? `${customWeightValue} KG` : weight,
       eggless: isEggless,
       quantity: 1,
       nameOnCake,
       message,
-      instructions
+      instructions: isPhotoCake && uploadedPhoto 
+        ? `[Custom Photo: ${uploadedPhoto.name}] ${instructions}`
+        : instructions
     });
   };
 
@@ -257,6 +369,39 @@ const ProductDetail = () => {
                 )}
               </div>
 
+              {/* Flavor Selection (if depends on flavor) */}
+              {priceDependsOnFlavor && (
+                <div className="pt-6 border-t border-bakery-peach">
+                  <label className="block font-bold text-bakery-darkBrown mb-3">Select Flavor</label>
+                  <select
+                    value={selectedFlavor}
+                    onChange={(e) => setSelectedFlavor(e.target.value)}
+                    className="w-full p-3.5 rounded-lg border-2 border-bakery-peach focus:border-bakery-brown outline-none bg-bakery-cream font-bold text-bakery-darkBrown cursor-pointer shadow-sm"
+                  >
+                    {Object.keys(flavorPrices).map(f => {
+                      let flavorPrice;
+                      if (isCustomWeight) {
+                        flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
+                      } else {
+                        let factor = 1;
+                        const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
+                        if (cake.prices && cake.prices[weight]) {
+                          factor = cake.prices[weight] / halfKgBase;
+                        } else {
+                          factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
+                        }
+                        flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
+                      }
+                      return (
+                        <option key={f} value={f}>
+                          {f} (₹{flavorPrice})
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              )}
+
               {/* Personalization */}
               <div className="space-y-4 pt-6 border-t border-bakery-peach">
                 <h3 className="font-serif font-bold text-xl text-bakery-darkBrown">Personalize Your Cake</h3>
@@ -273,6 +418,45 @@ const ProductDetail = () => {
                   />
                  </div>
               </div>
+
+              {/* Customizations & Advisories */}
+              {(isPhotoCake || isSemiFondant) && (
+                <div className="space-y-4 pt-6 border-t border-bakery-peach">
+                  {isPhotoCake && (
+                    <div className="p-4 rounded-xl border-2 border-dashed border-bakery-peach bg-bakery-cream/25">
+                      <label className="block text-sm font-bold text-bakery-darkBrown mb-2">Upload Photo for Printing</label>
+                      <input 
+                        type="file" 
+                        accept="image/*"
+                        onChange={handlePhotoChange}
+                        className="block w-full text-sm text-bakery-brown file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-bakery-pink-vibrant file:text-white hover:file:bg-bakery-pink-dark cursor-pointer"
+                      />
+                      {photoPreview && (
+                        <div className="mt-3 relative w-24 h-24 rounded-lg overflow-hidden border border-bakery-peach shadow-sm">
+                          <img src={photoPreview} alt="Custom Preview" className="w-full h-full object-cover" />
+                          <button 
+                            type="button" 
+                            onClick={() => { setUploadedPhoto(null); setPhotoPreview(null); }}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors cursor-pointer"
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {isSemiFondant && (
+                    <div className="p-4 rounded-xl border border-amber-200 bg-amber-50 text-amber-900 flex gap-2">
+                      <Info size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                      <div className="text-sm">
+                        <span className="font-bold block mb-1">Cake Care & Storage</span>
+                        This is a semi-fondant cake. Please store in an air-conditioned room (not a refrigerator) prior to celebration to protect fondant decorations.
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Actions */}
               <div className="pt-6 space-y-4">
