@@ -73,6 +73,15 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
               ₹{cake.price}
             </p>
           )}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleAddToCart}
+            className="flex items-center gap-1 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors duration-300 shadow-sm cursor-pointer shrink-0"
+          >
+            <ShoppingCart size={12} className="sm:w-3.5 sm:h-3.5" />
+            <span>Add</span>
+          </motion.button>
         </div>
       </div>
     </motion.div>

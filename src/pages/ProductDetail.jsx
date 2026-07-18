@@ -276,10 +276,18 @@ const ProductDetail = () => {
               </div>
 
               {/* Actions */}
-              <div className="pt-6">
+              <div className="pt-6 space-y-4">
+                <button 
+                  onClick={handleAddToCart}
+                  className="w-full py-4 bg-bakery-pink-vibrant text-white rounded-full font-bold text-lg hover:bg-bakery-pink-dark transition-colors shadow-lg shadow-bakery-pink-vibrant/30 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <ShoppingBag size={20} />
+                  Add to Cart
+                </button>
+
                 <button 
                   onClick={handleOrderWhatsApp}
-                  className="w-full py-4 bg-[#25D366] text-white rounded-full font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/30 flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#25D366] text-white rounded-full font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageCircle size={20} />
                   Order on WhatsApp
