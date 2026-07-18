@@ -146,7 +146,7 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
-    if (cake.id === 'c92') return 'Chocolate Truffle';
+    if (cake.id === 'c92' || cake.id === 'c93') return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -425,7 +425,7 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {((!priceDependsOnFlavor && cake.id !== 'c90') || cake.id === 'c92') && (
+              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96') || cake.id === 'c92' || cake.id === 'c93') && (
                 <div className="text-bakery-pink-vibrant font-bold mb-3.5 flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                   {cake.id !== 'c91' && (
                     <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
@@ -433,13 +433,13 @@ const ProductDetail = () => {
                   <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">
                     {cake.id === 'c91'
                       ? 'Ferrero Rocher'
-                      : (cake.id === 'c92' ? 'Chocolate Truffle' : (cake.flavor || selectedFlavor))}
+                      : (cake.id === 'c92' || cake.id === 'c93' ? 'Chocolate Truffle' : (cake.flavor || selectedFlavor))}
                   </span>
                 </div>
               )}
 
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
-                {cake.id === 'c92' && selectedFlavor !== 'Chocolate Truffle' ? (
+                {(cake.id === 'c92' || cake.id === 'c93') && selectedFlavor !== 'Chocolate Truffle' ? (
                   <span className="text-xl font-bold text-bakery-pink-dark">Custom Pricing (Ask on WhatsApp)</span>
                 ) : (
                   <>
@@ -496,7 +496,7 @@ const ProductDetail = () => {
                   >
                     {(() => {
                       let list = Object.keys(flavorPrices);
-                      if (cake.id === 'c92') {
+                      if (cake.id === 'c92' || cake.id === 'c93') {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
@@ -514,12 +514,13 @@ const ProductDetail = () => {
                           flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
                         }
 
-                        // Special rendering rules for Princess Pink Doll Cake (c92)
-                        if (cake.id === 'c92') {
+                        // Special rendering rules for Princess Pink Doll Cake (c92) & Lavender Royale Crown Cake (c93)
+                        if (cake.id === 'c92' || cake.id === 'c93') {
                           if (f === 'Chocolate Truffle') {
+                            const displayPrice = cake.id === 'c92' ? 800 : 850;
                             return (
                               <option key={f} value={f}>
-                                {f} (₹800)
+                                {f} (₹{displayPrice})
                               </option>
                             );
                           } else {
