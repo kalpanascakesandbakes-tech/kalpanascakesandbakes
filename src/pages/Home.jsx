@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Award, Clock, ShieldCheck, BookOpen, Download, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ArrowRight, Star, Heart, Award, Clock, ShieldCheck, BookOpen, Download, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { getBestSellers, getFeaturedCakes } from '../utils/mockData';
 import CakeCard from '../components/ui/CakeCard';
 import CakeQuickView from '../components/ui/CakeQuickView';
@@ -177,10 +177,10 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <motion.div {...fadeInUp} className="flex flex-col items-center p-6 bg-bakery-cream rounded-2xl border border-bakery-peach">
               <div className="w-16 h-16 bg-bakery-peach rounded-full flex items-center justify-center mb-4 text-bakery-brown">
-                <Truck size={32} />
+                <Heart size={32} className="fill-bakery-brown/20" />
               </div>
-              <h3 className="font-serif font-bold text-xl mb-2 text-bakery-darkBrown">Fast Delivery</h3>
-              <p className="text-bakery-brown/80">Fresh cakes delivered securely to your doorstep.</p>
+              <h3 className="font-serif font-bold text-xl mb-2 text-bakery-darkBrown">100% Eggless</h3>
+              <p className="text-bakery-brown/80">All our delicious bakes are completely egg-free and vegetarian.</p>
             </motion.div>
             <motion.div {...fadeInUp} className="flex flex-col items-center p-6 bg-bakery-cream rounded-2xl border border-bakery-peach" transition={{ delay: 0.2 }}>
               <div className="w-16 h-16 bg-bakery-peach rounded-full flex items-center justify-center mb-4 text-bakery-brown">
