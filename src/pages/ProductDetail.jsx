@@ -44,7 +44,7 @@ const ProductDetail = () => {
   const [nameOnCake, setNameOnCake] = useState('');
   const [message, setMessage] = useState('');
   const [instructions, setInstructions] = useState('');
-  
+
   // Custom weight state
   const [isCustomWeight, setIsCustomWeight] = useState(false);
   const [customWeightValue, setCustomWeightValue] = useState(4);
@@ -59,7 +59,7 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return 'Chocolate Truffle';
-    
+
     if (cake.flavor) {
       const f = cake.flavor.toLowerCase();
       if (f.includes('butterscotch') || f.includes('butter scotch')) return 'Butter Scotch';
@@ -103,7 +103,8 @@ const ProductDetail = () => {
     const desc = cake.description.toLowerCase();
     const match = desc.match(/minimum\s+(\d+(?:\.\d+)?)\s*kg/i);
     if (match) {
-      return parseFloat(match[1]);
+      // Cap the minimum limit at 1.5 KG so it doesn't exceed our maximum selectable weight of 1.5 KG
+      return Math.min(1.5, parseFloat(match[1]));
     }
     return 0.5;
   };
@@ -111,19 +112,18 @@ const ProductDetail = () => {
   // Determine available weights dynamically based on prices database and minimum limits
   const availableWeights = (() => {
     const minLimit = getMinWeightLimit();
-    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => parseFloat(w) >= minLimit);
-    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => parseFloat(w) >= minLimit);
-    
+    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG'].filter(w => parseFloat(w) >= minLimit);
+    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG'].filter(w => parseFloat(w) >= minLimit);
+
     const list = [];
     if (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined) list.push('0.5 KG');
     if (cake.prices['1 KG'] !== null && cake.prices['1 KG'] !== undefined) list.push('1 KG');
     if (cake.prices['1.5 KG'] !== null && cake.prices['1.5 KG'] !== undefined) list.push('1.5 KG');
-    
-    const hasBaseWeight = (cake.prices['1 KG'] !== null && cake.prices['1 KG'] !== undefined) || 
-                          (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined);
-    if (hasBaseWeight || cake.id === 'c135') {
-      list.push('2 KG', '3 KG');
+
+    if (list.length === 0) {
+      list.push('0.5 KG', '1 KG', '1.5 KG');
     }
+
     return list.filter(w => parseFloat(w) >= minLimit);
   })();
 
@@ -165,14 +165,14 @@ const ProductDetail = () => {
       setUploadedPhoto(null);
       setPhotoPreview(null);
       setSelectedFlavor(getDefaultFlavor());
-      
+
       const minLimit = getMinWeightLimit();
       let defaultWeight = '1 KG';
 
       if (cake.id === 'c135') {
-        defaultWeight = '2 KG';
+        defaultWeight = '1.5 KG';
       } else if (cake.prices) {
-        const valid = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'].filter(w => {
+        const valid = ['0.5 KG', '1 KG', '1.5 KG'].filter(w => {
           return cake.prices[w] !== null && cake.prices[w] !== undefined && parseFloat(w) >= minLimit;
         });
         defaultWeight = valid.length > 0 ? valid[0] : `${minLimit} KG`;
@@ -213,7 +213,7 @@ const ProductDetail = () => {
       baseKgPrice = (flavorHalfKgPrice + designPremium) * 2;
       return customWeightValue * baseKgPrice;
     }
-    
+
     let discountFactor = 1;
     const halfKgBasePrice = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
     if (cake.prices && cake.prices[weight]) {
@@ -241,7 +241,7 @@ const ProductDetail = () => {
       quantity: 1,
       nameOnCake,
       message,
-      instructions: isPhotoCake && uploadedPhoto 
+      instructions: isPhotoCake && uploadedPhoto
         ? `[Custom Photo: ${uploadedPhoto.name}] ${instructions}`
         : instructions
     });
@@ -256,19 +256,19 @@ const ProductDetail = () => {
     <div className="bg-white min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
+
           {/* Left Column - Image & Preview */}
           <div className="space-y-6">
             <div className="relative rounded-2xl overflow-hidden aspect-square bg-bakery-cream border-2 border-bakery-peach/30 shadow-lg">
-              <img 
-                src={galleryImages[selectedImage]} 
-                alt={cake.name} 
+              <img
+                src={galleryImages[selectedImage]}
+                alt={cake.name}
                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${galleryViews[selectedImage].classes}`}
               />
-              
+
               {/* Live Preview Text overlay */}
               {nameOnCake && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
@@ -279,12 +279,12 @@ const ProductDetail = () => {
                 </motion.div>
               )}
             </div>
-            
+
             {/* Thumbnail Gallery */}
             <div className="grid grid-cols-4 gap-4 mt-4">
               {galleryImages.map((img, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   onClick={() => setSelectedImage(i)}
                   className={`aspect-square rounded-xl overflow-hidden cursor-pointer border-2 transition-colors ${selectedImage === i ? 'border-bakery-gold' : 'border-transparent hover:border-bakery-gold/50'}`}
                 >
@@ -298,7 +298,7 @@ const ProductDetail = () => {
           <div className="space-y-8">
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
-              
+
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
                 <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
                 {!isCustomWeight && (
@@ -307,7 +307,7 @@ const ProductDetail = () => {
               </div>
 
               <p className="text-bakery-brown/80 leading-relaxed">
-                Indulge in our exquisite {cake.name}. Handcrafted with premium ingredients, 
+                Indulge in our exquisite {cake.name}. Handcrafted with premium ingredients,
                 this beautiful creation is perfect for making your special moments even sweeter.
               </p>
             </div>
@@ -329,44 +329,15 @@ const ProductDetail = () => {
                     <button
                       key={w}
                       onClick={() => setWeight(w)}
-                      className={`px-4 py-2 rounded-lg border-2 transition-colors ${
-                        weight === w 
-                        ? 'border-bakery-brown bg-bakery-brown text-white' 
-                        : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
-                      }`}
+                      className={`px-4 py-2 rounded-lg border-2 transition-colors ${weight === w
+                          ? 'border-bakery-brown bg-bakery-brown text-white'
+                          : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
+                        }`}
                     >
                       {w}
                     </button>
                   ))}
-                  <button
-                    onClick={() => setIsCustomWeight(!isCustomWeight)}
-                    className={`px-4 py-2 rounded-lg border-2 transition-colors ${
-                      isCustomWeight 
-                      ? 'border-bakery-gold bg-bakery-gold text-white' 
-                      : 'border-bakery-peach text-bakery-brown hover:border-bakery-gold'
-                    }`}
-                  >
-                    Custom (Above 3kg)
-                  </button>
                 </div>
-                
-                {isCustomWeight && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="mt-4 flex items-center gap-4"
-                  >
-                    <input 
-                      type="number" 
-                      min="4" 
-                      value={customWeightValue}
-                      onChange={(e) => setCustomWeightValue(Math.max(4, Number(e.target.value)))}
-                      className="w-24 p-2 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none"
-                    />
-                    <span className="text-bakery-brown font-medium">KG</span>
-                    <span className="text-sm text-bakery-brown/60 ml-2"><Info size={14} className="inline mr-1"/>Minimum 4 KG for custom</span>
-                  </motion.div>
-                )}
               </div>
 
               {/* Flavor Selection (if depends on flavor) */}
@@ -405,18 +376,18 @@ const ProductDetail = () => {
               {/* Personalization */}
               <div className="space-y-4 pt-6 border-t border-bakery-peach">
                 <h3 className="font-serif font-bold text-xl text-bakery-darkBrown">Personalize Your Cake</h3>
-                
+
                 <div>
                   <label className="block text-sm text-bakery-brown mb-1">Name on Cake (Live Preview)</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     maxLength={15}
                     value={nameOnCake}
                     onChange={(e) => setNameOnCake(e.target.value.toUpperCase())}
                     placeholder="e.g. YASH"
                     className="w-full p-3 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none uppercase font-bold"
                   />
-                 </div>
+                </div>
               </div>
 
               {/* Customizations & Advisories */}
@@ -425,8 +396,8 @@ const ProductDetail = () => {
                   {isPhotoCake && (
                     <div className="p-4 rounded-xl border-2 border-dashed border-bakery-peach bg-bakery-cream/25">
                       <label className="block text-sm font-bold text-bakery-darkBrown mb-2">Upload Photo for Printing</label>
-                      <input 
-                        type="file" 
+                      <input
+                        type="file"
                         accept="image/*"
                         onChange={handlePhotoChange}
                         className="block w-full text-sm text-bakery-brown file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-bakery-pink-vibrant file:text-white hover:file:bg-bakery-pink-dark cursor-pointer"
@@ -434,8 +405,8 @@ const ProductDetail = () => {
                       {photoPreview && (
                         <div className="mt-3 relative w-24 h-24 rounded-lg overflow-hidden border border-bakery-peach shadow-sm">
                           <img src={photoPreview} alt="Custom Preview" className="w-full h-full object-cover" />
-                          <button 
-                            type="button" 
+                          <button
+                            type="button"
                             onClick={() => { setUploadedPhoto(null); setPhotoPreview(null); }}
                             className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors cursor-pointer"
                           >
@@ -460,7 +431,7 @@ const ProductDetail = () => {
 
               {/* Actions */}
               <div className="pt-6 space-y-4">
-                <button 
+                <button
                   onClick={handleAddToCart}
                   className="w-full py-4 bg-bakery-pink-vibrant text-white rounded-full font-bold text-lg hover:bg-bakery-pink-dark transition-colors shadow-lg shadow-bakery-pink-vibrant/30 flex items-center justify-center gap-2 cursor-pointer"
                 >
@@ -468,7 +439,7 @@ const ProductDetail = () => {
                   Add to Cart
                 </button>
 
-                <button 
+                <button
                   onClick={handleOrderWhatsApp}
                   className="w-full py-4 bg-[#25D366] text-white rounded-full font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 cursor-pointer"
                 >
