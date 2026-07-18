@@ -357,6 +357,13 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
+              {!priceDependsOnFlavor && (
+                <div className="text-bakery-pink-vibrant font-bold mb-3.5 flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
+                  <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
+                  <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">{cake.flavor || selectedFlavor}</span>
+                </div>
+              )}
+
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
                 <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
                 {!isCustomWeight && (
