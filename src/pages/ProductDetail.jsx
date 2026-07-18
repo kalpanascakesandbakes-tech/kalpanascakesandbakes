@@ -146,6 +146,7 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
+    if (cake.id === 'c92') return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -424,21 +425,29 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {!priceDependsOnFlavor && cake.id !== 'c90' && (
+              {((!priceDependsOnFlavor && cake.id !== 'c90') || cake.id === 'c92') && (
                 <div className="text-bakery-pink-vibrant font-bold mb-3.5 flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                   {cake.id !== 'c91' && (
                     <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
                   )}
                   <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">
-                    {cake.id === 'c91' ? 'Ferrero Rocher' : (cake.flavor || selectedFlavor)}
+                    {cake.id === 'c91'
+                      ? 'Ferrero Rocher'
+                      : (cake.id === 'c92' ? 'Chocolate Truffle' : (cake.flavor || selectedFlavor))}
                   </span>
                 </div>
               )}
 
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
-                <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
-                {!isCustomWeight && (
-                  <span className="text-sm text-bakery-brown/60">for {weight}</span>
+                {cake.id === 'c92' && selectedFlavor !== 'Chocolate Truffle' ? (
+                  <span className="text-xl font-bold text-bakery-pink-dark">Custom Pricing (Ask on WhatsApp)</span>
+                ) : (
+                  <>
+                    <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
+                    {!isCustomWeight && (
+                      <span className="text-sm text-bakery-brown/60">for {weight}</span>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -485,26 +494,50 @@ const ProductDetail = () => {
                     onChange={(e) => setSelectedFlavor(e.target.value)}
                     className="w-full p-3.5 rounded-lg border-2 border-bakery-peach focus:border-bakery-brown outline-none bg-bakery-cream font-bold text-bakery-darkBrown cursor-pointer shadow-sm"
                   >
-                    {Object.keys(flavorPrices).map(f => {
-                      let flavorPrice;
-                      if (isCustomWeight) {
-                        flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                      } else {
-                        let factor = 1;
-                        const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                        if (cake.prices && cake.prices[weight]) {
-                          factor = cake.prices[weight] / halfKgBase;
-                        } else {
-                          factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                        }
-                        flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
+                    {(() => {
+                      let list = Object.keys(flavorPrices);
+                      if (cake.id === 'c92') {
+                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       }
-                      return (
-                        <option key={f} value={f}>
-                          {f} (₹{flavorPrice})
-                        </option>
-                      );
-                    })}
+                      return list.map(f => {
+                        let flavorPrice;
+                        if (isCustomWeight) {
+                          flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
+                        } else {
+                          let factor = 1;
+                          const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
+                          if (cake.prices && cake.prices[weight]) {
+                            factor = cake.prices[weight] / halfKgBase;
+                          } else {
+                            factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
+                          }
+                          flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
+                        }
+
+                        // Special rendering rules for Princess Pink Doll Cake (c92)
+                        if (cake.id === 'c92') {
+                          if (f === 'Chocolate Truffle') {
+                            return (
+                              <option key={f} value={f}>
+                                {f} (₹800)
+                              </option>
+                            );
+                          } else {
+                            return (
+                              <option key={f} value={f}>
+                                {f}
+                              </option>
+                            );
+                          }
+                        }
+
+                        return (
+                          <option key={f} value={f}>
+                            {f} (₹{flavorPrice})
+                          </option>
+                        );
+                      });
+                    })()}
                   </select>
                 </div>
               )}
