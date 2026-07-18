@@ -25,12 +25,12 @@ const ProductDetail = () => {
   
   // Custom weight state
   const [isCustomWeight, setIsCustomWeight] = useState(false);
-  const [customWeightValue, setCustomWeightValue] = useState(6);
+  const [customWeightValue, setCustomWeightValue] = useState(4);
 
   // Determine available weights dynamically based on prices database
   const availableWeights = (() => {
-    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
-    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
+    if (!cake) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'];
+    if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG'];
     
     const list = [];
     if (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined) list.push('0.5 KG');
@@ -40,7 +40,7 @@ const ProductDetail = () => {
     const hasBaseWeight = (cake.prices['1 KG'] !== null && cake.prices['1 KG'] !== undefined) || 
                           (cake.prices['0.5 KG'] !== null && cake.prices['0.5 KG'] !== undefined);
     if (hasBaseWeight || cake.id === 'c135') {
-      list.push('2 KG', '3 KG', '4 KG', '5 KG');
+      list.push('2 KG', '3 KG');
     }
     return list;
   })();
@@ -235,7 +235,7 @@ const ProductDetail = () => {
                       : 'border-bakery-peach text-bakery-brown hover:border-bakery-gold'
                     }`}
                   >
-                    Custom (Above 5kg)
+                    Custom (Above 3kg)
                   </button>
                 </div>
                 
@@ -247,13 +247,13 @@ const ProductDetail = () => {
                   >
                     <input 
                       type="number" 
-                      min="6" 
+                      min="4" 
                       value={customWeightValue}
-                      onChange={(e) => setCustomWeightValue(Math.max(6, Number(e.target.value)))}
+                      onChange={(e) => setCustomWeightValue(Math.max(4, Number(e.target.value)))}
                       className="w-24 p-2 border border-bakery-peach rounded-lg focus:ring-2 focus:ring-bakery-brown outline-none"
                     />
                     <span className="text-bakery-brown font-medium">KG</span>
-                    <span className="text-sm text-bakery-brown/60 ml-2"><Info size={14} className="inline mr-1"/>Minimum 6 KG for custom</span>
+                    <span className="text-sm text-bakery-brown/60 ml-2"><Info size={14} className="inline mr-1"/>Minimum 4 KG for custom</span>
                   </motion.div>
                 )}
               </div>
