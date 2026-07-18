@@ -95,7 +95,8 @@ const ProductDetail = () => {
       "truffle tub",
       "blueberry",
       "chocolate glaze",
-      "classic dutch"
+      "classic dutch",
+      "royal chocolate drip"
     ]);
 
     // Extract base name to match both custom and regular cakes (stripping categories suffix if present)
