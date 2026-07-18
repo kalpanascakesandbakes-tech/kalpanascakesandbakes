@@ -8,6 +8,8 @@ const Navbar = () => {
   const { getCartCount, openCart } = useCartStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const location = useLocation();
 
   const cartCount = getCartCount();
@@ -24,6 +26,8 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
+    setIsCategoriesOpen(false);
+    setActiveSubDropdown(null);
   }, [location]);
 
   const categories = {
@@ -319,46 +323,77 @@ const Navbar = () => {
           <div className="px-4 pt-2 pb-6 space-y-1">
             <Link to="/" className="block px-3 py-3 text-base font-bold text-bakery-darkBrown border-b border-bakery-peach">Home</Link>
             
-            {/* Mobile Accordions */}
-            {Object.entries(categories).map(([key, category]) => {
-              const categoryGroupMap = {
-                chocolate: 'Chocolate Cakes',
-                cheesecakes: 'Cheesecakes',
-                fusion: 'Fusion Cakes',
-                theme: 'Theme Cakes',
-                bento: 'Bento Cakes'
-              };
-              return (
-                <div key={key} className="border-b border-bakery-peach">
-                  <button 
-                    onClick={() => handleMobileAccordion(key)}
-                    className="flex justify-between items-center w-full px-3 py-3 text-base font-bold text-bakery-darkBrown"
-                  >
-                    {category.title}
-                    <ChevronDown size={20} className={`transform transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
-                  </button>
-                  {activeDropdown === key && (
-                    <div className="bg-bakery-cream px-6 py-2 space-y-3">
-                      <Link 
-                        to={`/categories?categoryGroup=${encodeURIComponent(categoryGroupMap[key])}`}
-                        className="block text-sm font-bold text-bakery-pink-dark py-1 border-b border-bakery-peach/30"
-                      >
-                        View All {category.title}
-                      </Link>
-                      {category.links.map(link => (
-                        <Link 
-                          key={link.name} 
-                          to={link.path} 
-                          className="block text-sm text-bakery-brown py-1"
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+            {/* Categories Accordion (Level 1) */}
+            <div className="border-b border-bakery-peach">
+              <div className="flex items-center justify-between w-full px-3 py-1">
+                <Link 
+                  to="/categories" 
+                  className="text-base font-bold text-bakery-darkBrown py-2 flex-grow"
+                >
+                  Categories
+                </Link>
+                <button 
+                  onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
+                  className="p-2 text-bakery-brown/70 hover:text-bakery-brown"
+                >
+                  <ChevronDown size={20} className={`transform transition-transform ${isCategoriesOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+              
+              {isCategoriesOpen && (
+                <div className="bg-bakery-cream/35 pl-4 border-l-2 border-bakery-peach/30 transition-all duration-300">
+                  {Object.entries(categories).map(([key, category]) => {
+                    const categoryGroupMap = {
+                      chocolate: 'Chocolate Cakes',
+                      cheesecakes: 'Cheesecakes',
+                      fusion: 'Fusion Cakes',
+                      theme: 'Theme Cakes',
+                      bento: 'Bento Cakes'
+                    };
+                    const isSubOpen = activeSubDropdown === key;
+                    const groupName = categoryGroupMap[key];
+                    return (
+                      <div key={key} className="border-b border-bakery-peach/30 last:border-0">
+                        <div className="flex items-center justify-between w-full px-3 py-0.5">
+                          <Link 
+                            to={`/categories?categoryGroup=${encodeURIComponent(groupName)}`}
+                            className="text-sm font-bold text-bakery-darkBrown/90 py-2 flex-grow"
+                          >
+                            {category.title}
+                          </Link>
+                          <button 
+                            onClick={() => setActiveSubDropdown(isSubOpen ? null : key)}
+                            className="p-2 text-bakery-brown/60 hover:text-bakery-brown"
+                          >
+                            <ChevronDown size={16} className={`transform transition-transform ${isSubOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                        </div>
+                        
+                        {isSubOpen && (
+                          <div className="bg-white/50 pl-4 pr-3 py-1.5 space-y-2 border-l border-bakery-peach/20">
+                            <Link 
+                              to={`/categories?categoryGroup=${encodeURIComponent(categoryGroupMap[key])}`}
+                              className="block text-xs font-bold text-bakery-pink-dark py-1.5 border-b border-bakery-peach/10"
+                            >
+                              View All {category.title}
+                            </Link>
+                            {category.links.map(link => (
+                              <Link 
+                                key={link.name} 
+                                to={link.path} 
+                                className="block text-xs text-bakery-brown/90 py-1 hover:text-bakery-gold transition-colors"
+                              >
+                                {link.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              )}
+            </div>
 
             {navLinks.slice(1).map((link) => (
               <Link
