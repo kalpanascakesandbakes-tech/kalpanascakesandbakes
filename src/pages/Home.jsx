@@ -179,8 +179,8 @@ const Home = () => {
               <div className="w-16 h-16 bg-bakery-peach rounded-full flex items-center justify-center mb-4 text-bakery-brown">
                 <Heart size={32} className="fill-bakery-brown/20" />
               </div>
-              <h3 className="font-serif font-bold text-xl mb-2 text-bakery-darkBrown">100% Eggless</h3>
-              <p className="text-bakery-brown/80">All our delicious bakes are completely egg-free and vegetarian.</p>
+              <h3 className="font-serif font-bold text-xl mb-2 text-bakery-darkBrown">100% Veg</h3>
+              <p className="text-bakery-brown/80">Pure vegetarian delights handcrafted in a clean, hygiene-first home kitchen.</p>
             </motion.div>
             <motion.div {...fadeInUp} className="flex flex-col items-center p-6 bg-bakery-cream rounded-2xl border border-bakery-peach" transition={{ delay: 0.2 }}>
               <div className="w-16 h-16 bg-bakery-peach rounded-full flex items-center justify-center mb-4 text-bakery-brown">
