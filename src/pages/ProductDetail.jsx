@@ -146,7 +146,7 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
-    if (cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104') return 'Chocolate Truffle';
+    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -425,13 +425,13 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104') && (
+              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavour:</span>
                     <span className="text-sm font-extrabold text-bakery-darkBrown">{selectedFlavor}</span>
                   </div>
-                  {cake.id !== 'c103' && (
+                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && (
                     <div className="text-bakery-gold font-bold flex items-center gap-1.5 bg-bakery-peach/10 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
                       <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Type:</span>
                       <span className="text-sm font-extrabold text-bakery-darkBrown">
@@ -464,7 +464,7 @@ const ProductDetail = () => {
               )}
 
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
-                {(cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100' || cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104') && selectedFlavor !== 'Chocolate Truffle' ? (
+                {['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle' ? (
                   <span className="text-xl font-bold text-bakery-pink-dark">Custom Pricing (Ask on WhatsApp)</span>
                 ) : (
                   <>
@@ -491,6 +491,10 @@ const ProductDetail = () => {
               ) : cake.id === 'c104' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Mark your sacred milestones with our breathtaking Elegant Holy Cross Cake! This majestic 2-tier masterpiece is beautifully adorned with delicate pastel flowers, satin-like bows, and topped with a glorious golden holy cross. Perfect for first communions, christenings, or confirmations, it is as meaningful as it is delicious. Customize the flavor and add a name to bless your special celebration!
+                </p>
+              ) : cake.id === 'c108' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Show your dad how much you appreciate him with our stunning My Superhero Dad Cake! Adorned with a custom superhero dad ladder topper, elegant white sprinkles, and rich chocolate frosting, this cake is the perfect center stage for his birthday or Father's Day celebration. Customize the flavor to his favorite and add his name to make it a memorable tribute to your hero!
                 </p>
               ) : (
                 <p className="text-bakery-brown/80 leading-relaxed">
@@ -539,7 +543,7 @@ const ProductDetail = () => {
                   >
                     {(() => {
                       let list = Object.keys(flavorPrices);
-                      if (cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100' || cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104') {
+                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
@@ -557,58 +561,12 @@ const ProductDetail = () => {
                           flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
                         }
 
-                        // Special rendering rules for c104
-                        if (cake.id === 'c104') {
+                        // Special rendering rules for c101, c102, c103, c104, c105, c106, c107 & c108
+                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) {
                           if (f === 'Chocolate Truffle') {
-                            const trufflePrice = weight === '1.5 KG' ? '2400/-' : '1800/-';
                             return (
                               <option key={f} value={f}>
-                                {f} ({trufflePrice})
-                              </option>
-                            );
-                          } else {
-                            return (
-                              <option key={f} value={f}>
-                                {f}
-                              </option>
-                            );
-                          }
-                        }
-
-                        // Special rendering rules for c102 & c103
-                        if (cake.id === 'c102' || cake.id === 'c103') {
-                          if (f === 'Chocolate Truffle') {
-                            let trufflePrice;
-                            if (cake.id === 'c103') {
-                              if (weight === '1.5 KG') trufflePrice = '1950/-';
-                              else if (weight === '1 KG') trufflePrice = '1350/-';
-                              else trufflePrice = '750/-';
-                            } else {
-                              if (weight === '1.5 KG') trufflePrice = '2200/-';
-                              else if (weight === '1 KG') trufflePrice = '1600/-';
-                              else trufflePrice = '1000/-';
-                            }
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({trufflePrice})
-                              </option>
-                            );
-                          } else {
-                            return (
-                              <option key={f} value={f}>
-                                {f}
-                              </option>
-                            );
-                          }
-                        }
-
-                        // Special rendering rules for c101
-                        if (cake.id === 'c101') {
-                          if (f === 'Chocolate Truffle') {
-                            const trufflePrice = weight === '1.5 KG' ? '2200/-' : '1600/-';
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({trufflePrice})
+                                {f} ({flavorPrice}/-)
                               </option>
                             );
                           } else {
