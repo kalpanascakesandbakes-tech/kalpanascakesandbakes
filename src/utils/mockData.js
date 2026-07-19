@@ -597,7 +597,7 @@ export const mockCakes = [
     "id": "c115",
     "name": "Chocolate Nutella Hazelnut Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 800,
     "rating": 4.7,
     "tags": [
@@ -618,7 +618,7 @@ export const mockCakes = [
     "id": "c116",
     "name": "Ferrero Rocher Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "",
     "price": 900,
     "rating": 4.8,
     "tags": [
