@@ -590,7 +590,7 @@ export const mockCakes = [
     "prices": {
       "0.5 KG": null,
       "1 KG": 1150,
-      "1.5 KG": 1650
+      "1.5 KG": 1600
     }
   },
   {
