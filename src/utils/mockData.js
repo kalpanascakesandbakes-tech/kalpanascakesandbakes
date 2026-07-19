@@ -814,7 +814,7 @@ export const mockCakes = [
     "id": "c125",
     "name": "Choco Glaze Truffle Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "",
     "price": 600,
     "rating": 4.9,
     "tags": [

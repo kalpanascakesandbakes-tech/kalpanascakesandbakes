@@ -364,7 +364,7 @@ const ProductDetail = () => {
       basePrice: cake.price,
       price: currentPrice,
       image: cake.image,
-      flavor: ['c111', 'c116', 'c122', 'c123', 'c124'].includes(cake.id) ? '' : selectedFlavor,
+      flavor: ['c111', 'c116', 'c122', 'c123', 'c124', 'c125'].includes(cake.id) ? '' : selectedFlavor,
       weight: isCustomWeight ? `${customWeightValue} KG` : weight,
       eggless: isEggless,
       quantity: 1,
@@ -445,7 +445,7 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96' && cake.id !== 'c111' && cake.id !== 'c116' && cake.id !== 'c122' && cake.id !== 'c123' && cake.id !== 'c124') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
+              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96' && cake.id !== 'c111' && cake.id !== 'c116' && cake.id !== 'c122' && cake.id !== 'c123' && cake.id !== 'c124' && cake.id !== 'c125') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     {cake.id !== 'c91' && (
