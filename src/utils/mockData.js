@@ -792,7 +792,7 @@ export const mockCakes = [
     "id": "c124",
     "name": "Dutch Truffle Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "",
     "price": 580,
     "rating": 4.8,
     "tags": [
