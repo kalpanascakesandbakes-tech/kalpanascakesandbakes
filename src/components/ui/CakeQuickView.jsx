@@ -98,9 +98,11 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
 
           {/* Right: Content */}
           <div className="md:w-1/2 p-8 md:p-12 overflow-y-auto flex flex-col justify-center">
-            <div className="uppercase tracking-widest text-sm text-bakery-brown/60 font-bold mb-2">
-              {cake.flavor}
-            </div>
+            {cake.flavor && (
+              <div className="uppercase tracking-widest text-sm text-bakery-brown/60 font-bold mb-2">
+                {cake.flavor}
+              </div>
+            )}
             
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-bakery-darkBrown mb-4">
               {cake.name}
