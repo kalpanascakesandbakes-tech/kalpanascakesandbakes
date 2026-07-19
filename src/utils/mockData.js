@@ -662,7 +662,7 @@ export const mockCakes = [
     "id": "c118",
     "name": "Shimmer Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 950,
     "rating": 4.7,
     "tags": [
@@ -683,7 +683,7 @@ export const mockCakes = [
     "id": "c119",
     "name": "Spiderman Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Black Forest",
     "price": 650,
     "rating": 4.8,
     "tags": [
@@ -705,7 +705,7 @@ export const mockCakes = [
     "id": "c120",
     "name": "Purple Swirl Cream Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Strawberry",
     "price": 500,
     "rating": 4.7,
     "tags": [

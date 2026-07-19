@@ -146,7 +146,10 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
-    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) return 'Chocolate Truffle';
+    if (cake.id === 'c117') return 'Dutch Truffle';
+    if (cake.id === 'c119') return 'Black Forest';
+    if (cake.id === 'c120') return 'Strawberry';
+    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -425,13 +428,13 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108' || cake.id === 'c112' || cake.id === 'c117') && (
+              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108' || cake.id === 'c112' || cake.id === 'c117' || cake.id === 'c118' || cake.id === 'c119' || cake.id === 'c120') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavour:</span>
                     <span className="text-sm font-extrabold text-bakery-darkBrown">{selectedFlavor}</span>
                   </div>
-                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && cake.id !== 'c112' && cake.id !== 'c117' && (
+                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && cake.id !== 'c112' && cake.id !== 'c117' && cake.id !== 'c118' && cake.id !== 'c119' && cake.id !== 'c120' && (
                     <div className="text-bakery-gold font-bold flex items-center gap-1.5 bg-bakery-peach/10 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
                       <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Type:</span>
                       <span className="text-sm font-extrabold text-bakery-darkBrown">
@@ -466,7 +469,7 @@ const ProductDetail = () => {
               )}
 
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
-                {['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle' ? (
+                {((['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') || (cake.id === 'c117' && selectedFlavor !== 'Dutch Truffle') || (cake.id === 'c119' && selectedFlavor !== 'Black Forest') || (cake.id === 'c120' && selectedFlavor !== 'Strawberry')) ? (
                   <span className="text-xl font-bold text-bakery-pink-dark">Custom Pricing (Ask on WhatsApp)</span>
                 ) : (
                   <>
@@ -501,6 +504,22 @@ const ProductDetail = () => {
               ) : cake.id === 'c112' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Welcome your little bundle of joy with our adorable Baby Boy or Girl Shower Cake! Beautifully crafted with charming gender-reveal details, cute pastel toppings, and elegant design accents, this cake is the perfect centerpiece for your baby shower or gender reveal party. Customize the flavor to delight your guests and add a personalized touch to celebrate this beautiful new beginning!
+                </p>
+              ) : cake.id === 'c118' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Welcome to a world of sparkle with our dazzling Shimmer Cake! Featuring a beautiful glittery black finish, gorgeous pink butterfly toppings, and glowing golden birthday candles, this cake is a stunning choice for birthdays or chic celebrations. Customize it in your favorite flavor to amaze your guests both visually and deliciously!
+                </p>
+              ) : cake.id === 'c117' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Make your little princess's dream come true with our breathtaking Elegant Barbie Doll Blue Gown Cake! Beautifully decorated with hand-piped blue and pink cream stars to form a gorgeous ballgown, this doll cake is the perfect centerpiece for birthdays. Customize with her favorite flavor and add her name for a magical celebration!
+                </p>
+              ) : cake.id === 'c119' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Swing into action with our spectacular Spiderman Theme Cake! Adorned with amazing Spiderman toppers, realistic chocolate spiderwebs, and custom name formatting, this cake is guaranteed to be a super-hit at your little hero's birthday. Choose their favorite flavor to create a heroic and mouthwatering experience!
+                </p>
+              ) : cake.id === 'c120' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Indulge in the elegance of our Purple Swirl Cream Cake! Featuring a beautiful gradient design with gorgeous piped purple and pink swirls, delicate pearl sprinkles, and a custom celebratory topper, this cake is perfect for birthdays and elegant get-togethers. Customize it with your favorite flavor to make it a memorable treat!
                 </p>
               ) : (
                 <p className="text-bakery-brown/80 leading-relaxed">
@@ -549,8 +568,14 @@ const ProductDetail = () => {
                   >
                     {(() => {
                       let list = Object.keys(flavorPrices);
-                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) {
+                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118'].includes(cake.id)) {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
+                      } else if (cake.id === 'c117') {
+                        list = ['Dutch Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
+                      } else if (cake.id === 'c119') {
+                        list = ['Black Forest', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Chocolate Truffle', 'Blueberry', 'Butterscotch', 'Red Velvet'];
+                      } else if (cake.id === 'c120') {
+                        list = ['Strawberry', 'Plain Vanilla', 'Pineapple', 'Chocolate Truffle', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
                         let flavorPrice;
@@ -567,9 +592,10 @@ const ProductDetail = () => {
                           flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
                         }
 
-                        // Special rendering rules for c101, c102, c103, c104, c105, c106, c107, c108 & c112
-                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) {
-                          if (f === 'Chocolate Truffle') {
+                        // Special rendering rules for premium pricing
+                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118'].includes(cake.id) || ['c117', 'c119', 'c120'].includes(cake.id)) {
+                          const targetSpecialFlavor = cake.id === 'c117' ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (cake.id === 'c120' ? 'Strawberry' : 'Chocolate Truffle'));
+                          if (f === targetSpecialFlavor) {
                             return (
                               <option key={f} value={f}>
                                 {f} ({flavorPrice}/-)
