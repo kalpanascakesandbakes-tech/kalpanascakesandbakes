@@ -770,7 +770,7 @@ export const mockCakes = [
     "id": "c123",
     "name": "Mini Chocolate Bento Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "",
     "price": 350,
     "rating": 4.9,
     "tags": [
@@ -783,7 +783,7 @@ export const mockCakes = [
     "custom": true,
     "description": "Bento Cake 350 Rs.",
     "prices": {
-      "0.5 KG": null,
+      "0.5 KG": 350,
       "1 KG": null,
       "1.5 KG": null
     }
