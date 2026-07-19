@@ -42,7 +42,7 @@ function doPost(e) {
 
       // Format Items Details
       const itemsString = data.cart.map(item => 
-        `${item.name} (${item.flavor}) - ${item.weight} x${item.quantity} ${item.eggless ? '[Eggless]' : ''}`
+        `${item.name}${item.flavor ? ` (${item.flavor})` : ''} - ${item.weight} x${item.quantity} ${item.eggless ? '[Eggless]' : ''}`
       ).join(' | ');
 
       sheet.appendRow([

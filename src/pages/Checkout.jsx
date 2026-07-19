@@ -198,7 +198,7 @@ const Checkout = () => {
                           <h3 className="font-bold text-bakery-darkBrown">{item.name}</h3>
                           <span className="font-sans font-bold text-bakery-pink-dark">₹{itemSubtotal}</span>
                         </div>
-                        <p className="text-bakery-brown/70">{item.flavor} | {item.weight}</p>
+                        <p className="text-bakery-brown/70">{item.flavor ? `${item.flavor} | ` : ''}{item.weight}</p>
                         <div className="flex justify-between items-center text-bakery-brown/70 mt-1">
                           <span>Qty: {item.quantity}</span>
                           <span className="text-xs">₹{itemUnitPrice} each</span>

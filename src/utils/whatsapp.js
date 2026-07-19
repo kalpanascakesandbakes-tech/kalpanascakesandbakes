@@ -29,7 +29,9 @@ export const generateWhatsAppLink = (orderData) => {
     const subtotal = unitPrice * item.quantity;
 
     message += `*${index + 1}. ${item.name}*\n`;
-    message += `   • Flavor: ${item.flavor}\n`;
+    if (item.flavor) {
+      message += `   • Flavor: ${item.flavor}\n`;
+    }
     message += `   • Weight: ${item.weight}\n`;
     message += `   • Price: ₹${unitPrice} each\n`;
     message += `   • Qty: ${item.quantity} (Subtotal: ₹${subtotal})\n`;

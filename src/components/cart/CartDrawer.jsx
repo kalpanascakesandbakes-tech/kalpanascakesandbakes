@@ -81,7 +81,7 @@ const CartDrawer = () => {
                               <Trash2 size={18} />
                             </button>
                           </div>
-                          <p className="text-sm text-bakery-brown/80">{item.flavor} | {item.weight}</p>
+                          <p className="text-sm text-bakery-brown/80">{item.flavor ? `${item.flavor} | ` : ''}{item.weight}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 inline-block">Pure Veg</span>
                             <span className="text-xs text-bakery-brown/60">₹{itemUnitPrice}/each</span>

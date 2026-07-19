@@ -510,7 +510,7 @@ export const mockCakes = [
     "id": "c111",
     "name": "Traditional Rajbhog Cake",
     "category": "Cakes",
-    "flavor": "Mango",
+    "flavor": "",
     "price": 700,
     "rating": 4.7,
     "tags": [
@@ -532,7 +532,7 @@ export const mockCakes = [
     "id": "c112",
     "name": "Baby Boy or Girl Shower Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 750,
     "rating": 4.8,
     "tags": [

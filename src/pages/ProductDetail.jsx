@@ -146,7 +146,7 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
-    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) return 'Chocolate Truffle';
+    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -361,7 +361,7 @@ const ProductDetail = () => {
       basePrice: cake.price,
       price: currentPrice,
       image: cake.image,
-      flavor: selectedFlavor,
+      flavor: cake.id === 'c111' ? '' : selectedFlavor,
       weight: isCustomWeight ? `${customWeightValue} KG` : weight,
       eggless: isEggless,
       quantity: 1,
@@ -425,13 +425,13 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108') && (
+              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108' || cake.id === 'c112') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavour:</span>
                     <span className="text-sm font-extrabold text-bakery-darkBrown">{selectedFlavor}</span>
                   </div>
-                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && (
+                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && cake.id !== 'c112' && (
                     <div className="text-bakery-gold font-bold flex items-center gap-1.5 bg-bakery-peach/10 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
                       <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Type:</span>
                       <span className="text-sm font-extrabold text-bakery-darkBrown">
@@ -442,7 +442,7 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
+              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96' && cake.id !== 'c111') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     {cake.id !== 'c91' && (
@@ -464,7 +464,7 @@ const ProductDetail = () => {
               )}
 
               <div className="flex items-baseline gap-4 mb-4 bg-bakery-cream/35 p-3 rounded-xl border border-bakery-peach/20 w-fit">
-                {['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle' ? (
+                {['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle' ? (
                   <span className="text-xl font-bold text-bakery-pink-dark">Custom Pricing (Ask on WhatsApp)</span>
                 ) : (
                   <>
@@ -495,6 +495,10 @@ const ProductDetail = () => {
               ) : cake.id === 'c108' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Show your dad how much you appreciate him with our stunning My Superhero Dad Cake! Adorned with a custom superhero dad ladder topper, elegant white sprinkles, and rich chocolate frosting, this cake is the perfect center stage for his birthday or Father's Day celebration. Customize the flavor to his favorite and add his name to make it a memorable tribute to your hero!
+                </p>
+              ) : cake.id === 'c112' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Welcome your little bundle of joy with our adorable Baby Boy or Girl Shower Cake! Beautifully crafted with charming gender-reveal details, cute pastel toppings, and elegant design accents, this cake is the perfect centerpiece for your baby shower or gender reveal party. Customize the flavor to delight your guests and add a personalized touch to celebrate this beautiful new beginning!
                 </p>
               ) : (
                 <p className="text-bakery-brown/80 leading-relaxed">
@@ -543,7 +547,7 @@ const ProductDetail = () => {
                   >
                     {(() => {
                       let list = Object.keys(flavorPrices);
-                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) {
+                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
@@ -561,8 +565,8 @@ const ProductDetail = () => {
                           flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
                         }
 
-                        // Special rendering rules for c101, c102, c103, c104, c105, c106, c107 & c108
-                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108'].includes(cake.id)) {
+                        // Special rendering rules for c101, c102, c103, c104, c105, c106, c107, c108 & c112
+                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112'].includes(cake.id)) {
                           if (f === 'Chocolate Truffle') {
                             return (
                               <option key={f} value={f}>
