@@ -446,7 +446,9 @@ const ProductDetail = () => {
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     {cake.id !== 'c91' && (
-                      <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavor:</span>
+                      <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">
+                        {cake.id === 'c113' ? 'Flavour:' : 'Flavor:'}
+                      </span>
                     )}
                     <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">
                       {cake.id === 'c91'
