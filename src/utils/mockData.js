@@ -575,7 +575,7 @@ export const mockCakes = [
     "id": "c114",
     "name": "Spiderman City Adventure Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Plain Vanilla",
     "price": 1150,
     "rating": 4.9,
     "tags": [
