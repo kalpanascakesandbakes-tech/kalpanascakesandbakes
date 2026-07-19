@@ -640,7 +640,7 @@ export const mockCakes = [
     "id": "c117",
     "name": "Elegant Barbie Doll Blue Gown",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Dutch Truffle",
     "price": 1360,
     "rating": 4.9,
     "tags": [
