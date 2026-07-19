@@ -835,9 +835,9 @@ export const mockCakes = [
   },
   {
     "id": "c126",
-    "name": "Elegant White & Gold Half-Moon Arch Cake",
+    "name": "Top Forward Cake ",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 750,
     "rating": 5,
     "tags": [
@@ -859,7 +859,7 @@ export const mockCakes = [
     "id": "c127",
     "name": "2 Tier Birthday Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 1600,
     "rating": 4.9,
     "tags": [
@@ -881,7 +881,7 @@ export const mockCakes = [
     "id": "c128",
     "name": "Welcome Baby Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 750,
     "rating": 4.8,
     "tags": [
