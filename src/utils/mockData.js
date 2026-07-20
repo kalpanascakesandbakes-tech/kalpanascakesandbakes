@@ -1186,7 +1186,7 @@ export const mockCakes = [
     "id": "c142",
     "name": "Black Forest Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 500,
     "rating": 4.7,
     "tags": [
