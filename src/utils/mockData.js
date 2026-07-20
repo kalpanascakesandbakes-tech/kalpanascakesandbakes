@@ -1816,7 +1816,7 @@ export const mockCakes = [
     "id": "c172",
     "name": "Chocolate Truffle Rectangle Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 800,
     "rating": 4.9,
     "tags": [
@@ -1858,7 +1858,7 @@ export const mockCakes = [
     "id": "c174",
     "name": "Truffle Overload Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 800,
     "rating": 4.7,
     "tags": [
@@ -2110,7 +2110,7 @@ export const mockCakes = [
     "id": "c186",
     "name": "Truffle Overload Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 800,
     "rating": 4.7,
     "tags": [
@@ -2215,7 +2215,7 @@ export const mockCakes = [
     "id": "c191",
     "name": "Blueberry Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Blueberry",
     "price": 500,
     "rating": 4.8,
     "tags": [

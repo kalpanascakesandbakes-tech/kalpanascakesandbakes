@@ -484,7 +484,7 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96' && cake.id !== 'c111' && cake.id !== 'c116' && cake.id !== 'c122' && cake.id !== 'c123' && cake.id !== 'c124' && cake.id !== 'c125' && cake.id !== 'c130' && cake.id !== 'c143' && cake.id !== 'c156') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
+              {((!priceDependsOnFlavor && cake.id !== 'c90' && cake.id !== 'c95' && cake.id !== 'c96' && cake.id !== 'c111' && cake.id !== 'c116' && cake.id !== 'c122' && cake.id !== 'c123' && cake.id !== 'c124' && cake.id !== 'c125' && cake.id !== 'c130' && cake.id !== 'c143' && cake.id !== 'c156' && cake.id !== 'c178') || cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                     {cake.id !== 'c91' && (
