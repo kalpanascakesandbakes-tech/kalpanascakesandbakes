@@ -2131,7 +2131,7 @@ export const mockCakes = [
     "id": "c187",
     "name": "Golden Sweet 16 Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 900,
     "rating": 4.8,
     "tags": [
