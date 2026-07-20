@@ -1690,7 +1690,7 @@ export const mockCakes = [
     "id": "c166",
     "name": "Rose Anniversary Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Dutch Truffle",
     "price": 650,
     "rating": 4.7,
     "tags": [
