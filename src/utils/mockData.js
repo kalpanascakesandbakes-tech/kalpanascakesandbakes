@@ -1627,7 +1627,7 @@ export const mockCakes = [
     "id": "c163",
     "name": "Red Velvet Heart Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Red Velvet",
     "price": 750,
     "rating": 4.8,
     "tags": [
@@ -1648,7 +1648,7 @@ export const mockCakes = [
     "id": "c164",
     "name": "Chocolate Truffle Heart Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 700,
     "rating": 4.9,
     "tags": [
@@ -1669,7 +1669,7 @@ export const mockCakes = [
     "id": "c165",
     "name": "Butterscotch Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Butterscotch",
     "price": 500,
     "rating": 5,
     "tags": [
@@ -1723,16 +1723,16 @@ export const mockCakes = [
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 600,
+      "0.5 KG": 700,
       "1 KG": 1200,
-      "1.5 KG": 1800
+      "1.5 KG": 1700
     }
   },
   {
     "id": "c168",
     "name": "Classic Truffle Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 600,
     "rating": 4.9,
     "tags": [
@@ -1765,7 +1765,7 @@ export const mockCakes = [
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 700,
+      "0.5 KG": 650,
       "1 KG": 1300,
       "1.5 KG": 1950
     }
