@@ -26,6 +26,7 @@ const FLAVOR_BASE_PRICES = {
   'Strawberry': 500,
   'Pineapple': 500,
   'Blackcurrent': 500,
+  'Blueberry': 500,
   'Butterscotch': 500,
 
   // Fusion Cakes
@@ -148,7 +149,9 @@ const ProductDetail = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
     if (cake.id === 'c117' || cake.id === 'c133') return 'Dutch Truffle';
     if (cake.id === 'c119') return 'Black Forest';
-    if (cake.id === 'c120' || cake.id === 'c132') return 'Strawberry';
+    if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137') return 'Strawberry';
+    if (cake.id === 'c138') return 'Butterscotch';
+    if (cake.id === 'c140') return 'Blueberry';
     if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
@@ -396,7 +399,9 @@ const ProductDetail = () => {
     if (!cake) return false;
     if (['c117', 'c133'].includes(cake.id) && selectedFlavor !== 'Dutch Truffle') return true;
     if (cake.id === 'c119' && selectedFlavor !== 'Black Forest') return true;
-    if (['c120', 'c132'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
+    if (['c120', 'c132', 'c137'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
+    if (cake.id === 'c138' && selectedFlavor !== 'Butterscotch') return true;
+    if (cake.id === 'c140' && selectedFlavor !== 'Blueberry') return true;
     if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') return true;
     return false;
   })();
@@ -448,13 +453,13 @@ const ProductDetail = () => {
             <div>
               <h1 className="text-4xl font-serif font-bold text-bakery-darkBrown mb-2">{cake.name}</h1>
 
-              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108' || cake.id === 'c112' || cake.id === 'c117' || cake.id === 'c118' || cake.id === 'c119' || cake.id === 'c120' || cake.id === 'c126' || cake.id === 'c127' || cake.id === 'c128' || cake.id === 'c132' || cake.id === 'c133' || cake.id === 'c134' || cake.id === 'c135' || cake.id === 'c136') && (
+              {(cake.id === 'c101' || cake.id === 'c102' || cake.id === 'c103' || cake.id === 'c104' || cake.id === 'c105' || cake.id === 'c106' || cake.id === 'c107' || cake.id === 'c108' || cake.id === 'c112' || cake.id === 'c117' || cake.id === 'c118' || cake.id === 'c119' || cake.id === 'c120' || cake.id === 'c126' || cake.id === 'c127' || cake.id === 'c128' || cake.id === 'c132' || cake.id === 'c133' || cake.id === 'c134' || cake.id === 'c135' || cake.id === 'c136' || cake.id === 'c137' || cake.id === 'c138' || cake.id === 'c140') && (
                 <div className="flex flex-col gap-2 mb-3.5">
                   <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
-                    <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Flavour:</span>
+                    <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold font-sans">Flavour:</span>
                     <span className="text-sm font-extrabold text-bakery-darkBrown">{selectedFlavor}</span>
                   </div>
-                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && cake.id !== 'c112' && cake.id !== 'c117' && cake.id !== 'c118' && cake.id !== 'c119' && cake.id !== 'c120' && cake.id !== 'c126' && cake.id !== 'c127' && cake.id !== 'c128' && cake.id !== 'c132' && cake.id !== 'c133' && cake.id !== 'c134' && cake.id !== 'c135' && cake.id !== 'c136' && (
+                  {cake.id !== 'c103' && cake.id !== 'c105' && cake.id !== 'c106' && cake.id !== 'c107' && cake.id !== 'c108' && cake.id !== 'c112' && cake.id !== 'c117' && cake.id !== 'c118' && cake.id !== 'c119' && cake.id !== 'c120' && cake.id !== 'c126' && cake.id !== 'c127' && cake.id !== 'c128' && cake.id !== 'c132' && cake.id !== 'c133' && cake.id !== 'c134' && cake.id !== 'c135' && cake.id !== 'c136' && cake.id !== 'c137' && cake.id !== 'c138' && (
                     <div className="text-bakery-gold font-bold flex items-center gap-1.5 bg-bakery-peach/10 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
                       <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Type:</span>
                       <span className="text-sm font-extrabold text-bakery-darkBrown">
@@ -614,7 +619,7 @@ const ProductDetail = () => {
                   >
                     {(() => {
                       let list = Object.keys(flavorPrices);
-                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136'].includes(cake.id)) {
+                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c137', 'c138', 'c140'].includes(cake.id)) {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       } else if (cake.id === 'c117' || cake.id === 'c133') {
                         list = ['Dutch Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
@@ -639,8 +644,8 @@ const ProductDetail = () => {
                         }
 
                         // Special rendering rules for premium pricing
-                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136'].includes(cake.id) || ['c117', 'c119', 'c120', 'c132', 'c133'].includes(cake.id)) {
-                          const targetSpecialFlavor = ['c117', 'c133'].includes(cake.id) ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (['c120', 'c132'].includes(cake.id) ? 'Strawberry' : 'Chocolate Truffle'));
+                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c137', 'c138', 'c140'].includes(cake.id) || ['c117', 'c119', 'c120', 'c132', 'c133'].includes(cake.id)) {
+                          const targetSpecialFlavor = ['c117', 'c133'].includes(cake.id) ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (['c120', 'c132', 'c137'].includes(cake.id) ? 'Strawberry' : (cake.id === 'c138' ? 'Butterscotch' : (cake.id === 'c140' ? 'Blueberry' : 'Chocolate Truffle'))));
                           if (f === targetSpecialFlavor) {
                             return (
                               <option key={f} value={f}>
@@ -689,6 +694,21 @@ const ProductDetail = () => {
                   {cake.id === 'c135' && (
                     <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
                       * Note: Standard price shown is for <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span>. Pricing for other flavors may vary; please confirm details on WhatsApp.
+                    </div>
+                  )}
+                  {cake.id === 'c137' && (
+                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
+                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
+                    </div>
+                  )}
+                  {cake.id === 'c138' && (
+                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
+                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Butterscotch</span> flavor. Other flavor prices vary; please consult on WhatsApp.
+                    </div>
+                  )}
+                  {cake.id === 'c140' && (
+                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
+                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Blueberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
                     </div>
                   )}
                 </div>

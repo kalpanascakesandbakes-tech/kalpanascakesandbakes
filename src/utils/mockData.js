@@ -1080,7 +1080,7 @@ export const mockCakes = [
     "id": "c137",
     "name": "MAC Makeup Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Strawberry",
     "price": 650,
     "rating": 4.9,
     "tags": [
@@ -1094,7 +1094,7 @@ export const mockCakes = [
     "description": "Depends on flavor",
     "prices": {
       "0.5 KG": 650,
-      "1 KG": 1200,
+      "1 KG": 1250,
       "1.5 KG": 1650
     }
   },
@@ -1102,7 +1102,7 @@ export const mockCakes = [
     "id": "c138",
     "name": "Golden Star Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Butterscotch",
     "price": 700,
     "rating": 4.7,
     "tags": [
@@ -1115,7 +1115,7 @@ export const mockCakes = [
     "description": "Depends on flavor",
     "prices": {
       "0.5 KG": 700,
-      "1 KG": 1200,
+      "1 KG": 1050,
       "1.5 KG": 1700
     }
   },
@@ -1144,7 +1144,7 @@ export const mockCakes = [
     "id": "c140",
     "name": "Airplane Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Blueberry",
     "price": 800,
     "rating": 4.9,
     "tags": [
