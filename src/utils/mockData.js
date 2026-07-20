@@ -1333,7 +1333,7 @@ export const mockCakes = [
     "id": "c149",
     "name": "White & Blue Rosette Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Plain Vanilla",
     "price": 450,
     "rating": 5,
     "tags": [
@@ -1354,7 +1354,7 @@ export const mockCakes = [
     "id": "c150",
     "name": "Chocolate Truffle Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 600,
     "rating": 4.7,
     "tags": [
@@ -1396,7 +1396,7 @@ export const mockCakes = [
     "id": "c152",
     "name": "MR. Bean Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Strawberry",
     "price": 800,
     "rating": 4.9,
     "tags": [
