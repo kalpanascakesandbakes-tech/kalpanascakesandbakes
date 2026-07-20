@@ -1417,8 +1417,8 @@ export const mockCakes = [
     "id": "c153",
     "name": "Red Devil Theme Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
-    "price": 800,
+    "flavor": "Chocolate Truffle",
+    "price": 750,
     "rating": 5,
     "tags": [
       "Designer Cakes",
@@ -1427,19 +1427,19 @@ export const mockCakes = [
     "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.21 PM (2).jpeg",
     "categoryGroup": "Theme Cakes",
     "custom": true,
-    "description": "Semi Fondant Depends on flavor",
+    "description": "Semi Fondant",
     "prices": {
-      "0.5 KG": 800,
-      "1 KG": 1300,
-      "1.5 KG": 1800
+      "0.5 KG": 750,
+      "1 KG": 1350,
+      "1.5 KG": 1950
     }
   },
   {
     "id": "c154",
     "name": "Red Velvet Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
-    "price": 750,
+    "flavor": "Red Velvet",
+    "price": 700,
     "rating": 4.7,
     "tags": [
       "Designer Cakes",
@@ -1450,7 +1450,7 @@ export const mockCakes = [
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 750,
+      "0.5 KG": 700,
       "1 KG": 1400,
       "1.5 KG": 2100
     }
@@ -1459,7 +1459,7 @@ export const mockCakes = [
     "id": "c155",
     "name": "Blue Blossom Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Blueberry",
     "price": 500,
     "rating": 4.8,
     "tags": [
