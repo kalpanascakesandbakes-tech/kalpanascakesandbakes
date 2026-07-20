@@ -1856,7 +1856,7 @@ export const mockCakes = [
   },
   {
     "id": "c174",
-    "name": "Truffle Overload Cake",
+    "name": "Truffle Chocolate Overload Cake",
     "category": "Cakes",
     "flavor": "Chocolate",
     "price": 800,
@@ -1877,9 +1877,9 @@ export const mockCakes = [
   },
   {
     "id": "c175",
-    "name": "Star Theme Cake",
+    "name": "Star Theme",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 900,
     "rating": 4.8,
     "tags": [
@@ -1900,7 +1900,7 @@ export const mockCakes = [
     "id": "c176",
     "name": "Loaded Candy Drip Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Butterscotch",
     "price": 800,
     "rating": 4.9,
     "tags": [
@@ -1913,8 +1913,8 @@ export const mockCakes = [
     "description": "Depends on flavor",
     "prices": {
       "0.5 KG": 800,
-      "1 KG": 1400,
-      "1.5 KG": 2000
+      "1 KG": 1300,
+      "1.5 KG": 1800
     }
   },
   {
