@@ -2278,7 +2278,7 @@ export const mockCakes = [
     "id": "c194",
     "name": "Car Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 1000,
     "rating": 4.7,
     "tags": [
@@ -2290,8 +2290,8 @@ export const mockCakes = [
     "custom": true,
     "description": "Depends on flavor",
     "prices": {
-      "0.5 KG": 1000,
-      "1 KG": 1500,
+      "0.5 KG": 800,
+      "1 KG": 1400,
       "1.5 KG": 2000
     }
   },
@@ -2320,7 +2320,7 @@ export const mockCakes = [
     "id": "c196",
     "name": "Unicorn Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Strawberry",
     "price": 1000,
     "rating": 4.9,
     "tags": [
