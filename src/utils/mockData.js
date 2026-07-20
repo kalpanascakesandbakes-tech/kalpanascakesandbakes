@@ -1102,7 +1102,7 @@ export const mockCakes = [
     "id": "c138",
     "name": "Golden Star Cake",
     "category": "Cakes",
-    "flavor": "Butterscotch",
+    "flavor": "Chocolate Truffle",
     "price": 700,
     "rating": 4.7,
     "tags": [
@@ -1115,8 +1115,8 @@ export const mockCakes = [
     "description": "Depends on flavor",
     "prices": {
       "0.5 KG": 700,
-      "1 KG": 1050,
-      "1.5 KG": 1700
+      "1 KG": 1400,
+      "1.5 KG": 2100
     }
   },
   {
@@ -2152,7 +2152,7 @@ export const mockCakes = [
     "id": "c188",
     "name": "Butterfly Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 700,
     "rating": 4.9,
     "tags": [
@@ -2194,7 +2194,7 @@ export const mockCakes = [
     "id": "c190",
     "name": "Truffle Tub Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate",
     "price": 600,
     "rating": 4.7,
     "tags": [
@@ -2207,8 +2207,8 @@ export const mockCakes = [
     "description": "Depends on flavor",
     "prices": {
       "0.5 KG": 600,
-      "1 KG": 1200,
-      "1.5 KG": 1800
+      "1 KG": null,
+      "1.5 KG": null
     }
   },
   {
@@ -2320,7 +2320,7 @@ export const mockCakes = [
     "id": "c196",
     "name": "Unicorn Theme Cake",
     "category": "Cakes",
-    "flavor": "Strawberry",
+    "flavor": "Chocolate Truffle",
     "price": 1000,
     "rating": 4.9,
     "tags": [
