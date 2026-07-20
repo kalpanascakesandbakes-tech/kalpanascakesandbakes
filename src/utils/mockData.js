@@ -1035,7 +1035,7 @@ export const mockCakes = [
     "id": "c135",
     "name": "3-Tier Disney Princess Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 2400,
     "rating": 5,
     "tags": [

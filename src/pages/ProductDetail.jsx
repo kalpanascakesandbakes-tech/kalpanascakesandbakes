@@ -146,11 +146,10 @@ const ProductDetail = () => {
   // Retrieve the default flavor choice matching reference descriptions
   const getDefaultFlavor = () => {
     if (!cake) return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
-    if (cake.id === 'c135') return 'Plain Vanilla';
     if (cake.id === 'c117' || cake.id === 'c133') return 'Dutch Truffle';
     if (cake.id === 'c119') return 'Black Forest';
     if (cake.id === 'c120' || cake.id === 'c132') return 'Strawberry';
-    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136'].includes(cake.id)) return 'Chocolate Truffle';
+    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
@@ -398,9 +397,7 @@ const ProductDetail = () => {
     if (['c117', 'c133'].includes(cake.id) && selectedFlavor !== 'Dutch Truffle') return true;
     if (cake.id === 'c119' && selectedFlavor !== 'Black Forest') return true;
     if (['c120', 'c132'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
-    if (cake.id === 'c135' && selectedFlavor !== 'Plain Vanilla') return true;
-    if (cake.id === 'c136' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') return true;
+    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') return true;
     return false;
   })();
 
@@ -643,7 +640,7 @@ const ProductDetail = () => {
 
                         // Special rendering rules for premium pricing
                         if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136'].includes(cake.id) || ['c117', 'c119', 'c120', 'c132', 'c133'].includes(cake.id)) {
-                          const targetSpecialFlavor = ['c117', 'c133'].includes(cake.id) ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (['c120', 'c132'].includes(cake.id) ? 'Strawberry' : (cake.id === 'c135' ? 'Plain Vanilla' : 'Chocolate Truffle')));
+                          const targetSpecialFlavor = ['c117', 'c133'].includes(cake.id) ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (['c120', 'c132'].includes(cake.id) ? 'Strawberry' : 'Chocolate Truffle'));
                           if (f === targetSpecialFlavor) {
                             return (
                               <option key={f} value={f}>
@@ -689,6 +686,11 @@ const ProductDetail = () => {
                       });
                     })()}
                   </select>
+                  {cake.id === 'c135' && (
+                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
+                      * Note: Standard price shown is for <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span>. Pricing for other flavors may vary; please confirm details on WhatsApp.
+                    </div>
+                  )}
                 </div>
               )}
 
