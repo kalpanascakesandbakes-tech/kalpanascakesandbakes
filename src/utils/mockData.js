@@ -991,7 +991,7 @@ export const mockCakes = [
     "id": "c133",
     "name": "School Teacher Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Dutch Truffle",
     "price": 730,
     "rating": 4.8,
     "tags": [
@@ -1006,14 +1006,14 @@ export const mockCakes = [
     "prices": {
       "0.5 KG": 730,
       "1 KG": 1350,
-      "1.5 KG": 1950
+      "1.5 KG": 1930
     }
   },
   {
     "id": "c134",
     "name": "Blue Vintage Heart Piping Birthday Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 750,
     "rating": 4.7,
     "tags": [
@@ -1036,7 +1036,7 @@ export const mockCakes = [
     "name": "3-Tier Disney Princess Theme Cake",
     "category": "Cakes",
     "flavor": "Vanilla",
-    "price": 2200,
+    "price": 2400,
     "rating": 5,
     "tags": [
       "Designer Cakes",
@@ -1047,18 +1047,18 @@ export const mockCakes = [
     "categoryGroup": "Theme Cakes",
     "custom": true,
     "isBestSeller": true,
-    "description": "Minimum 2 Kg.",
+    "description": "Indulge in our exquisite 3-Tier Disney Princess Theme Cake. Handcrafted with premium ingredients, this beautiful creation is perfect for making your special moments even sweeter.",
     "prices": {
       "0.5 KG": null,
       "1 KG": null,
-      "1.5 KG": null
+      "1.5 KG": 2400
     }
   },
   {
     "id": "c136",
     "name": "25th Anniversary 2-Tier Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 1550,
     "rating": 4.9,
     "tags": [
