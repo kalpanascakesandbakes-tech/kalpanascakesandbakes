@@ -903,7 +903,7 @@ export const mockCakes = [
     "id": "c129",
     "name": "18th Birthday 2-Tier Chocolate Overload Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle ",
     "price": 1600,
     "rating": 5,
     "tags": [
@@ -926,8 +926,8 @@ export const mockCakes = [
     "id": "c130",
     "name": "Chocolate Drip Birthday Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
-    "price": 600,
+    "flavor": "",
+    "price": 580,
     "rating": 4.7,
     "tags": [
       "Birthday Cakes",
@@ -939,8 +939,8 @@ export const mockCakes = [
     "custom": true,
     "description": "",
     "prices": {
-      "0.5 KG": 600,
-      "1 KG": 1200,
+      "0.5 KG": 580,
+      "1 KG": 1160,
       "1.5 KG": 1740
     }
   },
@@ -948,7 +948,7 @@ export const mockCakes = [
     "id": "c131",
     "name": "Chocolate Truffle Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 600,
     "rating": 4.8,
     "tags": [
@@ -970,8 +970,8 @@ export const mockCakes = [
     "id": "c132",
     "name": "Happy Retirement Golden Spheres Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
-    "price": 500,
+    "flavor": "Strawberry",
+    "price": 600,
     "rating": 4.9,
     "tags": [
       "Designer Cakes",
@@ -982,7 +982,7 @@ export const mockCakes = [
     "custom": true,
     "description": "Depends on flavor",
     "prices": {
-      "0.5 KG": 500,
+      "0.5 KG": 600,
       "1 KG": 1100,
       "1.5 KG": 1600
     }
