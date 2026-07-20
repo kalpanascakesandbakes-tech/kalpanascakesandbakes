@@ -1585,7 +1585,7 @@ export const mockCakes = [
     "id": "c161",
     "name": "Engagement Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Blueberry Cheesecake",
     "price": 1600,
     "rating": 5,
     "tags": [
@@ -1606,7 +1606,7 @@ export const mockCakes = [
     "id": "c162",
     "name": "Captain America Photocake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Butterscotch",
     "price": 700,
     "rating": 4.7,
     "tags": [
@@ -1616,10 +1616,10 @@ export const mockCakes = [
     "image": "/cakes/Cake/WhatsApp Image 2026-07-15 at 2.49.23 PM.jpeg",
     "categoryGroup": "Theme Cakes",
     "custom": true,
-    "description": "Depends on Flavor (Photo Cake)",
+    "description": "Photo Cake",
     "prices": {
       "0.5 KG": 700,
-      "1 KG": 1300,
+      "1 KG": 1200,
       "1.5 KG": 1700
     }
   },
