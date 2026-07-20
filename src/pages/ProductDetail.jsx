@@ -160,6 +160,7 @@ const ProductDetail = () => {
     if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160') return 'Strawberry';
     if (cake.id === 'c161') return 'Blueberry Cheesecake';
     if (cake.id === 'c138' || cake.id === 'c162') return 'Butterscotch';
+    if (cake.id === 'c173') return 'Blackcurrent Cake';
     if (cake.id === 'c183' || cake.id === 'c171' || cake.id === 'c140' || cake.id === 'c155') return 'Blueberry';
     if (cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') return 'Red Velvet';
     if (cake.id === 'c145') return 'Oreo';
@@ -431,6 +432,7 @@ const ProductDetail = () => {
     if (cake.id === 'c171' && selectedFlavor !== 'Blueberry') return true;
     if (cake.id === 'c183' && selectedFlavor !== 'Blueberry') return true;
     if (cake.id === 'c184' && selectedFlavor !== 'Chocolate Truffle') return true;
+    if (cake.id === 'c173' && selectedFlavor !== 'Blackcurrent' && selectedFlavor !== 'Blackcurrent Cake') return true;
     if (cake.id === 'c182' && selectedFlavor !== 'Chocolate Truffle') return true;
     if (cake.id === 'c187' && selectedFlavor !== 'Chocolate Truffle') return true;
     if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c147', 'c148', 'c153', 'c157', 'c158'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') return true;
@@ -489,18 +491,20 @@ const ProductDetail = () => {
 
                 const displayFlavor = cake.id === 'c91'
                   ? 'Ferrero Rocher'
-                  : (cake.id === 'c183' || cake.id === 'c171'
-                    ? 'Blueberry'
-                    : (cake.id === 'c166' || cake.id === 'c170'
-                      ? 'Dutch Truffle'
-                      : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id)
-                        ? 'Chocolate Truffle'
-                        : (cake.flavor || selectedFlavor))));
+                  : (cake.id === 'c173'
+                    ? 'Blackcurrent Cake'
+                    : (cake.id === 'c183' || cake.id === 'c171'
+                      ? 'Blueberry'
+                      : (cake.id === 'c166' || cake.id === 'c170'
+                        ? 'Dutch Truffle'
+                        : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id)
+                          ? 'Chocolate Truffle'
+                          : (cake.flavor || selectedFlavor)))));
 
                 if (!displayFlavor) return null;
 
                 const showTypeBadge = (cake.id === 'c104' || cake.id === 'c97' || isSemiFondant) &&
-                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id);
+                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c173', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id);
 
                 return (
                   <div className="flex flex-col gap-2 mb-3.5">
@@ -537,7 +541,11 @@ const ProductDetail = () => {
 
 
 
-              {cake.id === 'c184' ? (
+              {cake.id === 'c173' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Make your little princess feel like royalty with our enchanting Princess Cake! Featuring an intricate 3D princess gown hand-piped with luscious purple buttercream feathers, elegant blue butterfly accents, delicate pearl sprinkles, and a green floral arch top. Handcrafted fresh with premium ingredients for magical celebrations!
+                </p>
+              ) : cake.id === 'c184' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Delight your little stars with our adorable Mickey Mouse Theme Cake! Expertly hand-sculpted with cute pink and black buttercream piping, detailed Disney character features, and elegant pearl accents. Handcrafted fresh with premium ingredients for magical birthday memories!
                 </p>
@@ -690,6 +698,8 @@ const ProductDetail = () => {
                       }
                       if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c137', 'c138', 'c140', 'c144', 'c147', 'c148', 'c151', 'c153', 'c154', 'c157', 'c158', 'c182', 'c184', 'c187'].includes(cake.id)) {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
+                      } else if (cake.id === 'c173') {
+                        list = ['Blackcurrent', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
                       } else if (cake.id === 'c183' || cake.id === 'c171' || cake.id === 'c140' || cake.id === 'c155') {
                         list = ['Blueberry', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
                       } else if (cake.id === 'c145') {
@@ -710,6 +720,23 @@ const ProductDetail = () => {
                         list = ['Blueberry Cheesecake', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
+                        if (cake.id === 'c173') {
+                          if (f === 'Blackcurrent' || f === 'Blackcurrent Cake') {
+                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 600;
+                            return (
+                              <option key={f} value={f}>
+                                {f} ({flavorPrice}/-)
+                              </option>
+                            );
+                          }
+
+                          return (
+                            <option key={f} value={f}>
+                              {f}
+                            </option>
+                          );
+                        }
+
                         if (cake.id === 'c184') {
                           if (f === 'Chocolate Truffle') {
                             const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 900;
