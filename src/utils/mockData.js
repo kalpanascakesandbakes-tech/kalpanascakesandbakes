@@ -1249,7 +1249,7 @@ export const mockCakes = [
     "id": "c145",
     "name": "Elegant Blue Bow Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Oreo",
     "price": 550,
     "rating": 5,
     "tags": [
@@ -1270,7 +1270,7 @@ export const mockCakes = [
     "id": "c146",
     "name": "Floral Rosette Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Mango Cake",
     "price": 500,
     "rating": 4.7,
     "tags": [
@@ -1291,7 +1291,7 @@ export const mockCakes = [
     "id": "c147",
     "name": "Football Theme Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 700,
     "rating": 4.8,
     "tags": [
@@ -1305,14 +1305,14 @@ export const mockCakes = [
     "prices": {
       "0.5 KG": 700,
       "1 KG": 1400,
-      "1.5 KG": 2000
+      "1.5 KG": 2100
     }
   },
   {
     "id": "c148",
     "name": "Black Shimmer Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 950,
     "rating": 4.9,
     "tags": [
