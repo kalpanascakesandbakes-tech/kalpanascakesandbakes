@@ -1774,7 +1774,7 @@ export const mockCakes = [
     "id": "c170",
     "name": "BFF Photo Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Dutch Truffle",
     "price": 780,
     "rating": 4.7,
     "tags": [
@@ -1795,7 +1795,7 @@ export const mockCakes = [
     "id": "c171",
     "name": "Blush Pink Celebration Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Blueberry Cheesecake",
     "price": 780,
     "rating": 4.8,
     "tags": [
@@ -1807,9 +1807,9 @@ export const mockCakes = [
     "custom": true,
     "description": "Depends on Flavor",
     "prices": {
-      "0.5 KG": 780,
+      "0.5 KG": 700,
       "1 KG": 1400,
-      "1.5 KG": 2000
+      "1.5 KG": 2100
     }
   },
   {
