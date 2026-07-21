@@ -1921,7 +1921,7 @@ export const mockCakes = [
     "id": "c177",
     "name": "Anniversary Heart Cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Butterscotch",
     "price": 500,
     "rating": 5,
     "tags": [
@@ -1963,7 +1963,7 @@ export const mockCakes = [
     "id": "c179",
     "name": "2 Tier Golden drip cake",
     "category": "Cakes",
-    "flavor": "Chocolate",
+    "flavor": "Chocolate Truffle",
     "price": 1500,
     "rating": 4.8,
     "tags": [
@@ -1984,7 +1984,7 @@ export const mockCakes = [
     "id": "c180",
     "name": "Teddy bear Theme Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Butterscotch",
     "price": 800,
     "rating": 4.9,
     "tags": [
