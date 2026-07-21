@@ -227,6 +227,24 @@ const ProductDetail = () => {
     return isBento ? 'Chocolate Truffle' : 'Chocolate Truffle';
   };
 
+  const get8CommonFlavors = () => {
+    const defaultF = getDefaultFlavor();
+    const standard8 = [
+      'Chocolate Truffle',
+      'Plain Vanilla',
+      'Pineapple',
+      'Strawberry',
+      'Black Forest',
+      'Blueberry',
+      'Butterscotch',
+      'Red Velvet'
+    ];
+    if (standard8.includes(defaultF)) {
+      return [defaultF, ...standard8.filter(f => f !== defaultF)];
+    }
+    return [defaultF, ...standard8.slice(0, 7)];
+  };
+
   // Calculate the design premium fee for any cake based on default flavor base price
   const designPremium = (() => {
     if (!cake) return 0;
@@ -407,29 +425,9 @@ const ProductDetail = () => {
   };
 
   const isCustomPricing = (() => {
-    if (!cake) return false;
-    if (cake.id === 'c188' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c138' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c192' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c194' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (['c120', 'c132', 'c137', 'c152', 'c160', 'c196'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
-    if (cake.id === 'c161' && selectedFlavor !== 'Blueberry Cheesecake') return true;
-    if ((cake.id === 'c138' || cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') && selectedFlavor !== 'Butterscotch') return true;
-    if ((cake.id === 'c140' || cake.id === 'c155') && selectedFlavor !== 'Blueberry') return true;
-    if ((cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') && selectedFlavor !== 'Red Velvet') return true;
-    if (cake.id === 'c145' && selectedFlavor !== 'Oreo' && selectedFlavor !== 'Chocolate Oreo') return true;
-    if (cake.id === 'c146' && selectedFlavor !== 'Mango Cake' && selectedFlavor !== 'Mango') return true;
-    if ((cake.id === 'c114' || cake.id === 'c149') && selectedFlavor !== 'Plain Vanilla') return true;
-    if (cake.id === 'c166' && selectedFlavor !== 'Dutch Truffle') return true;
-    if (cake.id === 'c170' && selectedFlavor !== 'Dutch Truffle') return true;
-    if (cake.id === 'c171' && selectedFlavor !== 'Blueberry') return true;
-    if (cake.id === 'c183' && selectedFlavor !== 'Blueberry') return true;
-    if (cake.id === 'c184' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c173' && selectedFlavor !== 'Blackcurrent' && selectedFlavor !== 'Blackcurrent Cake') return true;
-    if (cake.id === 'c182' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c187' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c147', 'c148', 'c153', 'c157', 'c158', 'c175', 'c179'].includes(cake.id) && selectedFlavor !== 'Chocolate Truffle') return true;
-    return false;
+    if (!cake || !priceDependsOnFlavor) return false;
+    const primaryFlavor = getDefaultFlavor();
+    return selectedFlavor !== primaryFlavor;
   })();
 
   return (
@@ -482,17 +480,19 @@ const ProductDetail = () => {
                 const NO_FLAVOR_IDS = new Set(['c90', 'c95', 'c96', 'c111', 'c116', 'c122', 'c123', 'c124', 'c125', 'c130', 'c143', 'c156', 'c178']);
                 if (NO_FLAVOR_IDS.has(cake.id)) return null;
 
-                const displayFlavor = cake.id === 'c91'
-                  ? 'Ferrero Rocher'
-                  : (cake.id === 'c173'
-                    ? 'Blackcurrent Cake'
-                    : (cake.id === 'c183' || cake.id === 'c171'
-                      ? 'Blueberry'
-                      : (cake.id === 'c166' || cake.id === 'c170'
-                        ? 'Dutch Truffle'
-                        : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194'].includes(cake.id)
-                          ? 'Chocolate Truffle'
-                          : (cake.flavor || selectedFlavor)))));
+                const displayFlavor = priceDependsOnFlavor
+                  ? selectedFlavor
+                  : (cake.id === 'c91'
+                    ? 'Ferrero Rocher'
+                    : (cake.id === 'c173'
+                      ? 'Blackcurrent Cake'
+                      : (cake.id === 'c183' || cake.id === 'c171'
+                        ? 'Blueberry'
+                        : (cake.id === 'c166' || cake.id === 'c170'
+                          ? 'Dutch Truffle'
+                          : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194'].includes(cake.id)
+                            ? 'Chocolate Truffle'
+                            : (cake.flavor || getDefaultFlavor()))))));
 
                 if (!displayFlavor) return null;
 
@@ -675,527 +675,28 @@ const ProductDetail = () => {
                     onChange={(e) => setSelectedFlavor(e.target.value)}
                     className="w-full p-3.5 rounded-lg border-2 border-bakery-peach focus:border-bakery-brown outline-none bg-bakery-cream font-bold text-bakery-darkBrown cursor-pointer shadow-sm"
                   >
-                    {(() => {
-                      let list = Object.keys(flavorPrices);
-                      if (cake.id === 'c188') {
-                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      }
-                      if (cake.id === 'c192') {
-                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      }
-                      if (cake.id === 'c194') {
-                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160' || cake.id === 'c196') {
-                        list = ['Strawberry', 'Plain Vanilla', 'Pineapple', 'Chocolate Truffle', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c114' || cake.id === 'c149') {
-                        list = ['Plain Vanilla', 'Chocolate Truffle', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') {
-                        list = ['Butterscotch', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Blueberry', 'Red Velvet'];
-                      } else if (cake.id === 'c166' || cake.id === 'c170' || cake.id === 'c117' || cake.id === 'c133') {
-                        list = ['Dutch Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c161') {
-                        list = ['Blueberry Cheesecake', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
-                      }
-                      return list.map(f => {
-                        if (cake.id === 'c114') {
-                          if (f === 'Plain Vanilla') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 1150;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c180') {
-                          if (f === 'Butterscotch') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 800;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c179') {
-                          if (f === 'Chocolate Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 1500;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c177') {
-                          if (f === 'Butterscotch') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 500;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c176') {
-                          if (f === 'Butterscotch') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 800;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c175') {
-                          if (f === 'Chocolate Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 900;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-                        if (cake.id === 'c173') {
-                          if (f === 'Blackcurrent' || f === 'Blackcurrent Cake') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 600;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c184') {
-                          if (f === 'Chocolate Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 900;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c183') {
-                          if (f === 'Blueberry') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 500;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c182') {
-                          if (f === 'Chocolate Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 800;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c166') {
-                          if (f === 'Dutch Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 650;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c171') {
-                          if (f === 'Blueberry') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 700;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c170') {
-                          if (f === 'Dutch Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 780;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c187') {
-                          if (f === 'Chocolate Truffle') {
-                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 900;
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c138' || cake.id === 'c188') {
-                          if (f === 'Chocolate Truffle') {
-                            let flavorPrice;
-                            if (isCustomWeight) {
-                              flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                            } else {
-                              let factor = 1;
-                              const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                              if (cake.prices && cake.prices[weight]) {
-                                factor = cake.prices[weight] / halfKgBase;
-                              } else {
-                                factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                              }
-                              flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
-                            }
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} (₹{flavorPrice})
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c192') {
-                          if (f === 'Chocolate Truffle') {
-                            let flavorPrice;
-                            if (isCustomWeight) {
-                              flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                            } else {
-                              let factor = 1;
-                              const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                              if (cake.prices && cake.prices[weight]) {
-                                factor = cake.prices[weight] / halfKgBase;
-                              } else {
-                                factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                              }
-                              flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
-                            }
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} (₹{flavorPrice})
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c196') {
-                          if (f === 'Strawberry') {
-                            const unicornFlavorPrice = cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined
-                              ? cake.prices[weight]
-                              : cake.price;
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({unicornFlavorPrice}/-)
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        let flavorPrice;
-                        if (isCustomWeight) {
-                          flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                        } else {
-                          let factor = 1;
-                          const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                          if (cake.prices && cake.prices[weight]) {
-                            factor = cake.prices[weight] / halfKgBase;
-                          } else {
-                            factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                          }
-                          flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
-                        }
-
-                        // Special rendering rules for premium pricing
-                        if (['c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c137', 'c138', 'c140', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c153', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c162'].includes(cake.id) || ['c117', 'c119', 'c120', 'c132', 'c133'].includes(cake.id)) {
-                          const targetSpecialFlavor = ['c117', 'c133'].includes(cake.id) ? 'Dutch Truffle' : (cake.id === 'c119' ? 'Black Forest' : (['c120', 'c132', 'c137', 'c152', 'c160'].includes(cake.id) ? 'Strawberry' : ((cake.id === 'c138' || cake.id === 'c162') ? 'Butterscotch' : ((cake.id === 'c140' || cake.id === 'c155') ? 'Blueberry' : ((cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') ? 'Red Velvet' : (cake.id === 'c145' ? 'Oreo' : (cake.id === 'c146' ? 'Mango Cake' : (cake.id === 'c149' ? 'Plain Vanilla' : (cake.id === 'c161' ? 'Blueberry Cheesecake' : 'Chocolate Truffle')))))))));
-                          if (f === targetSpecialFlavor) {
-                            return (
-                              <option key={f} value={f}>
-                                {f} ({flavorPrice}/-)
-                              </option>
-                            );
-                          } else {
-                            return (
-                              <option key={f} value={f}>
-                                {f}
-                              </option>
-                            );
-                          }
-                        }
-
-                        // Special rendering rules for c92, c93, c97, c98 & c100
-                        if (cake.id === 'c92' || cake.id === 'c93' || cake.id === 'c97' || cake.id === 'c98' || cake.id === 'c100') {
-                          if (f === 'Chocolate Truffle') {
-                            let displayPrice;
-                            if (cake.id === 'c92') displayPrice = 800;
-                            else if (cake.id === 'c93') displayPrice = 850;
-                            else displayPrice = flavorPrice; // Dynamically uses correct prices depending on weight
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} (₹{displayPrice})
-                              </option>
-                            );
-                          } else {
-                            return (
-                              <option key={f} value={f}>
-                                {f}
-                              </option>
-                            );
-                          }
-                        }
-
+                    {get8CommonFlavors().map(f => {
+                      const isGivenFlavor = f === getDefaultFlavor();
+                      if (isGivenFlavor) {
+                        const givenPrice = (cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined)
+                          ? cake.prices[weight]
+                          : currentPrice;
                         return (
                           <option key={f} value={f}>
-                            {f} (₹{flavorPrice})
+                            {f} ({givenPrice}/-)
                           </option>
                         );
-                      });
-                    })()}
+                      }
+                      return (
+                        <option key={f} value={f}>
+                          {f}
+                        </option>
+                      );
+                    })}
                   </select>
-                  {cake.id === 'c135' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard price shown is for <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span>. Pricing for other flavors may vary; please confirm details on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c137' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c138' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c140' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Blueberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c144' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Red Velvet</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c145' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Oreo</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c196' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c147' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c148' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {(cake.id === 'c114' || cake.id === 'c149') && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Plain Vanilla</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c151' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Red Velvet</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c152' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c153' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c154' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Red Velvet</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c155' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Blueberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c157' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c158' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c160' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c161' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Blueberry Cheesecake</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c162' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Butterscotch</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c175' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Listed price applies to <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. For other custom flavors, pricing will be confirmed directly on WhatsApp! ✨
-                    </div>
-                  )}
-                  {cake.id === 'c176' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Butterscotch</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c177' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Butterscotch</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
-                  {cake.id === 'c179' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Listed price applies to <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. For other custom flavors, pricing will be confirmed directly on WhatsApp! ✨
-                    </div>
-                  )}
-                  {cake.id === 'c180' && (
-                    <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Butterscotch</span> flavor. Other flavor prices vary; please consult on WhatsApp.
-                    </div>
-                  )}
+                  <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
+                    * Note: Standard price shown is for <span className="font-semibold text-bakery-darkBrown">{getDefaultFlavor()}</span>. For other custom flavors, pricing will be confirmed directly on WhatsApp.
+                  </div>
                 </div>
               )}
 
