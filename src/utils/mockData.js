@@ -313,7 +313,7 @@ export const mockCakes = [
     "id": "c102",
     "name": "Red Rose Heart Anniversary Cake",
     "category": "Cakes",
-    "flavor": "Red Velvet",
+    "flavor": "Chocolate Truffle",
     "price": 1000,
     "rating": 5,
     "tags": [
@@ -357,7 +357,7 @@ export const mockCakes = [
     "id": "c104",
     "name": "Elegant Holy Cross Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle",
     "price": 1800,
     "rating": 4.7,
     "tags": [
@@ -378,7 +378,7 @@ export const mockCakes = [
     "id": "c105",
     "name": "Golden Butterfly Birthday Cake",
     "category": "Cakes",
-    "flavor": "Vanilla",
+    "flavor": "Chocolate Truffle  ",
     "price": 800,
     "rating": 4.8,
     "tags": [
@@ -2320,7 +2320,7 @@ export const mockCakes = [
     "id": "c196",
     "name": "Unicorn Theme Cake",
     "category": "Cakes",
-    "flavor": "Chocolate Truffle",
+    "flavor": "Strawberry",
     "price": 1000,
     "rating": 4.9,
     "tags": [

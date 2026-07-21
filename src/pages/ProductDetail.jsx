@@ -101,7 +101,6 @@ const ProductDetail = () => {
       "classic chocolate drip crown",
       "traditional rajbhog",
       "chocolate rocher",
-      "spiderman city adventure",
       "chocolate nutella hazelnut",
       "ferrero rocher",
       "red velvet crumbs",
@@ -154,10 +153,7 @@ const ProductDetail = () => {
     if (cake.id === 'c138') return 'Chocolate Truffle';
     if (cake.id === 'c192') return 'Chocolate Truffle';
     if (cake.id === 'c194') return 'Chocolate Truffle';
-    if (cake.id === 'c196') return 'Chocolate Truffle';
-    if (cake.id === 'c166' || cake.id === 'c170' || cake.id === 'c117' || cake.id === 'c133') return 'Dutch Truffle';
-    if (cake.id === 'c119') return 'Black Forest';
-    if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160') return 'Strawberry';
+    if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160' || cake.id === 'c196') return 'Strawberry';
     if (cake.id === 'c161') return 'Blueberry Cheesecake';
     if (cake.id === 'c138' || cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') return 'Butterscotch';
     if (cake.id === 'c173') return 'Blackcurrent Cake';
@@ -165,7 +161,7 @@ const ProductDetail = () => {
     if (cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') return 'Red Velvet';
     if (cake.id === 'c145') return 'Oreo';
     if (cake.id === 'c146') return 'Mango Cake';
-    if (cake.id === 'c149') return 'Plain Vanilla';
+    if (cake.id === 'c114' || cake.id === 'c149') return 'Plain Vanilla';
     if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135', 'c147', 'c148', 'c153', 'c157', 'c158', 'c179', 'c182', 'c184', 'c187'].includes(cake.id)) return 'Chocolate Truffle';
 
     const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
@@ -416,17 +412,14 @@ const ProductDetail = () => {
     if (cake.id === 'c138' && selectedFlavor !== 'Chocolate Truffle') return true;
     if (cake.id === 'c192' && selectedFlavor !== 'Chocolate Truffle') return true;
     if (cake.id === 'c194' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (cake.id === 'c196' && selectedFlavor !== 'Chocolate Truffle') return true;
-    if (['c117', 'c133'].includes(cake.id) && selectedFlavor !== 'Dutch Truffle') return true;
-    if (cake.id === 'c119' && selectedFlavor !== 'Black Forest') return true;
-    if (['c120', 'c132', 'c137', 'c152', 'c160'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
+    if (['c120', 'c132', 'c137', 'c152', 'c160', 'c196'].includes(cake.id) && selectedFlavor !== 'Strawberry') return true;
     if (cake.id === 'c161' && selectedFlavor !== 'Blueberry Cheesecake') return true;
     if ((cake.id === 'c138' || cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') && selectedFlavor !== 'Butterscotch') return true;
     if ((cake.id === 'c140' || cake.id === 'c155') && selectedFlavor !== 'Blueberry') return true;
     if ((cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') && selectedFlavor !== 'Red Velvet') return true;
     if (cake.id === 'c145' && selectedFlavor !== 'Oreo' && selectedFlavor !== 'Chocolate Oreo') return true;
     if (cake.id === 'c146' && selectedFlavor !== 'Mango Cake' && selectedFlavor !== 'Mango') return true;
-    if (cake.id === 'c149' && selectedFlavor !== 'Plain Vanilla') return true;
+    if ((cake.id === 'c114' || cake.id === 'c149') && selectedFlavor !== 'Plain Vanilla') return true;
     if (cake.id === 'c166' && selectedFlavor !== 'Dutch Truffle') return true;
     if (cake.id === 'c170' && selectedFlavor !== 'Dutch Truffle') return true;
     if (cake.id === 'c171' && selectedFlavor !== 'Blueberry') return true;
@@ -497,7 +490,7 @@ const ProductDetail = () => {
                       ? 'Blueberry'
                       : (cake.id === 'c166' || cake.id === 'c170'
                         ? 'Dutch Truffle'
-                        : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id)
+                        : (['c92', 'c93', 'c97', 'c98', 'c100', 'c112', 'c138', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194'].includes(cake.id)
                           ? 'Chocolate Truffle'
                           : (cake.flavor || selectedFlavor)))));
 
@@ -692,34 +685,34 @@ const ProductDetail = () => {
                       }
                       if (cake.id === 'c194') {
                         list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      }
-                      if (cake.id === 'c196') {
-                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet', 'Strawberry'];
-                      }
-                      if (['c92', 'c93', 'c97', 'c98', 'c100', 'c101', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c135', 'c136', 'c137', 'c138', 'c140', 'c144', 'c147', 'c148', 'c151', 'c153', 'c154', 'c157', 'c158', 'c175', 'c179', 'c182', 'c184', 'c187'].includes(cake.id)) {
-                        list = ['Chocolate Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c173') {
-                        list = ['Blackcurrent', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c183' || cake.id === 'c171' || cake.id === 'c140' || cake.id === 'c155') {
-                        list = ['Blueberry', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c145') {
-                        list = ['Oreo', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c146') {
-                        list = ['Mango Cake', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c149') {
-                        list = ['Plain Vanilla', 'Chocolate Truffle', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c166' || cake.id === 'c170' || cake.id === 'c117' || cake.id === 'c133') {
-                        list = ['Dutch Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c119') {
-                        list = ['Black Forest', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Chocolate Truffle', 'Blueberry', 'Butterscotch', 'Red Velvet'];
-                      } else if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160') {
+                      } else if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160' || cake.id === 'c196') {
                         list = ['Strawberry', 'Plain Vanilla', 'Pineapple', 'Chocolate Truffle', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
+                      } else if (cake.id === 'c114' || cake.id === 'c149') {
+                        list = ['Plain Vanilla', 'Chocolate Truffle', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       } else if (cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') {
                         list = ['Butterscotch', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Blueberry', 'Red Velvet'];
+                      } else if (cake.id === 'c166' || cake.id === 'c170' || cake.id === 'c117' || cake.id === 'c133') {
+                        list = ['Dutch Truffle', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Blueberry', 'Butterscotch', 'Red Velvet'];
                       } else if (cake.id === 'c161') {
                         list = ['Blueberry Cheesecake', 'Plain Vanilla', 'Pineapple', 'Strawberry', 'Black Forest', 'Chocolate Truffle', 'Butterscotch', 'Red Velvet'];
                       }
                       return list.map(f => {
+                        if (cake.id === 'c114') {
+                          if (f === 'Plain Vanilla') {
+                            const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 1150;
+                            return (
+                              <option key={f} value={f}>
+                                {f} ({flavorPrice}/-)
+                              </option>
+                            );
+                          }
+
+                          return (
+                            <option key={f} value={f}>
+                              {f}
+                            </option>
+                          );
+                        }
                         if (cake.id === 'c180') {
                           if (f === 'Butterscotch') {
                             const flavorPrice = (cake.prices && cake.prices[weight]) ? cake.prices[weight] : 800;
@@ -997,66 +990,6 @@ const ProductDetail = () => {
                         }
 
                         if (cake.id === 'c196') {
-                          if (f === 'Chocolate Truffle') {
-                            let flavorPrice;
-                            if (isCustomWeight) {
-                              flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                            } else {
-                              let factor = 1;
-                              const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                              if (cake.prices && cake.prices[weight]) {
-                                factor = cake.prices[weight] / halfKgBase;
-                              } else {
-                                factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                              }
-                              flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
-                            }
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} (₹{flavorPrice})
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c194') {
-                          if (f === 'Chocolate Truffle') {
-                            let flavorPrice;
-                            if (isCustomWeight) {
-                              flavorPrice = (flavorPrices[f] + designPremium) * 2 * customWeightValue;
-                            } else {
-                              let factor = 1;
-                              const halfKgBase = cake.prices && cake.prices['0.5 KG'] ? cake.prices['0.5 KG'] : cake.price;
-                              if (cake.prices && cake.prices[weight]) {
-                                factor = cake.prices[weight] / halfKgBase;
-                              } else {
-                                factor = (WEIGHT_MULTIPLIERS[weight] || 1) / (WEIGHT_MULTIPLIERS['0.5 KG'] || 1);
-                              }
-                              flavorPrice = Math.round((flavorPrices[f] + designPremium) * factor / 10) * 10;
-                            }
-
-                            return (
-                              <option key={f} value={f}>
-                                {f} (₹{flavorPrice})
-                              </option>
-                            );
-                          }
-
-                          return (
-                            <option key={f} value={f}>
-                              {f}
-                            </option>
-                          );
-                        }
-
-                        if (cake.id === 'c196') {
                           if (f === 'Strawberry') {
                             const unicornFlavorPrice = cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined
                               ? cake.prices[weight]
@@ -1064,7 +997,7 @@ const ProductDetail = () => {
 
                             return (
                               <option key={f} value={f}>
-                                {f} (₹{unicornFlavorPrice})
+                                {f} ({unicornFlavorPrice}/-)
                               </option>
                             );
                           }
@@ -1170,7 +1103,7 @@ const ProductDetail = () => {
                   )}
                   {cake.id === 'c196' && (
                     <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
-                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
+                      * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Strawberry</span> flavor. Other flavor prices vary; please consult on WhatsApp.
                     </div>
                   )}
                   {cake.id === 'c147' && (
@@ -1183,7 +1116,7 @@ const ProductDetail = () => {
                       * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Chocolate Truffle</span> flavor. Other flavor prices vary; please consult on WhatsApp.
                     </div>
                   )}
-                  {cake.id === 'c149' && (
+                  {(cake.id === 'c114' || cake.id === 'c149') && (
                     <div className="mt-3 text-xs text-bakery-brown/70 italic leading-relaxed">
                       * Note: Standard pricing applies to the <span className="font-semibold text-bakery-darkBrown">Plain Vanilla</span> flavor. Other flavor prices vary; please consult on WhatsApp.
                     </div>
