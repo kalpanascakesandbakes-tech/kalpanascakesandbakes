@@ -59,10 +59,11 @@ const CartDrawer = () => {
               ) : (
                 <div className="space-y-6">
                   {cart.map((item, index) => {
-                    const itemUnitPrice = item.price !== undefined && item.price !== null
+                    const isCustom = item.isCustomPricing;
+                    const itemUnitPrice = isCustom ? null : (item.price !== undefined && item.price !== null
                       ? item.price
-                      : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1);
-                    const itemSubtotal = itemUnitPrice * item.quantity;
+                      : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1));
+                    const itemSubtotal = isCustom ? null : (itemUnitPrice * item.quantity);
                     
                     return (
                       <div key={`${item.id}-${index}`} className="flex gap-4 border-b border-bakery-peach/50 pb-6">
@@ -84,7 +85,11 @@ const CartDrawer = () => {
                           <p className="text-sm text-bakery-brown/80">{item.flavor ? `${item.flavor} | ` : ''}{item.weight}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 inline-block">Pure Veg</span>
-                            <span className="text-xs text-bakery-brown/60">₹{itemUnitPrice}/each</span>
+                            {isCustom ? (
+                              <span className="text-xs text-bakery-pink-dark font-semibold">Price on Request</span>
+                            ) : (
+                              <span className="text-xs text-bakery-brown/60">₹{itemUnitPrice}/each</span>
+                            )}
                           </div>
                           
                           <div className="flex items-center justify-between mt-3">
@@ -105,7 +110,11 @@ const CartDrawer = () => {
                               </button>
                             </div>
                             <span className="text-base font-sans font-bold text-bakery-pink-dark">
-                              ₹{itemSubtotal}
+                              {isCustom ? (
+                                <span className="text-xs font-semibold text-bakery-pink-dark font-serif">Price on Request</span>
+                              ) : (
+                                `₹${itemSubtotal}`
+                              )}
                             </span>
                           </div>
                         </div>
@@ -121,7 +130,13 @@ const CartDrawer = () => {
               <div className="border-t border-bakery-peach p-6 bg-bakery-cream">
                 <div className="flex justify-between items-center mb-4">
                   <span className="font-serif text-lg font-bold text-bakery-darkBrown">Total Amount:</span>
-                  <span className="font-sans text-xl font-bold text-bakery-pink-dark">₹{getCartTotal()}</span>
+                  <span className="font-sans text-xl font-bold text-bakery-pink-dark">
+                    {cart.some(item => item.isCustomPricing) ? (
+                      getCartTotal() > 0 ? `₹${getCartTotal()} + Price on Request` : 'Price on Request'
+                    ) : (
+                      `₹${getCartTotal()}`
+                    )}
+                  </span>
                 </div>
                 <button 
                   onClick={handleCheckout}

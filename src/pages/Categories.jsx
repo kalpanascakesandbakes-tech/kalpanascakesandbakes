@@ -48,6 +48,7 @@ const menuCategories = [
     items: [
       { name: 'Red Velvet Cheesecake', price: 700 },
       { name: 'Blueberry Cheesecake', price: 700 },
+      { name: 'Lotus Biscoff Cheesecake', price: 750 }
     ]
   },
   {
@@ -87,8 +88,7 @@ const menuCategories = [
       { name: 'Red Velvet', price: 380 },
       { name: 'Oreo', price: 300 },
       { name: 'KitKat', price: 380 },
-      { name: 'Nutella', price: 350 },
-      { name: 'Biscoff', price: 380 }
+      { name: 'Nutella', price: 350 }
     ]
   }
 ];

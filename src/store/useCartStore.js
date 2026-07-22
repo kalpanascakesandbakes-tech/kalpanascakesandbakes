@@ -61,6 +61,9 @@ const useCartStore = create(
       getCartTotal: () => {
         const { cart } = get();
         return cart.reduce((total, item) => {
+          if (item.isCustomPricing) {
+            return total;
+          }
           const unitPrice = item.price !== undefined && item.price !== null
             ? item.price
             : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1);

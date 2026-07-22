@@ -2,6 +2,12 @@ import { motion } from 'framer-motion';
 import { ShoppingCart, Eye, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import useCartStore from '../../store/useCartStore';
+import {
+  getDefaultFlavor,
+  getResolvedFlavor,
+  getDefaultWeight,
+  calculateCakePrice
+} from '../../utils/cakeHelpers';
 
 const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   const addToCart = useCartStore(state => state.addToCart);
@@ -9,18 +15,25 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    
+    const defFlavor = getDefaultFlavor(cake);
+    const resolvedFlavor = getResolvedFlavor(cake, defFlavor);
+    const defWeight = getDefaultWeight(cake);
+    const resolvedPrice = calculateCakePrice(cake, defFlavor, defWeight);
+
     addToCart({
       id: cake.id,
       name: cake.name,
-      price: cake.price,
+      price: resolvedPrice,
       basePrice: cake.price,
       image: cake.image,
-      flavor: cake.flavor || cake.category,
-      weight: '0.5 KG', // default
+      flavor: resolvedFlavor,
+      weight: defWeight,
       eggless: true, // default
       quantity: 1,
       nameOnCake: '',
-      message: ''
+      message: '',
+      isCustomPricing: false // default/primary flavor is never custom pricing
     });
   };
 

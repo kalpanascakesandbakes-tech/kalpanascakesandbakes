@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag } from 'lucide-react';
 import useCartStore from '../../store/useCartStore';
+import {
+  getDefaultFlavor,
+  getResolvedFlavor,
+  getDefaultWeight,
+  calculateCakePrice
+} from '../../utils/cakeHelpers';
 
 const CakeQuickView = ({ cake, isOpen, onClose }) => {
   const { addToCart, openCart } = useCartStore();
@@ -30,16 +36,24 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
   ];
 
   const handleAddToCart = () => {
+    const defFlavor = getDefaultFlavor(cake);
+    const resolvedFlavor = getResolvedFlavor(cake, defFlavor);
+    const defWeight = getDefaultWeight(cake);
+    const resolvedPrice = calculateCakePrice(cake, defFlavor, defWeight);
+
     addToCart({
       id: cake.id,
       name: cake.name,
-      price: cake.price,
+      price: resolvedPrice,
       basePrice: cake.price,
-      flavor: cake.flavor,
-      weight: '1 KG', // default
+      flavor: resolvedFlavor,
+      weight: defWeight,
       quantity: 1,
       eggless: true,
-      image: cake.image
+      image: cake.image,
+      nameOnCake: '',
+      message: '',
+      isCustomPricing: false
     });
     onClose();
     openCart();
@@ -122,6 +136,13 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
             </p>
 
             <div className="space-y-4">
+              <button
+                onClick={handleAddToCart}
+                className="w-full py-4 bg-bakery-pink-vibrant text-white rounded-xl font-bold text-lg hover:bg-bakery-pink-dark transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <ShoppingBag size={20} />
+                Add to Cart
+              </button>
               <a 
                 href={`/cake/${cake.id}`}
                 className="w-full py-4 bg-bakery-cream text-bakery-darkBrown border-2 border-bakery-peach rounded-xl font-bold text-lg hover:bg-bakery-peach/50 transition-colors flex items-center justify-center"

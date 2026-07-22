@@ -185,10 +185,11 @@ const Checkout = () => {
 
               <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
                 {cart.map((item, idx) => {
-                  const itemUnitPrice = item.price !== undefined && item.price !== null
+                  const isCustom = item.isCustomPricing;
+                  const itemUnitPrice = isCustom ? null : (item.price !== undefined && item.price !== null
                     ? item.price
-                    : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1);
-                  const itemSubtotal = itemUnitPrice * item.quantity;
+                    : item.basePrice * (WEIGHT_MULTIPLIERS[item.weight] || 1));
+                  const itemSubtotal = isCustom ? null : (itemUnitPrice * item.quantity);
                   
                   return (
                     <div key={idx} className="flex gap-4 border-b border-bakery-peach/50 pb-4">
@@ -196,12 +197,16 @@ const Checkout = () => {
                       <div className="flex-1 text-sm">
                         <div className="flex justify-between items-start">
                           <h3 className="font-bold text-bakery-darkBrown">{item.name}</h3>
-                          <span className="font-sans font-bold text-bakery-pink-dark">₹{itemSubtotal}</span>
+                          <span className="font-sans font-bold text-bakery-pink-dark">
+                            {isCustom ? "Price on Request" : `₹${itemSubtotal}`}
+                          </span>
                         </div>
                         <p className="text-bakery-brown/70">{item.flavor ? `${item.flavor} | ` : ''}{item.weight}</p>
                         <div className="flex justify-between items-center text-bakery-brown/70 mt-1">
                           <span>Qty: {item.quantity}</span>
-                          <span className="text-xs">₹{itemUnitPrice} each</span>
+                          <span className="text-xs">
+                            {isCustom ? "Price on Request" : `₹${itemUnitPrice} each`}
+                          </span>
                         </div>
                         <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 mt-1 inline-block">Pure Veg</span>
                         {item.nameOnCake && <p className="text-bakery-brown/70 mt-1"><span className="font-semibold">Name:</span> {item.nameOnCake}</p>}
@@ -214,7 +219,13 @@ const Checkout = () => {
               <div className="border-t border-bakery-peach/50 pt-4 mt-6">
                 <div className="flex justify-between items-center">
                   <span className="font-serif text-lg font-bold text-bakery-darkBrown">Total Amount:</span>
-                  <span className="font-sans text-xl font-bold text-bakery-pink-dark">₹{getCartTotal()}</span>
+                  <span className="font-sans text-xl font-bold text-bakery-pink-dark">
+                    {cart.some(item => item.isCustomPricing) ? (
+                      getCartTotal() > 0 ? `₹${getCartTotal()} + Price on Request` : 'Price on Request'
+                    ) : (
+                      `₹${getCartTotal()}`
+                    )}
+                  </span>
                 </div>
               </div>
 

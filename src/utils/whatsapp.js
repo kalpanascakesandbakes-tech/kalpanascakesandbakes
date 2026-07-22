@@ -23,18 +23,27 @@ export const generateWhatsAppLink = (orderData) => {
       '4 KG': 8,
       '5 KG': 10,
     };
-    const unitPrice = item.price !== undefined && item.price !== null
-      ? item.price
-      : item.basePrice * (multipliers[item.weight] || 1);
-    const subtotal = unitPrice * item.quantity;
+    
+    const isCustom = item.isCustomPricing;
 
     message += `*${index + 1}. ${item.name}*\n`;
     if (item.flavor) {
       message += `   • Flavor: ${item.flavor}\n`;
     }
     message += `   • Weight: ${item.weight}\n`;
-    message += `   • Price: ₹${unitPrice} each\n`;
-    message += `   • Qty: ${item.quantity} (Subtotal: ₹${subtotal})\n`;
+    
+    if (isCustom) {
+      message += `   • Price: Price on Request (To be confirmed)\n`;
+      message += `   • Qty: ${item.quantity} (Subtotal: To be confirmed)\n`;
+    } else {
+      const unitPrice = item.price !== undefined && item.price !== null
+        ? item.price
+        : item.basePrice * (multipliers[item.weight] || 1);
+      const subtotal = unitPrice * item.quantity;
+      message += `   • Price: ₹${unitPrice} each\n`;
+      message += `   • Qty: ${item.quantity} (Subtotal: ₹${subtotal})\n`;
+    }
+
     if (item.nameOnCake) {
       message += `   • Name on Cake: "${item.nameOnCake}"\n`;
     }
@@ -43,7 +52,16 @@ export const generateWhatsAppLink = (orderData) => {
     }
   });
 
-  message += `\n💰 *Total Order Value:* ₹${orderData.totalAmount}\n\n`;
+  const hasCustomPricingItems = orderData.cart.some(item => item.isCustomPricing);
+  if (hasCustomPricingItems) {
+    if (orderData.totalAmount > 0) {
+      message += `\n💰 *Total Order Value:* ₹${orderData.totalAmount} + Price on Request items (to be confirmed)\n\n`;
+    } else {
+      message += `\n💰 *Total Order Value:* Price on Request (To be confirmed on WhatsApp)\n\n`;
+    }
+  } else {
+    message += `\n💰 *Total Order Value:* ₹${orderData.totalAmount}\n\n`;
+  }
 
   if (orderData.notes) {
     message += `📝 *Order Notes / Special Instructions*\n`;

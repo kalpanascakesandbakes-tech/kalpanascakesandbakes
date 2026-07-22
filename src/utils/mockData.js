@@ -2336,6 +2336,28 @@ export const mockCakes = [
       "1 KG": 1500,
       "1.5 KG": 2000
     }
+  },
+  {
+    "id": "c197",
+    "name": "Lotus biscoff cheese cake",
+    "category": "Cakes",
+    "flavor": "Lotus Biscoff",
+    "price": 750,
+    "rating": 4.9,
+    "tags": [
+      "Gourmet Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/lotus_biscoff_cheesecake.png",
+    "categoryGroup": "Cheesecakes",
+    "custom": true,
+    "description": "Premium Lotus Biscoff Cheesecake",
+    "prices": {
+      "0.5 KG": 750,
+      "1 KG": 1500,
+      "1.5 KG": 2250
+    }
   }
 ];
 
