@@ -97,9 +97,9 @@ const ProductDetail = () => {
       setSelectedImage(0);
       setUploadedPhoto(null);
       setPhotoPreview(null);
-      setSelectedFlavor(getDefaultFlavor());
+      setSelectedFlavor(getDefaultFlavor(cake));
 
-      const minLimit = getMinWeightLimit();
+      const minLimit = getMinWeightLimit(cake);
       let defaultWeight = '1 KG';
 
       if (cake.id === 'c135') {
