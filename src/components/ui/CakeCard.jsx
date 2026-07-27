@@ -24,6 +24,7 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
     addToCart({
       id: cake.id,
       name: cake.name,
+      cakeNumber: cake.cakeNumber,
       price: resolvedPrice,
       basePrice: cake.price,
       image: cake.image,
@@ -77,7 +78,9 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
           </div>
         </div>
         
-        <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">{cake.category}</p>
+        <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">
+          {cake.category} {cake.cakeNumber ? `(${cake.cakeNumber})` : ''}
+        </p>
         
         <div className="flex items-center justify-between gap-1">
           {showPrice && (

@@ -1227,6 +1227,7 @@ export const mockCakes = [
   {
     "id": "c144",
     "name": "Red Velvet Cheesecake",
+    "designName": "Classic Round",
     "category": "Cakes",
     "flavor": "Red Velvet",
     "price": 700,
@@ -2378,7 +2379,8 @@ export const getAllTags = () => {
 };
 
 // Map mockCakes names and categories dynamically to match the exact menu categories
-mockCakes.forEach(cake => {
+mockCakes.forEach((cake, index) => {
+  cake.cakeNumber = index + 1;
   if (cake.custom) return;
   const tag = cake.tags.find(t => t !== '60 Minutes Delivery') || 'Trending Cakes';
   const tagSuffix = tag.replace(' Cakes', '');

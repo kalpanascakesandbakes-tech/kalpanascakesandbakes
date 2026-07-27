@@ -151,6 +151,7 @@ const ProductDetail = () => {
     addToCart({
       id: cake.id,
       name: cake.name,
+      cakeNumber: cake.cakeNumber,
       basePrice: cake.price,
       price: isCustomPricing ? null : currentPrice,
       image: cake.image,

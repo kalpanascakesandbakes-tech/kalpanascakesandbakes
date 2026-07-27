@@ -26,7 +26,8 @@ export const generateWhatsAppLink = (orderData) => {
     
     const isCustom = item.isCustomPricing;
 
-    message += `*${index + 1}. ${item.name}*\n`;
+    const numberSuffix = item.cakeNumber ? ` (${item.cakeNumber})` : '';
+    message += `*${index + 1}. ${item.name}${numberSuffix}*\n`;
     if (item.flavor) {
       message += `   • Flavor: ${item.flavor}\n`;
     }
