@@ -35,10 +35,10 @@ const useCartStore = create(
         if (existingItemIndex > -1) {
           const newCart = [...state.cart];
           newCart[existingItemIndex].quantity += item.quantity;
-          return { cart: newCart, isCartOpen: true };
+          return { cart: newCart };
         }
 
-        return { cart: [...state.cart, item], isCartOpen: true };
+        return { cart: [...state.cart, item] };
       }),
 
       removeFromCart: (index) => set((state) => {
