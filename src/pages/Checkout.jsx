@@ -35,6 +35,12 @@ const Checkout = () => {
     }
   }, [cart, navigate, showSuccess]);
 
+  useEffect(() => {
+    if (showSuccess) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [showSuccess]);
+
   const triggerConfetti = () => {
     const duration = 3 * 1000;
     const end = Date.now() + duration;
@@ -119,36 +125,32 @@ const Checkout = () => {
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white p-10 rounded-3xl shadow-xl text-center max-w-lg mx-auto border border-bakery-peach"
+          className="bg-white p-5 sm:p-10 rounded-3xl shadow-xl text-center max-w-lg mx-auto border border-bakery-peach"
         >
-          <div className="w-24 h-24 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+          <div className="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
           </div>
-          <h2 className="text-3xl font-serif font-bold text-bakery-darkBrown mb-2">Order Placed!</h2>
-          <p className="text-xl text-bakery-brown mb-4">Your Order ID is <span className="font-bold text-bakery-pink-dark">{orderId}</span></p>
-          <p className="text-bakery-brown/80 mb-4">
-            Thank you for your order! We are now redirecting you to WhatsApp to send all your order details automatically.
-          </p>
-
-          <div className="my-6 p-5 bg-[#fff0f2] rounded-2xl border border-bakery-pink/20 text-left">
-            <h3 className="font-serif font-bold text-[#8b1e3f] mb-2 flex items-center gap-2 text-lg">
-              💳 Payment Information
-            </h3>
-            <p className="text-sm text-bakery-darkBrown mb-3">
-              Please complete your payment using GPay:
-            </p>
-            <div className="bg-white p-4 rounded-xl border border-bakery-peach/30 flex justify-between items-center shadow-sm">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-bakery-darkBrown mb-1">Order Placed!</h2>
+          <p className="text-base sm:text-lg text-bakery-brown mb-4">Your Order ID is <span className="font-bold text-bakery-pink-dark">{orderId}</span></p>
+          
+          {/* Combined Warning & Payment Info Box */}
+          <div className="my-4 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-left space-y-3 shadow-sm text-sm">
+            <div className="flex gap-2.5">
+              <span className="text-amber-600 text-lg">⚠️</span>
               <div>
-                <p className="text-[10px] text-bakery-brown/60 uppercase font-bold tracking-wider">GPay Number</p>
-                <p className="font-mono font-bold text-bakery-darkBrown text-lg">+91 90047 62873</p>
+                <span className="font-extrabold text-amber-950 text-sm block">Action Required: Confirm on WhatsApp</span>
+                <p className="text-xs text-amber-900 font-medium">
+                  Your order is <span className="font-bold text-[#be185d]">NOT CONFIRMED</span> yet. You <strong>MUST</strong> click the <strong>"Send to WhatsApp Now"</strong> button below to send your order details.
+                </p>
               </div>
-              <span className="bg-[#ffe4e6] text-[#be185d] text-xs font-bold px-3 py-1.5 rounded-full border border-bakery-pink/10">
-                UPI / GPay
-              </span>
             </div>
-            <p className="text-xs text-bakery-brown/80 mt-3 text-center font-medium italic">
-              * Please share the payment screenshot in the WhatsApp chat.
-            </p>
+            
+            <div className="pt-2 border-t border-amber-200/50 space-y-2">
+              <span className="font-bold text-amber-950 text-xs block uppercase tracking-wider">💳 GPay / UPI Payment</span>
+              <p className="text-xs text-amber-900 font-medium leading-relaxed">
+                Pay using GPay to <strong className="font-mono font-bold text-base text-bakery-darkBrown select-all">+91 90047 62873</strong> and share the payment screenshot in the WhatsApp chat.
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -179,7 +181,7 @@ const Checkout = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
           {/* Left Side - Cart Summary */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-6 order-2 lg:order-1">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-bakery-peach">
               <h2 className="font-serif text-2xl font-bold text-bakery-darkBrown mb-4">Order Summary</h2>
 
@@ -234,7 +236,7 @@ const Checkout = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 order-1 lg:order-2">
             <form onSubmit={handlePlaceOrder} className="bg-white p-8 rounded-2xl shadow-sm border border-bakery-peach space-y-6">
               <h2 className="font-serif text-2xl font-bold text-bakery-darkBrown mb-6">Delivery Details</h2>
 
