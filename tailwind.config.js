@@ -25,11 +25,16 @@ export default {
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
+        'wiggle': 'wiggle 0.3s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-10deg)' },
+          '50%': { transform: 'rotate(10deg)' },
         }
       }
     },

@@ -79,7 +79,7 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
         
         <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">{cake.category}</p>
         
-        <div className="flex items-center justify-between gap-1">
+        <div className="flex items-center justify-between gap-1 mt-auto pt-2 sm:pt-4">
           {showPrice && (
             <p className="font-sans font-bold text-xs sm:text-sm md:text-base text-bakery-darkBrown whitespace-nowrap">
               <span className="text-[10px] sm:text-xs text-bakery-brown/60 font-normal">Starting </span>
