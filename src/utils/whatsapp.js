@@ -27,14 +27,6 @@ export const generateWhatsAppLink = (orderData) => {
     const isCustom = item.isCustomPricing;
 
     message += `*${index + 1}. ${item.name}*\n`;
-    if (item.id) {
-      message += `   • Code: #${item.id}\n`;
-      message += `   • Product Link: https://kalpanascakes.com/cake/${item.id}\n`;
-    }
-    if (item.image) {
-      const imgPath = item.image.startsWith('/') ? item.image : `/${item.image}`;
-      message += `   • Design Image: https://kalpanascakes.com${imgPath}\n`;
-    }
     if (item.flavor) {
       message += `   • Flavor: ${item.flavor}\n`;
     }
