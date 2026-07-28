@@ -66,14 +66,14 @@ const CustomizedCake = () => {
       setUploadStatus('Uploading design image...');
       try {
         const uploadForm = new FormData();
-        uploadForm.append('file', file);
+        uploadForm.append('image', file);
 
-        const response = await fetch('https://tmpfiles.org/api/v1/upload', {
+        const response = await fetch('https://api.imgbb.com/1/upload?key=551a068a24e09dd5368f2443eb667bd1', {
           method: 'POST',
           body: uploadForm
         });
         const result = await response.json();
-        if (result.status === 'success') {
+        if (result.success) {
           imageUrl = result.data.url;
         }
       } catch (err) {
