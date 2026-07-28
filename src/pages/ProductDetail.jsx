@@ -147,10 +147,13 @@ const ProductDetail = () => {
     return selectedFlavor !== primaryFlavor;
   })();
 
+  const [isAdded, setIsAdded] = useState(false);
+
   const handleAddToCart = () => {
     addToCart({
       id: cake.id,
       name: cake.name,
+      cakeNumber: cake.cakeNumber,
       basePrice: cake.price,
       price: isCustomPricing ? null : currentPrice,
       image: cake.image,
@@ -165,6 +168,11 @@ const ProductDetail = () => {
         : instructions,
       isCustomPricing: isCustomPricing
     });
+
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
   };
 
   const handleOrderWhatsApp = () => {
@@ -486,10 +494,23 @@ const ProductDetail = () => {
               <div className="pt-6 space-y-4">
                 <button
                   onClick={handleAddToCart}
-                  className="w-full py-4 bg-bakery-pink-vibrant text-white rounded-full font-bold text-lg hover:bg-bakery-pink-dark transition-colors shadow-lg shadow-bakery-pink-vibrant/30 flex items-center justify-center gap-2 cursor-pointer"
+                  className={`w-full py-4 text-white rounded-full font-bold text-lg transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
+                    isAdded 
+                      ? 'bg-green-600 hover:bg-green-700 shadow-green-600/30' 
+                      : 'bg-bakery-pink-vibrant hover:bg-bakery-pink-dark shadow-bakery-pink-vibrant/30'
+                  }`}
                 >
-                  <ShoppingBag size={20} />
-                  Add to Cart
+                  {isAdded ? (
+                    <>
+                      <span>✓</span>
+                      <span>Added to Cart</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag size={20} />
+                      <span>Add to Cart</span>
+                    </>
+                  )}
                 </button>
 
                 <button

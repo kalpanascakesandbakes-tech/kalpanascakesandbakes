@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz-f4F-79kgial6i9r3U1Nfqry-OmMECgIWxo_MZcM8baBBYG54XUrU5JmP58RFZto/exec';
+const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwaOQVjG1w9AA2usfkYBhVFV5QdnhH0pJ-SwJAEDj9R7_-knDLoTtatue66Etsgl_vOgw/exec';
 
 export const submitOrder = async (orderData) => {
   try {

@@ -35,16 +35,11 @@ const Navbar = () => {
       title: 'Chocolate Cakes',
       links: [
         { name: 'Royal Chocolate Drip Cake', path: '/categories?cakeName=Royal%20Chocolate%20Drip%20Cake' },
-        { name: 'Classic Chocolate Truffle', path: '/categories?cakeName=Classic%20Chocolate%20Truffle' },
-        { name: 'Ferrero Rocher Truffle Cake', path: '/categories?cakeName=Ferrero%20Rocher%20Truffle%20Cake' },
-        { name: 'Double Chocolate Shavings Cake', path: '/categories?cakeName=Double%20Chocolate%20Shavings%20Cake' },
+        { name: 'Dutch Truffle', path: '/categories?cakeName=Dutch%20Truffle' },
+        { name: 'Chocolate Truffle cake', path: '/categories?cakeName=Chocolate%20Truffle%20cake' },
+        { name: 'Chocolate Chocochips cake', path: '/categories?cakeName=Chocolate%20Chocochips%20cake' },
         { name: 'Dark Glaze Chocolate Truffle', path: '/categories?cakeName=Dark%20Glaze%20Chocolate%20Truffle' },
-        { name: 'Luxury Golden Chocolate Shards', path: '/categories?cakeName=Luxury%20Golden%20Chocolate%20Shards' },
-        { name: 'Classic Chocolate Drip Crown Cake', path: '/categories?cakeName=Classic%20Chocolate%20Drip%20Crown%20Cake' },
-        { name: 'Papa Chocolate Rocher Cake', path: '/categories?cakeName=Papa%20Chocolate%20Rocher%20Cake' },
-        { name: 'Choco Crunch Shavings Cake', path: '/categories?cakeName=Choco%20Crunch%20Shavings%20Cake' },
-        { name: 'Imperial Chocolate Crown Cake', path: '/categories?cakeName=Imperial%20Chocolate%20Crown%20Cake' },
-        { name: 'Chocolate Pink Butterfly Delight', path: '/categories?cakeName=Chocolate%20Pink%20Butterfly%20Delight' }
+        { name: 'Classic Chocolate Drip Crown Cake', path: '/categories?cakeName=Classic%20Chocolate%20Drip%20Crown%20Cake' }
       ]
     },
     cheesecakes: {
@@ -68,21 +63,8 @@ const Navbar = () => {
         { name: 'Lavender Royale Crown Cake', path: '/categories?cakeName=Lavender%20Royale%20Crown%20Cake' },
         { name: 'Welcome Baby Pink Cake', path: '/categories?cakeName=Welcome%20Baby%20Pink%20Cake' },
         { name: 'Frozen Princess Elsa Cake', path: '/categories?cakeName=Frozen%20Princess%20Elsa%20Cake' },
-        { name: 'Grand Rose Anniversary Cake', path: '/categories?cakeName=Grand%20Rose%20Anniversary%20Cake' },
-        { name: 'Racing Cars Birthday Cake', path: '/categories?cakeName=Racing%20Cars%20Birthday%20Cake' },
         { name: 'Red Rose Heart Anniversary Cake', path: '/categories?cakeName=Red%20Rose%20Heart%20Anniversary%20Cake' },
-        { name: 'Sweet 18 Heart Crown Cake', path: '/categories?cakeName=Sweet%2018%20Heart%20Crown%20Cake' },
-        { name: 'Elegant Holy Cross Cake', path: '/categories?cakeName=Elegant%20Holy%20Cross%20Cake' },
-        { name: 'Golden Butterfly Birthday Cake', path: '/categories?cakeName=Golden%20Butterfly%20Birthday%20Cake' },
-        { name: 'Magical Frozen Snow Cake', path: '/categories?cakeName=Magical%20Frozen%20Snow%20Cake' },
-        { name: 'Jungle Safari Animals Cake', path: '/categories?cakeName=Jungle%20Safari%20Animals%20Cake' },
-        { name: 'Super Dad Chocolate Butterscotch', path: '/categories?cakeName=Super%20Dad%20Chocolate%20Butterscotch' },
-        { name: 'Baby Boy or Girl Shower Cake', path: '/categories?cakeName=Baby%20Boy%20or%20Girl%20Shower%20Cake' },
-        { name: 'Spiderman City Adventure Cake', path: '/categories?cakeName=Spiderman%20City%20Adventure%20Cake' },
-        { name: 'Elegant Barbie Doll Blue Gown', path: '/categories?cakeName=Elegant%20Barbie%20Doll%20Blue%20Gown' },
-        { name: 'Spiderman Hero Web Cake', path: '/categories?cakeName=Spiderman%20Hero%20Web%20Cake' },
-        { name: 'Purple Swirl Cream Cake', path: '/categories?cakeName=Purple%20Swirl%20Cream%20Cake' },
-        { name: 'Pink Drip Princess Castle Cake', path: '/categories?cakeName=Pink%20Drip%20Princess%20Castle%20Cake' }
+        { name: 'Elegant Holy Cross Cake', path: '/categories?cakeName=Elegant%20Holy%20Cross%20Cake' }
       ]
     },
     bento: {
@@ -145,7 +127,7 @@ const Navbar = () => {
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
-                        {categories.chocolate.links.length > 6 && (
+                        {categories.chocolate.links.length >= 6 && (
                           <li>
                             <Link to="/categories?categoryGroup=Chocolate%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Chocolate →</Link>
                           </li>
@@ -205,7 +187,7 @@ const Navbar = () => {
                             <Link to={link.path} className="text-sm text-bakery-brown hover:text-bakery-gold transition-colors block">{link.name}</Link>
                           </li>
                         ))}
-                        {categories.theme.links.length > 6 && (
+                        {categories.theme.links.length >= 6 && (
                           <li>
                             <Link to="/categories?categoryGroup=Theme%20Cakes" className="text-sm font-bold text-bakery-pink-dark hover:text-bakery-gold transition-colors block mt-1">View All Theme →</Link>
                           </li>

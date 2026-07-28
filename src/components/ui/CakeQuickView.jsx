@@ -44,6 +44,7 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
     addToCart({
       id: cake.id,
       name: cake.name,
+      cakeNumber: cake.cakeNumber,
       price: resolvedPrice,
       basePrice: cake.price,
       flavor: resolvedFlavor,

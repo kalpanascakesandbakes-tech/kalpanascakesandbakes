@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Eye, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,7 @@ import {
 
 const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   const addToCart = useCartStore(state => state.addToCart);
+  const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
     addToCart({
       id: cake.id,
       name: cake.name,
+      cakeNumber: cake.cakeNumber,
       price: resolvedPrice,
       basePrice: cake.price,
       image: cake.image,
@@ -35,6 +38,11 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
       message: '',
       isCustomPricing: false // default/primary flavor is never custom pricing
     });
+
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
   };
 
   return (
@@ -77,7 +85,9 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
           </div>
         </div>
         
-        <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">{cake.category}</p>
+        <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">
+          {cake.category} {cake.cakeNumber ? `(${cake.cakeNumber})` : ''}
+        </p>
         
         <div className="flex items-center justify-between gap-1 mt-auto pt-2 sm:pt-4">
           {showPrice && (
@@ -90,10 +100,23 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
-            className="flex items-center gap-1 bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors duration-300 shadow-sm cursor-pointer shrink-0"
+            className={`flex items-center gap-1 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors duration-300 shadow-sm cursor-pointer shrink-0 ${
+              isAdded 
+                ? 'bg-green-600 hover:bg-green-700 text-white' 
+                : 'bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white'
+            }`}
           >
-            <ShoppingCart size={12} className="sm:w-3.5 sm:h-3.5" />
-            <span>Add</span>
+            {isAdded ? (
+              <>
+                <span>✓</span>
+                <span>Added</span>
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={12} className="sm:w-3.5 sm:h-3.5" />
+                <span>Add</span>
+              </>
+            )}
           </motion.button>
         </div>
       </div>
