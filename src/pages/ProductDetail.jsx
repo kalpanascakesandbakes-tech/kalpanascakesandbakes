@@ -70,7 +70,7 @@ const ProductDetail = () => {
 
   const isPhotoCake = (() => {
     if (!cake) return false;
-    if (cake.id === 'c162') return false;
+    if (cake.id === 'c162' || cake.id === 'c198') return false;
     if (cake.categoryGroup === 'Photo Cakes' || (cake.tags && cake.tags.includes('Photo Cakes'))) return true;
     if (cake.description && cake.description.toLowerCase().includes('photo cake')) return true;
     return false;
@@ -237,10 +237,15 @@ const ProductDetail = () => {
                   <div className="flex flex-col gap-2 mb-3.5">
                     <div className="text-bakery-pink-vibrant font-bold flex items-center gap-1.5 bg-bakery-pink/5 px-3.5 py-1.5 rounded-full border border-bakery-pink/15 w-fit shadow-sm">
                       <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold font-sans">
-                        {cake.id === 'c138' || cake.id === 'c187' || cake.id === 'c188' || cake.id === 'c196' ? 'Flavour -' : (['c113', 'c114', 'c166', 'c170', 'c171'].includes(cake.id) ? 'Flavour:' : 'FLAVOR:')}
+                        {cake.id === 'c198' ? 'flabour :' : (cake.id === 'c138' || cake.id === 'c187' || cake.id === 'c188' || cake.id === 'c196' ? 'Flavour -' : (['c113', 'c114', 'c166', 'c170', 'c171'].includes(cake.id) ? 'Flavour:' : 'FLAVOR:'))}
                       </span>
                       <span className="text-sm font-extrabold capitalize text-bakery-darkBrown">{displayFlavor}</span>
                     </div>
+                    {cake.id === 'c198' && (
+                      <div className="text-bakery-brown font-bold flex items-center gap-1.5 bg-bakery-peach/20 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
+                        <span className="text-sm font-extrabold text-bakery-darkBrown">Photo print cake.</span>
+                      </div>
+                    )}
                     {showTypeBadge && (
                       <div className="text-bakery-gold font-bold flex items-center gap-1.5 bg-bakery-peach/10 px-3.5 py-1.5 rounded-full border border-bakery-peach/30 w-fit shadow-sm">
                         <span className="text-xs uppercase tracking-wider text-bakery-brown/70 font-semibold">Type:</span>
@@ -363,6 +368,10 @@ const ProductDetail = () => {
               ) : cake.id === 'c134' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
+                </p>
+              ) : cake.id === 'c198' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Celebrate your special journey with our customized Mumbai to Pune Car Photo Print Cake! Beautifully crafted with a sky-blue frosting base, milestone plaque ('5 Yrs Strong'), highway road sign ('MUMBAI ➔ PUNE ➔ MUMBAI'), custom white car graphic, and side banner ('From 2021 - ∞'). Topped with edible pearl sprinkles. Handcrafted fresh with premium ingredients.
                 </p>
               ) : (
                 <p className="text-bakery-brown/80 leading-relaxed">

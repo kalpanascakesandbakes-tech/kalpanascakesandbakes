@@ -2359,6 +2359,31 @@ export const mockCakes = [
       "1 KG": 1500,
       "1.5 KG": 2250
     }
+  },
+  {
+    "id": "c198",
+    "name": "Chocolate truffle cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "price": 800,
+    "rating": 4.9,
+    "tags": [
+      "Chocolate Cakes",
+      "Photo Cakes",
+      "Designer Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/mumbai_pune_car_photo_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Photo print cake. Mumbai Pune car theme photo cake.",
+    "prices": {
+      "0.5 KG": 800,
+      "1 KG": 1400,
+      "1.5 KG": 2000
+    }
   }
 ];
 
@@ -2380,7 +2405,7 @@ export const getAllTags = () => {
 
 // Map mockCakes names and categories dynamically to match the exact menu categories
 mockCakes.forEach((cake, index) => {
-  cake.cakeNumber = index + 1;
+  cake.cakeNumber = cake.cakeNumber || parseInt(cake.id.replace('c', '')) || (index + 1);
   if (cake.custom) return;
   const tag = cake.tags.find(t => t !== '60 Minutes Delivery') || 'Trending Cakes';
   const tagSuffix = tag.replace(' Cakes', '');
