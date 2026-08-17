@@ -369,6 +369,10 @@ const ProductDetail = () => {
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
                 </p>
+              ) : cake.id === 'c201' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Adorable handcrafted chocolate truffle bento cake presented in an eco-friendly lunchbox container. Beautifully styled with smooth white buttercream, delicate piped red hearts, custom calendar box topper ('AUG 11'), and handwritten message 'Someone I Love was born today 22'. Freshly baked mini cake perfect for intimate birthday celebrations!
+                </p>
               ) : cake.id === 'c200' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Beautiful handcrafted round Dutch Chocolate cake featuring smooth pink buttercream frosting, luscious dark chocolate drip, delicate pink rosettes with shimmering silver edible pearls, and a custom 'Happy Birthday DIPTI' topper. Freshly baked with rich, premium cocoa for delightful celebrations!
@@ -394,24 +398,26 @@ const ProductDetail = () => {
                 <span className="font-bold text-sm">100% Pure Vegetarian / Eggless Cake</span>
               </div>
 
-              {/* Weight Selection */}
-              <div>
-                <label className="block font-bold text-bakery-darkBrown mb-3">Select Weight</label>
-                <div className="flex flex-wrap gap-3">
-                  {!isCustomWeight && availableWeights.map(w => (
-                    <button
-                      key={w}
-                      onClick={() => setWeight(w)}
-                      className={`px-4 py-2 rounded-lg border-2 transition-colors ${weight === w
-                        ? 'border-bakery-brown bg-bakery-brown text-white'
-                        : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
-                        }`}
-                    >
-                      {w}
-                    </button>
-                  ))}
+              {/* Weight Selection (only if cake has weight options) */}
+              {availableWeights.length > 0 && (
+                <div>
+                  <label className="block font-bold text-bakery-darkBrown mb-3">Select Weight</label>
+                  <div className="flex flex-wrap gap-3">
+                    {!isCustomWeight && availableWeights.map(w => (
+                      <button
+                        key={w}
+                        onClick={() => setWeight(w)}
+                        className={`px-4 py-2 rounded-lg border-2 transition-colors ${weight === w
+                          ? 'border-bakery-brown bg-bakery-brown text-white'
+                          : 'border-bakery-peach text-bakery-brown hover:border-bakery-brown'
+                          }`}
+                      >
+                        {w}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Flavor Selection (if depends on flavor) */}
               {dependsOnFlavor && (
@@ -427,7 +433,7 @@ const ProductDetail = () => {
                       if (isGivenFlavor) {
                         const givenPrice = (cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined)
                           ? cake.prices[weight]
-                          : currentPrice;
+                          : (cake.price || currentPrice);
                         return (
                           <option key={f} value={f}>
                             {f} ({givenPrice}/-)

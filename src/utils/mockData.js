@@ -2435,6 +2435,28 @@ export const mockCakes = [
       "0.5 KG": 600,
       "1 KG": 1200
     }
+  },
+  {
+    "id": "c201",
+    "name": "Choclate Truffle Bento Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 350,
+    "rating": 5,
+    "tags": [
+      "Bento Cakes",
+      "Chocolate Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/choclate_truffle_bento_cake_born_today.jpeg",
+    "categoryGroup": "Bento Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": null
   }
 ];
 
