@@ -369,6 +369,10 @@ const ProductDetail = () => {
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
                 </p>
+              ) : cake.id === 'c200' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Beautiful handcrafted round Dutch Chocolate cake featuring smooth pink buttercream frosting, luscious dark chocolate drip, delicate pink rosettes with shimmering silver edible pearls, and a custom 'Happy Birthday DIPTI' topper. Freshly baked with rich, premium cocoa for delightful celebrations!
+                </p>
               ) : cake.id === 'c198' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Celebrate your special journey with our customized Mumbai to Pune Car Photo Print Cake! Beautifully crafted with a sky-blue frosting base, milestone plaque ('5 Yrs Strong'), highway road sign ('MUMBAI ➔ PUNE ➔ MUMBAI'), custom white car graphic, and side banner ('From 2021 - ∞'). Topped with edible pearl sprinkles. Handcrafted fresh with premium ingredients.

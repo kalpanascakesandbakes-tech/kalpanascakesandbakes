@@ -2410,6 +2410,31 @@ export const mockCakes = [
       "1 KG": 1400,
       "1.5 KG": 2100
     }
+  },
+  {
+    "id": "c200",
+    "name": "Dutch Chocolate Cake",
+    "category": "Cakes",
+    "flavor": "Dutch Chocolate",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 600,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Designer Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/dutch_chocolate_pink_dipti_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "0.5 KG": 600,
+      "1 KG": 1200
+    }
   }
 ];
 
