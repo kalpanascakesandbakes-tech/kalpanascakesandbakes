@@ -59,7 +59,7 @@ export const isBentoCake = (cake) => {
 
 export const priceDependsOnFlavor = (cake) => {
   if (!cake) return true;
-  if (cake.id === 'c198') return true;
+  if (cake.id === 'c198' || cake.id === 'c199') return true;
 
   const NO_FLAVOR_SELECT_CAKES = new Set([
     "chocolate truffle",

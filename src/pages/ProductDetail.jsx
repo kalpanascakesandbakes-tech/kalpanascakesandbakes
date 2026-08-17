@@ -503,11 +503,10 @@ const ProductDetail = () => {
               <div className="pt-6 space-y-4">
                 <button
                   onClick={handleAddToCart}
-                  className={`w-full py-4 text-white rounded-full font-bold text-lg transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
-                    isAdded 
-                      ? 'bg-green-600 hover:bg-green-700 shadow-green-600/30' 
+                  className={`w-full py-4 text-white rounded-full font-bold text-lg transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer ${isAdded
+                      ? 'bg-green-600 hover:bg-green-700 shadow-green-600/30'
                       : 'bg-bakery-pink-vibrant hover:bg-bakery-pink-dark shadow-bakery-pink-vibrant/30'
-                  }`}
+                    }`}
                 >
                   {isAdded ? (
                     <>

@@ -64,7 +64,7 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
     <AnimatePresence>
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
         {/* Backdrop */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -73,14 +73,14 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
         />
 
         {/* Modal */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           className="relative bg-white rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full flex flex-col md:flex-row max-h-[90vh]"
         >
           {/* Close Button */}
-          <button 
+          <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 p-2 bg-white/80 hover:bg-white rounded-full text-bakery-darkBrown transition-colors shadow-sm backdrop-blur-md"
           >
@@ -90,18 +90,18 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
           {/* Left: Image & Thumbnails */}
           <div className="md:w-1/2 p-6 flex flex-col gap-4 bg-bakery-peach/10">
             <div className="relative rounded-2xl overflow-hidden aspect-square border-2 border-bakery-peach/30">
-              <img 
-                src={galleryImages[selectedImage]} 
-                alt={cake.name} 
+              <img
+                src={galleryImages[selectedImage]}
+                alt={cake.name}
                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${galleryViews[selectedImage].classes}`}
               />
             </div>
-            
+
             {/* Thumbnail Gallery */}
             <div className="grid grid-cols-4 gap-3">
               {galleryImages.map((img, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   onClick={() => setSelectedImage(i)}
                   className={`aspect-square rounded-xl overflow-hidden cursor-pointer border-2 transition-colors ${selectedImage === i ? 'border-bakery-gold' : 'border-transparent hover:border-bakery-gold/50'}`}
                 >
@@ -118,7 +118,7 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
                 {cake.flavor}
               </div>
             )}
-            
+
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-bakery-darkBrown mb-4">
               {cake.name}
             </h2>
@@ -144,7 +144,7 @@ const CakeQuickView = ({ cake, isOpen, onClose }) => {
                 <ShoppingBag size={20} />
                 Add to Cart
               </button>
-              <a 
+              <a
                 href={`/cake/${cake.id}`}
                 className="w-full py-4 bg-bakery-cream text-bakery-darkBrown border-2 border-bakery-peach rounded-xl font-bold text-lg hover:bg-bakery-peach/50 transition-colors flex items-center justify-center"
               >

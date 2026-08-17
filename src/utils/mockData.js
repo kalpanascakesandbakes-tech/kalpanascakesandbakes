@@ -2384,6 +2384,32 @@ export const mockCakes = [
       "1 KG": 1400,
       "1.5 KG": 2000
     }
+  },
+  {
+    "id": "c199",
+    "name": "Chocolate truffle cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 700,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Designer Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/purple_butterfly_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "0.5 KG": 700,
+      "1 KG": 1400,
+      "1.5 KG": 2100
+    }
   }
 ];
 
@@ -2405,7 +2431,7 @@ export const getAllTags = () => {
 
 // Map mockCakes names and categories dynamically to match the exact menu categories
 mockCakes.forEach((cake, index) => {
-  cake.cakeNumber = cake.cakeNumber || parseInt(cake.id.replace('c', '')) || (index + 1);
+  cake.cakeNumber = index + 1;
   if (cake.custom) return;
   const tag = cake.tags.find(t => t !== '60 Minutes Delivery') || 'Trending Cakes';
   const tagSuffix = tag.replace(' Cakes', '');

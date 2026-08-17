@@ -17,7 +17,7 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const defFlavor = getDefaultFlavor(cake);
     const resolvedFlavor = getResolvedFlavor(cake, defFlavor);
     const defWeight = getDefaultWeight(cake);
@@ -46,23 +46,23 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ y: -10 }}
       className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group border border-bakery-peach/30"
     >
       <div className="relative overflow-hidden aspect-square">
         <Link to={`/cake/${cake.id}`} className="block w-full h-full cursor-pointer">
-          <img 
-            src={cake.image} 
+          <img
+            src={cake.image}
             alt={cake.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
         </Link>
-        
+
         {/* Quick actions on hover (outside the Link to prevent event capturing) */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
-          <Link 
+          <Link
             to={`/cake/${cake.id}`}
             className="p-3 bg-white text-bakery-brown rounded-full hover:bg-bakery-gold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 flex items-center justify-center pointer-events-auto cursor-pointer"
             title="View Details"
@@ -84,11 +84,11 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
             <span className="ml-0.5 sm:ml-1 text-bakery-brown font-medium">{cake.rating}</span>
           </div>
         </div>
-        
+
         <p className="text-xs sm:text-sm text-bakery-brown/70 mb-2 sm:mb-4">
           {cake.category} {cake.cakeNumber ? `(${cake.cakeNumber})` : ''}
         </p>
-        
+
         <div className="flex items-center justify-between gap-1 mt-auto pt-2 sm:pt-4">
           {showPrice && (
             <p className="font-sans font-bold text-xs sm:text-sm md:text-base text-bakery-darkBrown whitespace-nowrap">
@@ -100,11 +100,10 @@ const CakeCard = ({ cake, onQuickView, showPrice = true }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
-            className={`flex items-center gap-1 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors duration-300 shadow-sm cursor-pointer shrink-0 ${
-              isAdded 
-                ? 'bg-green-600 hover:bg-green-700 text-white' 
+            className={`flex items-center gap-1 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-full transition-colors duration-300 shadow-sm cursor-pointer shrink-0 ${isAdded
+                ? 'bg-green-600 hover:bg-green-700 text-white'
                 : 'bg-bakery-pink-vibrant hover:bg-bakery-pink-dark text-white'
-            }`}
+              }`}
           >
             {isAdded ? (
               <>
