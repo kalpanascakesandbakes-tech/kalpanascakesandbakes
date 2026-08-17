@@ -99,20 +99,7 @@ const ProductDetail = () => {
       setPhotoPreview(null);
       setSelectedFlavor(getDefaultFlavor(cake));
 
-      const minLimit = getMinWeightLimit(cake);
-      let defaultWeight = '1 KG';
-
-      if (cake.id === 'c135') {
-        defaultWeight = '1.5 KG';
-      } else if (cake.prices) {
-        const valid = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'].filter(w => {
-          return cake.prices[w] !== null && cake.prices[w] !== undefined && parseFloat(w) >= minLimit;
-        });
-        defaultWeight = valid.length > 0 ? valid[0] : `${minLimit} KG`;
-      } else {
-        defaultWeight = minLimit >= 1 ? `${minLimit} KG` : '0.5 KG';
-      }
-      setWeight(defaultWeight);
+      setWeight(getDefaultWeight(cake));
     }
   }, [id, cake]);
 
@@ -369,6 +356,10 @@ const ProductDetail = () => {
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
                 </p>
+              ) : cake.id === 'c202' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Delectable Chocolate Truffle Glass Cake layered with rich dark chocolate ganache and moist chocolate sponge, served in clear dessert glasses with dome lids. Available in Small, Medium, and Large glass sizes. Handcrafted fresh with premium cocoa. Select your favorite flavor to personalize!
+                </p>
               ) : cake.id === 'c201' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Adorable handcrafted chocolate truffle bento cake presented in an eco-friendly lunchbox container. Beautifully styled with smooth white buttercream, delicate piped red hearts, custom calendar box topper ('AUG 11'), and handwritten message 'Someone I Love was born today 22'. Freshly baked mini cake perfect for intimate birthday celebrations!
@@ -398,10 +389,14 @@ const ProductDetail = () => {
                 <span className="font-bold text-sm">100% Pure Vegetarian / Eggless Cake</span>
               </div>
 
-              {/* Weight Selection (only if cake has weight options) */}
+              {/* Weight / Size Selection (only if cake has weight options) */}
               {availableWeights.length > 0 && (
                 <div>
-                  <label className="block font-bold text-bakery-darkBrown mb-3">Select Weight</label>
+                  <label className="block font-bold text-bakery-darkBrown mb-3">
+                    {cake.prices && Object.keys(cake.prices).some(k => !k.includes('KG'))
+                      ? 'Select Size'
+                      : 'Select Weight'}
+                  </label>
                   <div className="flex flex-wrap gap-3">
                     {!isCustomWeight && availableWeights.map(w => (
                       <button

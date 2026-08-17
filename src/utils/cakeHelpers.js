@@ -59,7 +59,7 @@ export const isBentoCake = (cake) => {
 
 export const priceDependsOnFlavor = (cake) => {
   if (!cake) return true;
-  if (cake.id === 'c198' || cake.id === 'c199' || cake.id === 'c200' || cake.id === 'c201') return true;
+  if (cake.id === 'c198' || cake.id === 'c199' || cake.id === 'c200' || cake.id === 'c201' || cake.id === 'c202') return true;
 
   const NO_FLAVOR_SELECT_CAKES = new Set([
     "chocolate truffle",
@@ -141,6 +141,7 @@ export const getDefaultFlavor = (cake) => {
   if (cake.id === 'c114' || cake.id === 'c149') return 'Plain Vanilla';
   if (cake.id === 'c200') return 'Dutch Chocolate';
   if (cake.id === 'c201') return 'Chocolate Truffle';
+  if (cake.id === 'c202') return 'Chocolate Truffle';
   if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135', 'c147', 'c148', 'c153', 'c157', 'c158', 'c179', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c197', 'c198'].includes(cake.id)) return 'Chocolate Truffle';
 
   const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
@@ -223,18 +224,14 @@ export const getAvailableWeights = (cake) => {
   const possibleWeights = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
   if (!cake.prices) return ['0.5 KG', '1 KG', '1.5 KG'].filter(w => parseFloat(w) >= minLimit);
 
-  const list = [];
-  possibleWeights.forEach(w => {
-    if (cake.prices[w] !== null && cake.prices[w] !== undefined) {
-      list.push(w);
-    }
-  });
+  const keys = Object.keys(cake.prices).filter(k => cake.prices[k] !== null && cake.prices[k] !== undefined);
+  const hasStandardWeights = keys.some(w => possibleWeights.includes(w));
 
-  if (list.length === 0) {
-    list.push('0.5 KG', '1 KG', '1.5 KG');
+  if (hasStandardWeights) {
+    return possibleWeights.filter(w => cake.prices[w] !== null && cake.prices[w] !== undefined && parseFloat(w) >= minLimit);
   }
 
-  return list.filter(w => parseFloat(w) >= minLimit);
+  return keys;
 };
 
 export const getDefaultWeight = (cake) => {
@@ -293,6 +290,14 @@ export const calculateCakePrice = (cake, selectedFlavor, weight, isCustomWeight 
   const isBento = isBentoCake(cake);
   const flavorPrices = isBento ? BENTO_FLAVOR_BASE_PRICES : FLAVOR_BASE_PRICES;
   const dependsOnFlavor = priceDependsOnFlavor(cake);
+
+  if (cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined) {
+    const possibleWeights = ['0.5 KG', '1 KG', '1.5 KG', '2 KG', '3 KG', '4 KG', '5 KG'];
+    const isStandardWeight = possibleWeights.includes(weight);
+    if (!isStandardWeight) {
+      return cake.prices[weight];
+    }
+  }
 
   if (!dependsOnFlavor && !isCustomWeight) {
     if (cake.prices && cake.prices[weight] !== null && cake.prices[weight] !== undefined) {

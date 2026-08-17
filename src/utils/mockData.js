@@ -2457,6 +2457,31 @@ export const mockCakes = [
     "isBestSeller": true,
     "description": "Depends On Flavor",
     "prices": null
+  },
+  {
+    "id": "c202",
+    "name": "Glass Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 110,
+    "rating": 5,
+    "tags": [
+      "Trending Cakes",
+      "Gourmet Cakes",
+      "Chocolate Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/glass_cake_chocolate_truffle.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "Small Glass": 110,
+      "Medium Glass": 150,
+      "Large Glass": 180
+    }
   }
 ];
 
