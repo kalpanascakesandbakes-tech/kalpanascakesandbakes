@@ -218,7 +218,7 @@ const ProductDetail = () => {
                 if (!displayFlavor) return null;
 
                 const showTypeBadge = (cake.id === 'c104' || cake.id === 'c97' || isSemiFondant) &&
-                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c173', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196'].includes(cake.id);
+                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c173', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196', 'c198', 'c199', 'c200', 'c201', 'c202', 'c203', 'c204', 'c205', 'c206', 'c207', 'c208'].includes(cake.id);
 
                 return (
                   <div className="flex flex-col gap-2 mb-3.5">
@@ -355,6 +355,30 @@ const ProductDetail = () => {
               ) : cake.id === 'c134' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
+                </p>
+              ) : cake.id === 'c208' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Enjoy the wholesome warmth of our Fresh Banana Cake! Baked to perfection with naturally sweet, ripe bananas and generously studded with rich dark chocolate chips. Packed fresh in an airtight bakery container to preserve delicious softness and aroma. An irresistible treat for tea time!
+                </p>
+              ) : cake.id === 'c207' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Honor Baba on his special day with our regal Black & Gold Chocolate Truffle Cake! Featuring a sleek jet-black ribbed frosting finish, classic black shell piping accented with sparkling golden pearls, a celebratory 'Happy Birthday' topper, and custom golden 'BABA' lettering. Handcrafted fresh with rich, decadent Dutch Chocolate Truffle ganache.
+                </p>
+              ) : cake.id === 'c206' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Celebrate Mom's special day with our elegant Pink Rosette Butterscotch Birthday Cake! Crafted with smooth pastel pink ribbed buttercream, a complete crown of piped pink rosettes adorned with shimmering edible pearls, and a customized 'Happy Birthday आई' topper. Handcrafted fresh with rich, crunchy caramelized butterscotch praline.
+                </p>
+              ) : cake.id === 'c205' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Delight in the perfect fusion of rich chocolate and tangy berry with our Chocolate Blackcurrant Cake! Featuring pristine white buttercream with ribbed texture, an indulgent dark chocolate drip, an intricate chocolate lattice web top, crowned with luxurious lavender purple buttercream rosettes and a golden birthday topper. Handcrafted fresh for your sweetest celebrations!
+                </p>
+              ) : cake.id === 'c204' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Celebrate milestone birthdays in pure sophistication with our Pink Lily Floral Birthday Cake! Featuring smooth pastel pink buttercream with delicate horizontal ribbed texture, shimmering gold grooves, an exquisite fresh pink lily bloom, and golden birthday candles. Handcrafted fresh with decadent Chocolate Truffle. An elegant centerpiece designed for unforgettable celebrations!
+                </p>
+              ) : cake.id === 'c203' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Step into an enchanted garden with our magical Fairy Wonderland Birthday Cake! Featuring a stunning multi-tier design in pastel purple, sky blue, and baby pink, beautifully decorated with delicate 3D butterflies, charming fairy figurines, fairytale mushroom cottages, and elegant golden chocolate pearl spheres. Handcrafted fresh with rich chocolate truffle ganache. Perfect for unforgettable birthday celebrations!
                 </p>
               ) : cake.id === 'c202' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">

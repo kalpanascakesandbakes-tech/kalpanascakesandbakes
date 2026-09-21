@@ -2482,6 +2482,152 @@ export const mockCakes = [
       "Medium Glass": 150,
       "Large Glass": 180
     }
+  },
+  {
+    "id": "c203",
+    "name": "Fairy Butterfly Chocolate Truffle Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 2100,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Designer Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/fairy_butterfly_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "1.5 KG": 2100
+    }
+  },
+  {
+    "id": "c204",
+    "name": "Pink Lily Chocolate Truffle Birthday Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 1500,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Designer Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/pink_lily_19th_birthday_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "1 KG": 1500,
+      "1.5 KG": 2100
+    }
+  },
+  {
+    "id": "c205",
+    "name": "Chocolate Blackcurrant Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Blackcurrant",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 580,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/chocolate_blackcurrant_purple_rosette_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "0.5 KG": 580,
+      "1 KG": 1160,
+      "1.5 KG": 1740
+    }
+  },
+  {
+    "id": "c206",
+    "name": "Butterscotch Cake",
+    "category": "Cakes",
+    "flavor": "Butterscotch",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 500,
+    "rating": 5,
+    "tags": [
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/pink_rosette_pearl_butterscotch_cake.jpeg",
+    "categoryGroup": "Regular Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "0.5 KG": 500,
+      "1 KG": 1000,
+      "1.5 KG": 1500
+    }
+  },
+  {
+    "id": "c207",
+    "name": "Chocolate Truffle Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Chocolate Truffle",
+    "price": 600,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/black_gold_baba_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "",
+    "prices": {
+      "0.5 KG": 600,
+      "1 KG": 1200,
+      "1.5 KG": 1800
+    }
+  },
+  {
+    "id": "c208",
+    "name": "Fresh Banana Cake",
+    "category": "Cakes",
+    "flavor": "Banana",
+    "flavuorLabel": "flavuor : Banana",
+    "price": 400,
+    "rating": 5,
+    "tags": [
+      "Trending Cakes",
+      "Gourmet Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/fresh_banana_chocolate_chip_tea_cake.jpeg",
+    "categoryGroup": "Regular Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "",
+    "prices": {
+      "0.5 KG": 400,
+      "1 KG": 800
+    }
   }
 ];
 

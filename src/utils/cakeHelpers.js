@@ -5,6 +5,7 @@ export const FLAVOR_BASE_PRICES = {
   'Dutch Truffle': 580,
   'Chocolate Blakcurrent': 580,
   'Chocolate Blackcurrent': 580,
+  'Chocolate Blackcurrant': 580,
   'Chocolate Blueberry': 580,
   'Chocolate Mango': 580,
   'Chocolate Strawberry': 580,
@@ -59,7 +60,8 @@ export const isBentoCake = (cake) => {
 
 export const priceDependsOnFlavor = (cake) => {
   if (!cake) return true;
-  if (cake.id === 'c198' || cake.id === 'c199' || cake.id === 'c200' || cake.id === 'c201' || cake.id === 'c202') return true;
+  if (cake.id === 'c207' || cake.id === 'c208') return false;
+  if (cake.id === 'c198' || cake.id === 'c199' || cake.id === 'c200' || cake.id === 'c201' || cake.id === 'c202' || cake.id === 'c203' || cake.id === 'c204' || cake.id === 'c205' || cake.id === 'c206') return true;
 
   const NO_FLAVOR_SELECT_CAKES = new Set([
     "chocolate truffle",
@@ -132,7 +134,7 @@ export const getDefaultFlavor = (cake) => {
   if (cake.id === 'c194') return 'Chocolate Truffle';
   if (cake.id === 'c120' || cake.id === 'c132' || cake.id === 'c137' || cake.id === 'c152' || cake.id === 'c160' || cake.id === 'c196') return 'Strawberry';
   if (cake.id === 'c161') return 'Blueberry Cheesecake';
-  if (cake.id === 'c138' || cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180') return 'Butterscotch';
+  if (cake.id === 'c138' || cake.id === 'c162' || cake.id === 'c176' || cake.id === 'c177' || cake.id === 'c180' || cake.id === 'c206') return 'Butterscotch';
   if (cake.id === 'c173') return 'Blackcurrent Cake';
   if (cake.id === 'c183' || cake.id === 'c171' || cake.id === 'c140' || cake.id === 'c155') return 'Blueberry';
   if (cake.id === 'c144' || cake.id === 'c151' || cake.id === 'c154') return 'Red Velvet';
@@ -141,8 +143,10 @@ export const getDefaultFlavor = (cake) => {
   if (cake.id === 'c114' || cake.id === 'c149') return 'Plain Vanilla';
   if (cake.id === 'c200') return 'Dutch Chocolate';
   if (cake.id === 'c201') return 'Chocolate Truffle';
-  if (cake.id === 'c202') return 'Chocolate Truffle';
-  if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135', 'c147', 'c148', 'c153', 'c157', 'c158', 'c179', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c197', 'c198'].includes(cake.id)) return 'Chocolate Truffle';
+  if (cake.id === 'c202' || cake.id === 'c203' || cake.id === 'c204') return 'Chocolate Truffle';
+  if (cake.id === 'c205') return 'Chocolate Blackcurrant';
+  if (cake.id === 'c208') return 'Banana';
+  if (['c92', 'c93', 'c97', 'c98', 'c100', 'c102', 'c103', 'c104', 'c105', 'c106', 'c107', 'c108', 'c112', 'c118', 'c126', 'c127', 'c128', 'c134', 'c136', 'c135', 'c147', 'c148', 'c153', 'c157', 'c158', 'c179', 'c182', 'c184', 'c187', 'c188', 'c192', 'c194', 'c197', 'c198', 'c199', 'c201', 'c202', 'c203', 'c204', 'c207'].includes(cake.id)) return 'Chocolate Truffle';
 
   const searchTarget = `${cake.name} ${cake.flavor || ''} ${cake.description || ''}`.toLowerCase();
 
