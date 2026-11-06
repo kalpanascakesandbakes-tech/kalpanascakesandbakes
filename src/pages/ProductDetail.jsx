@@ -218,7 +218,7 @@ const ProductDetail = () => {
                 if (!displayFlavor) return null;
 
                 const showTypeBadge = (cake.id === 'c104' || cake.id === 'c97' || isSemiFondant) &&
-                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c173', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196', 'c198', 'c199', 'c200', 'c201', 'c202', 'c203', 'c204', 'c205', 'c206', 'c207', 'c208'].includes(cake.id);
+                  !['c103', 'c105', 'c106', 'c107', 'c108', 'c112', 'c117', 'c118', 'c119', 'c120', 'c126', 'c127', 'c128', 'c132', 'c133', 'c134', 'c135', 'c136', 'c137', 'c138', 'c144', 'c145', 'c146', 'c147', 'c148', 'c149', 'c151', 'c152', 'c154', 'c155', 'c157', 'c158', 'c160', 'c161', 'c166', 'c170', 'c171', 'c173', 'c182', 'c183', 'c184', 'c187', 'c188', 'c192', 'c194', 'c196', 'c198', 'c199', 'c200', 'c201', 'c202', 'c203', 'c204', 'c205', 'c206', 'c207', 'c208', 'c209', 'c210', 'c211', 'c212'].includes(cake.id);
 
                 return (
                   <div className="flex flex-col gap-2 mb-3.5">
@@ -251,7 +251,7 @@ const ProductDetail = () => {
                 ) : (
                   <>
                     <span className="text-3xl font-sans font-bold text-bakery-pink-dark">₹{currentPrice}</span>
-                    {!isCustomWeight && (
+                    {!isCustomWeight && weight && (
                       <span className="text-sm text-bakery-brown/60">for {weight}</span>
                     )}
                   </>
@@ -355,6 +355,22 @@ const ProductDetail = () => {
               ) : cake.id === 'c134' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">
                   Step back in time with our charming Blue Vintage Heart Piping Birthday Cake! This retro-inspired heart-shaped cake is beautifully iced in pastel blue, complete with intricate vintage star-piping details, delicate pearls, and topped with a golden "Happy Birthday" plaque. The perfect centerpiece for vintage-themed birthdays and celebrations. Select your favorite flavor to personalize this sweet nostalgic treat!
+                </p>
+              ) : cake.id === 'c212' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Make milestone celebrations truly majestic with our Pink Floral 2 Tier Chocolate Truffle Cake! Featuring a stunning two-tier design with a soft pastel pink top tier adorned with fresh pink roses, delicate baby's breath, and golden birthday candles. The bottom tier showcases an artistic pink and white marble brushstroke finish with hand-painted gold fault lines, shimmering gold leaf flakes, and pink pearl dragees. Finished with handcrafted fondant board lettering. Freshly handcrafted with decadent chocolate truffle ganache. Select your favorite flavor to personalize!
+                </p>
+              ) : cake.id === 'c211' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Celebrate sweet milestone birthdays with our enchanting Pink Bow 17th Birthday Chocolate Truffle Cake! Beautifully iced in pristine white buttercream with a soft pastel pink center medallion featuring a celebratory piped '17' and heart. Accented with delicate hand-piped pink ribbon bows, charming floral blossoms, and shimmering edible pearls. Handcrafted fresh with rich, velvety chocolate truffle ganache. Select your favorite flavor to personalize!
+                </p>
+              ) : cake.id === 'c210' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Indulge in the viral Middle Eastern sensation of our exquisite Pistachio Khunafa Chocolate Cake! Featuring luscious layers of rich chocolate cake generously infused with crispy, golden butter-toasted kunafa pastry and creamy, nutty pistachio filling. Frosted in pastel pistachio green buttercream with a decadent dark chocolate truffle top, finished with whole split pistachios and fresh green accents.
+                </p>
+              ) : cake.id === 'c209' ? (
+                <p className="text-bakery-brown/80 leading-relaxed font-medium">
+                  Charming handcrafted chocolate truffle bento cake presented in an eco-friendly lunchbox container. Beautifully styled with velvety white buttercream, delicate piped pink hearts, and an adorable green character holding a heart in the center. Freshly baked with customizable flavor options for delightful mini celebrations!
                 </p>
               ) : cake.id === 'c208' ? (
                 <p className="text-bakery-brown/80 leading-relaxed font-medium">

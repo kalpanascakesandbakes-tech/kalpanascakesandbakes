@@ -61,7 +61,7 @@ const Home = () => {
   );
 
   const featuredCakes = getFeaturedCakes();
-  const bestSellers = getBestSellers();
+  const bestSellers = getBestSellers().slice(0, 4);
   const [selectedCake, setSelectedCake] = useState(null);
   const [isLicenseOpen, setIsLicenseOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -391,6 +391,10 @@ const Home = () => {
               <div className="w-24 h-1 bg-bakery-gold rounded-full mb-4"></div>
               <p className="text-bakery-brown">Our most loved creations</p>
             </div>
+            <Link to="/categories" className="mt-4 md:mt-0 inline-flex items-center gap-2 text-bakery-pink-dark font-bold hover:text-bakery-pink-vibrant transition-colors">
+              <span>View All Menu</span>
+              <ArrowRight size={18} />
+            </Link>
           </motion.div>
 
           <motion.div 
@@ -406,6 +410,12 @@ const Home = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          <div className="mt-12 text-center">
+            <Link to="/categories" className="inline-block px-6 py-3 border-2 border-bakery-brown text-bakery-brown font-bold rounded-full hover:bg-bakery-brown hover:text-white transition-colors">
+              Explore All Cakes
+            </Link>
+          </div>
         </div>
       </section>
 

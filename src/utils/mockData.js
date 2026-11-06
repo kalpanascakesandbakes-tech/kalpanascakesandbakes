@@ -2628,10 +2628,115 @@ export const mockCakes = [
       "0.5 KG": 400,
       "1 KG": 800
     }
+  },
+  {
+    "id": "c209",
+    "name": "Chocolate Truffle Bento Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 350,
+    "rating": 5,
+    "tags": [
+      "Bento Cakes",
+      "Chocolate Cakes",
+      "Trending Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/cute_character_chocolate_truffle_bento_cake.jpeg",
+    "categoryGroup": "Bento Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": null
+  },
+  {
+    "id": "c210",
+    "name": "Pistachio Khunafa Chocolate Cake",
+    "category": "Cakes",
+    "flavor": "Pistachio Khunafa Chocolate",
+    "flavuorLabel": "flavuor : Pistachio Khunafa Chocolate",
+    "price": 900,
+    "rating": 5,
+    "tags": [
+      "Trending Cakes",
+      "Gourmet Cakes",
+      "Chocolate Cakes",
+      "Birthday Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/pistachio_khunafa_chocolate_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "",
+    "prices": {
+      "0.5 KG": 900,
+      "1 KG": 1800
+    }
+  },
+  {
+    "id": "c211",
+    "name": "Pink Bow 17th Birthday Chocolate Truffle Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 600,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Birthday Cakes",
+      "Trending Cakes",
+      "Designer Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/pink_bow_17th_birthday_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "0.5 KG": 600,
+      "1 KG": 1200,
+      "1.5 KG": 1800
+    }
+  },
+  {
+    "id": "c212",
+    "name": "Pink Floral 2 Tier Chocolate Truffle Cake",
+    "category": "Cakes",
+    "flavor": "Chocolate Truffle",
+    "flavuorLabel": "flavuor : Select Flavor",
+    "price": 2100,
+    "rating": 5,
+    "tags": [
+      "Chocolate Cakes",
+      "Designer Cakes",
+      "Birthday Cakes",
+      "Trending Cakes",
+      "60 Minutes Delivery"
+    ],
+    "image": "/cakes/pink_floral_2_tier_chocolate_truffle_cake.jpeg",
+    "categoryGroup": "Chocolate Cakes",
+    "custom": true,
+    "isBestSeller": true,
+    "description": "Depends On Flavor",
+    "prices": {
+      "1.5 KG": 2100,
+      "2 KG": 2700
+    }
   }
 ];
 
-export const getBestSellers = () => mockCakes.filter(cake => cake.isBestSeller);
+export const getBestSellers = () => {
+  const preferredIds = ['c210', 'c212', 'c211', 'c209'];
+  const preferredCakes = preferredIds
+    .map(id => mockCakes.find(cake => cake.id === id))
+    .filter(Boolean);
+  if (preferredCakes.length === 4) return preferredCakes;
+  return mockCakes.filter(cake => cake.isBestSeller).slice(0, 4);
+};
 export const getFeaturedCakes = () => mockCakes.filter(cake => cake.tags.includes('Trending Cakes')).slice(0, 4);
 
 export const getAllTags = () => {

@@ -31,7 +31,9 @@ export const generateWhatsAppLink = (orderData) => {
     if (item.flavor) {
       message += `   • Flavor: ${item.flavor}\n`;
     }
-    message += `   • Weight: ${item.weight}\n`;
+    if (item.weight) {
+      message += `   • Weight: ${item.weight}\n`;
+    }
     
     if (isCustom) {
       message += `   • Price: Price on Request (To be confirmed)\n`;
